@@ -26,3 +26,4 @@ Thumbs.db
 # requirements.txt 는 /*.txt 예외
 !/requirements.txt
 !/requirements-dev.txt
+docs/*.pdf
