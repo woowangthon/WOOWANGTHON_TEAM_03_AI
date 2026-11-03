@@ -49,10 +49,10 @@ import ner_detect  # noqa: E402
 from common import DECISION_MODEL, DICT_DIR, KEEP_ALIVE, LLM_MODEL, OLLAMA, post_json, utf8_stdout  # noqa: E402
 from decide import decide  # noqa: E402
 from detect import detect  # noqa: E402
-from mask import _TAG, TIER, instruction_for_external, mask, restore  # noqa: E402
+from mask import PLACEHOLDER_RE, TIER, instruction_for_external, mask, restore  # noqa: E402
 from route import DEFAULT_VARIANT, VARIANTS, route  # noqa: E402
 import anthropic  # noqa: E402
-from answer_external import MODEL as EXTERNAL_MODEL, answer_external, has_key, run_external  # noqa: E402
+from answer_external import MODEL as EXTERNAL_MODEL, answer_external, has_key, leak_check, run_external  # noqa: E402
 
 SERVICE = "woowang-model-service"
 VERSION = "0.1.0"
@@ -432,7 +432,7 @@ async def mask_endpoint(inp: MaskIn):
 @protected.post("/restore")
 async def restore_endpoint(inp: RestoreIn):
     restored = restore(inp.answer, inp.mapping)
-    left = sorted({m.group(0) for m in _TAG.finditer(restored)})  # 대응표에 없어 그대로 둔 자리표 (추측해 채우지 않는다)
+    left = sorted({m.group(0) for m in PLACEHOLDER_RE.finditer(restored)})  # 대응표에 없어 그대로 둔 자리표 (추측해 채우지 않는다)
     return {"restored": restored, "unresolved": left}
 
 
@@ -458,7 +458,6 @@ async def answer_external_endpoint(inp: AnswerExternalIn):
     kw = dict(model=inp.model, effort=inp.effort, max_tokens=inp.max_tokens, fallback=inp.fallback)
     try:
         if inp.masked is not None:
-            from answer_external import leak_check
             leaks = leak_check(inp.masked, inp.mapping)
             if leaks:
                 raise HTTPException(status_code=409, detail=f"전송 중단: 가림 본문에 원문 값 {len(leaks)}개 남음")

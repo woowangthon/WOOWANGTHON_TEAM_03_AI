@@ -18,7 +18,7 @@ import time
 
 import anthropic
 
-from mask import _TAG, instruction_for_external, mask, restore
+from mask import PLACEHOLDER_RE, instruction_for_external, mask, restore
 
 MODEL = os.environ.get("EXTERNAL_MODEL", "claude-sonnet-5-5")
 EFFORT = os.environ.get("EXTERNAL_EFFORT", "medium")   # low | medium | high | xhigh | max
@@ -48,7 +48,7 @@ def leak_check(masked: str, mapping: dict) -> list[str]:
 
 
 def _tags(text: str) -> set:
-    return {(m.group(1).upper(), m.group(2)) for m in _TAG.finditer(text)}
+    return {(m.group(1).upper(), m.group(2)) for m in PLACEHOLDER_RE.finditer(text)}
 
 
 def estimate_cost(model: str, usage: dict) -> float | None:
@@ -95,7 +95,7 @@ def answer_external(masked: str, mapping: dict, model: str = MODEL, effort: str 
     served_by = getattr(resp, "model", None) or model
     return {
         "answer": text, "restored": restored,
-        "unresolved": sorted({m.group(0) for m in _TAG.finditer(restored)}),
+        "unresolved": sorted({m.group(0) for m in PLACEHOLDER_RE.finditer(restored)}),
         "placeholders": {"sent": len(sent), "kept": len(kept)},
         "stop_reason": resp.stop_reason, "truncated": resp.stop_reason == "max_tokens", "refusal": refusal,
         "model": model, "served_by": served_by, "fallback_ran": fallback_ran, "effort": effort,

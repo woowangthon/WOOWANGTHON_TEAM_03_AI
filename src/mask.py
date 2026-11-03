@@ -24,7 +24,7 @@ PLACEHOLDER = {"company": "ORG", "project": "PROJECT", "doc_no": "ID", "price": 
                "biz_no": "BIZNO", "person": "PERSON", "other": "X"}
 TIER = {"doc_no": 1, "price": 1, "contact": 1, "biz_no": 1, "project": 1, "company": 1, "person": 2, "other": 3}
 DEFAULT_POLICY = {"mask_person": False, "mask_company": True}
-_TAG = re.compile(r"\[\[?\s*([A-Za-z]+)\s*[_\- ]?\s*(\d+)\s*\]?\]")
+PLACEHOLDER_RE = re.compile(r"\[\[?\s*([A-Za-z]+)\s*[_\- ]?\s*(\d+)\s*\]?\]")
 _CODE_TO_LABEL = {v: k for k, v in PLACEHOLDER.items()}
 
 
@@ -73,14 +73,14 @@ def restore(answer: str, mapping: dict) -> str:
     """외부 응답의 자리표를 원문으로. 모르는 자리표는 그대로 둔다(추측해 채우지 않는다)."""
     norm = {}
     for tag, original in mapping.items():
-        m = _TAG.fullmatch(tag)
+        m = PLACEHOLDER_RE.fullmatch(tag)
         if m:
             norm[(m.group(1).upper(), m.group(2))] = original
 
     def rep(m):
         return norm.get((m.group(1).upper(), m.group(2)), m.group(0))
 
-    return _TAG.sub(rep, answer)
+    return PLACEHOLDER_RE.sub(rep, answer)
 
 
 def instruction_for_external(lang: str = "ko") -> str:
