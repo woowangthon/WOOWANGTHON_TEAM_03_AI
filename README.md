@@ -116,7 +116,7 @@ $env:ANTHROPIC_API_KEY = "<외부 LLM 키>"             # /answer_external 용. 
 
 | 점검 | 결과 | 파일 |
 |---|---|---|
-| 서비스 점검 18항목 | 전부 통과. 즉시 탐지 13~32ms, /analyze 1.2~8.4초(첫 호출은 30B 로드 17초), 동시 2건 직렬 9.7초 | `src/results/server_check_20261103_1234.md` |
+| 서비스 점검 18항목 | 전부 통과. 즉시 탐지 13~32ms, /analyze 1.2\~8.4초(첫 호출은 30B 로드 17초), 동시 2건 직렬 9.7초 | `src/results/server_check_20261103_1234.md` |
 | 외부 경로 D3·D4·D6·TEST-01 | 자리표 전부 유지·복원, 전송 본문에 원문 값 0건, 미복원 0, API 2.8~10초, 총 약 $0.044 | `src/results/external_check_20261103_1230.md` |
 | 수락 검사 TEST-01 (2쪽 2,546자) | 1등급 19값 전부 가림, 이름 토글 끔·켬 정상, 유지 항목 보존 | `src/results/accept_TEST-01_*.md` |
 | 시연 6건 | 결정 6/6 기대 경로 일치, 가림 뒤 복원 원문 일치 6/6 | `src/results/demo_run_*.md` |
