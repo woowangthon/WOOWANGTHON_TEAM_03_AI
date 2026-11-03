@@ -1,0 +1,489 @@
+{
+  "note": "D2 사내 처리 · 내부 전용 정책 — 기대 결정 local — 사내 강제 · 본문에 '대외비' 표기",
+  "http_status": 200,
+  "request": {
+    "text": "아래 주간 품질회의록을 3줄로 요약해 주세요.\n\n[대외비] 주간 품질회의록 — 외부 공유 금지\n일시: 2026-10-27 09:00 / 장소: 2공장 회의실\n참석: 품질팀 김지영 과장, 생산팀 박성호 대리, 구매팀 이수민 사원\n1. (주)한빛에어로 KX-3 구동장치 브래킷(품번 BRK-1120-03A) 표면 조도 부적합 12건 → 공구 교체 주기 단축, 11/5까지 재검사 완료\n2. 세진테크 납기 2주 지연 요청 → 단가 29,800원 유지 조건으로 수용 검토\n3. 11월 고객 감사 대비 문서 점검 — 담당 이수민",
+    "request_id": "sample-D2",
+    "doc_name": "D2.pdf",
+    "policy": {
+      "mask_person": false,
+      "mask_company": true
+    }
+  },
+  "response": {
+    "request_id": "sample-D2",
+    "doc_name": "D2.pdf",
+    "text_chars": 290,
+    "body_offset": 0,
+    "mode": "full",
+    "spans": [
+      {
+        "start": 96,
+        "end": 99,
+        "text": "김지영",
+        "label": "person",
+        "sources": [
+          "rule:name_title",
+          "ner:koelectra-ko-pii-ner"
+        ],
+        "tier": 2,
+        "masked": false,
+        "placeholder": null
+      },
+      {
+        "start": 108,
+        "end": 111,
+        "text": "박성호",
+        "label": "person",
+        "sources": [
+          "rule:name_title",
+          "ner:koelectra-ko-pii-ner"
+        ],
+        "tier": 2,
+        "masked": false,
+        "placeholder": null
+      },
+      {
+        "start": 120,
+        "end": 123,
+        "text": "이수민",
+        "label": "person",
+        "sources": [
+          "rule:name_title",
+          "ner:koelectra-ko-pii-ner",
+          "llm"
+        ],
+        "tier": 2,
+        "masked": false,
+        "placeholder": null
+      },
+      {
+        "start": 133,
+        "end": 138,
+        "text": "한빛에어로",
+        "label": "company",
+        "sources": [
+          "llm",
+          "dict:companies.txt"
+        ],
+        "tier": 1,
+        "masked": true,
+        "placeholder": "[[ORG_1]]"
+      },
+      {
+        "start": 139,
+        "end": 143,
+        "text": "KX-3",
+        "label": "project",
+        "sources": [
+          "dict:projects.txt",
+          "llm"
+        ],
+        "tier": 1,
+        "masked": true,
+        "placeholder": "[[PROJECT_1]]"
+      },
+      {
+        "start": 156,
+        "end": 168,
+        "text": "BRK-1120-03A",
+        "label": "doc_no",
+        "sources": [
+          "rule:doc_code",
+          "rule:doc_cue",
+          "llm"
+        ],
+        "tier": 1,
+        "masked": true,
+        "placeholder": "[[ID_1]]"
+      },
+      {
+        "start": 216,
+        "end": 220,
+        "text": "세진테크",
+        "label": "company",
+        "sources": [
+          "dict:companies.txt",
+          "llm"
+        ],
+        "tier": 1,
+        "masked": true,
+        "placeholder": "[[ORG_2]]"
+      },
+      {
+        "start": 238,
+        "end": 245,
+        "text": "29,800원",
+        "label": "price",
+        "sources": [
+          "rule:price_krw",
+          "llm",
+          "rule:price_cue"
+        ],
+        "tier": 1,
+        "masked": true,
+        "placeholder": "[[AMT_1]]"
+      },
+      {
+        "start": 287,
+        "end": 290,
+        "text": "이수민",
+        "label": "person",
+        "sources": [
+          "ner:koelectra-ko-pii-ner",
+          "llm",
+          "rule:person_cue"
+        ],
+        "tier": 2,
+        "masked": false,
+        "placeholder": null
+      }
+    ],
+    "rule_spans": [
+      {
+        "start": 96,
+        "end": 99,
+        "text": "김지영",
+        "label": "person",
+        "sources": [
+          "rule:name_title"
+        ],
+        "tier": 2
+      },
+      {
+        "start": 108,
+        "end": 111,
+        "text": "박성호",
+        "label": "person",
+        "sources": [
+          "rule:name_title"
+        ],
+        "tier": 2
+      },
+      {
+        "start": 120,
+        "end": 123,
+        "text": "이수민",
+        "label": "person",
+        "sources": [
+          "rule:name_title"
+        ],
+        "tier": 2
+      },
+      {
+        "start": 133,
+        "end": 138,
+        "text": "한빛에어로",
+        "label": "company",
+        "sources": [
+          "dict:companies.txt"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 139,
+        "end": 143,
+        "text": "KX-3",
+        "label": "project",
+        "sources": [
+          "dict:projects.txt"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 156,
+        "end": 168,
+        "text": "BRK-1120-03A",
+        "label": "doc_no",
+        "sources": [
+          "rule:doc_code",
+          "rule:doc_cue"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 216,
+        "end": 220,
+        "text": "세진테크",
+        "label": "company",
+        "sources": [
+          "dict:companies.txt"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 238,
+        "end": 245,
+        "text": "29,800원",
+        "label": "price",
+        "sources": [
+          "rule:price_krw"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 238,
+        "end": 244,
+        "text": "29,800",
+        "label": "price",
+        "sources": [
+          "rule:price_cue"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 288,
+        "end": 290,
+        "text": "수민",
+        "label": "person",
+        "sources": [
+          "rule:person_cue"
+        ],
+        "tier": 2
+      },
+      {
+        "start": 96,
+        "end": 99,
+        "text": "김지영",
+        "label": "person",
+        "sources": [
+          "ner:koelectra-ko-pii-ner"
+        ],
+        "tier": 2
+      },
+      {
+        "start": 108,
+        "end": 111,
+        "text": "박성호",
+        "label": "person",
+        "sources": [
+          "ner:koelectra-ko-pii-ner"
+        ],
+        "tier": 2
+      },
+      {
+        "start": 120,
+        "end": 123,
+        "text": "이수민",
+        "label": "person",
+        "sources": [
+          "ner:koelectra-ko-pii-ner"
+        ],
+        "tier": 2
+      },
+      {
+        "start": 287,
+        "end": 290,
+        "text": "이수민",
+        "label": "person",
+        "sources": [
+          "ner:koelectra-ko-pii-ner"
+        ],
+        "tier": 2
+      }
+    ],
+    "llm_spans": [
+      {
+        "start": 120,
+        "end": 123,
+        "text": "이수민",
+        "label": "person",
+        "sources": [
+          "llm"
+        ],
+        "tier": 2
+      },
+      {
+        "start": 130,
+        "end": 138,
+        "text": "(주)한빛에어로",
+        "label": "company",
+        "sources": [
+          "llm"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 139,
+        "end": 143,
+        "text": "KX-3",
+        "label": "project",
+        "sources": [
+          "llm"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 156,
+        "end": 168,
+        "text": "BRK-1120-03A",
+        "label": "doc_no",
+        "sources": [
+          "llm"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 216,
+        "end": 220,
+        "text": "세진테크",
+        "label": "company",
+        "sources": [
+          "llm"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 238,
+        "end": 245,
+        "text": "29,800원",
+        "label": "price",
+        "sources": [
+          "llm"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 287,
+        "end": 290,
+        "text": "이수민",
+        "label": "person",
+        "sources": [
+          "llm"
+        ],
+        "tier": 2
+      }
+    ],
+    "sensitive": true,
+    "route": {
+      "choice": "local",
+      "probabilities": {
+        "local": 0.6498,
+        "external": 0.182,
+        "block": 0.1683
+      },
+      "confidence": 0.4746,
+      "seconds": 2.971,
+      "input_tokens": 384
+    },
+    "route_error": null,
+    "decision": {
+      "action": "local",
+      "needs_approval": false,
+      "reasons": [
+        "내부 전용 명시: '대외비'"
+      ],
+      "warnings": []
+    },
+    "mask": {
+      "masked": "아래 주간 품질회의록을 3줄로 요약해 주세요.\n\n[대외비] 주간 품질회의록 — 외부 공유 금지\n일시: 2026-10-27 09:00 / 장소: 2공장 회의실\n참석: 품질팀 김지영 과장, 생산팀 박성호 대리, 구매팀 이수민 사원\n1. (주)[[ORG_1]] [[PROJECT_1]] 구동장치 브래킷(품번 [[ID_1]]) 표면 조도 부적합 12건 → 공구 교체 주기 단축, 11/5까지 재검사 완료\n2. [[ORG_2]] 납기 2주 지연 요청 → 단가 [[AMT_1]] 유지 조건으로 수용 검토\n3. 11월 고객 감사 대비 문서 점검 — 담당 이수민",
+      "mapping": {
+        "[[ORG_1]]": "한빛에어로",
+        "[[PROJECT_1]]": "KX-3",
+        "[[ID_1]]": "BRK-1120-03A",
+        "[[ORG_2]]": "세진테크",
+        "[[AMT_1]]": "29,800원"
+      },
+      "entries": [
+        {
+          "start": 133,
+          "end": 138,
+          "text": "한빛에어로",
+          "label": "company",
+          "placeholder": "[[ORG_1]]"
+        },
+        {
+          "start": 139,
+          "end": 143,
+          "text": "KX-3",
+          "label": "project",
+          "placeholder": "[[PROJECT_1]]"
+        },
+        {
+          "start": 156,
+          "end": 168,
+          "text": "BRK-1120-03A",
+          "label": "doc_no",
+          "placeholder": "[[ID_1]]"
+        },
+        {
+          "start": 216,
+          "end": 220,
+          "text": "세진테크",
+          "label": "company",
+          "placeholder": "[[ORG_2]]"
+        },
+        {
+          "start": 238,
+          "end": 245,
+          "text": "29,800원",
+          "label": "price",
+          "placeholder": "[[AMT_1]]"
+        }
+      ],
+      "unmasked": [
+        {
+          "start": 96,
+          "end": 99,
+          "text": "김지영",
+          "label": "person",
+          "reason": "등급 2 정책으로 가리지 않음"
+        },
+        {
+          "start": 108,
+          "end": 111,
+          "text": "박성호",
+          "label": "person",
+          "reason": "등급 2 정책으로 가리지 않음"
+        },
+        {
+          "start": 120,
+          "end": 123,
+          "text": "이수민",
+          "label": "person",
+          "reason": "등급 2 정책으로 가리지 않음"
+        },
+        {
+          "start": 287,
+          "end": 290,
+          "text": "이수민",
+          "label": "person",
+          "reason": "등급 2 정책으로 가리지 않음"
+        }
+      ],
+      "policy": {
+        "mask_person": false,
+        "mask_company": true
+      }
+    },
+    "external_instruction": "본문의 [[ORG_1]], [[AMT_2]] 같은 표기는 가려진 자리표입니다. 답변(번역·요약 포함)에서도 자리표를 글자 그대로 유지하고, 무엇인지 추측해 채우지 마세요. 자리표에 대한 설명이나 주석은 답변에 넣지 마세요.",
+    "warnings": [],
+    "dropped": [],
+    "timing": {
+      "rules_ms": 0.52,
+      "ner_s": 0.024,
+      "injection_blanked": 0,
+      "chunks": 1,
+      "llm_total_s": 3.256,
+      "llm_load_s": 0.044,
+      "llm_prompt_eval_s": 0.824,
+      "llm_eval_s": 2.379,
+      "llm_prompt_tokens": 828,
+      "llm_eval_tokens": 86,
+      "route_s": 2.971,
+      "total_s": 3.282
+    },
+    "versions": {
+      "service": "woowang-model-service",
+      "version": "0.1.0",
+      "code": "b4ee02f0ee",
+      "dict": "857cd7cff0",
+      "llm_model": "qwen3:30b-a3b-instruct-2507-q4_K_M",
+      "prompt_mode": "C",
+      "route_model": "tev1-cpu",
+      "route_variant": "v1_en_capability",
+      "ner_model": "atonlee/koelectra-ko-pii-ner",
+      "embed_model": "bge-m3-cpu"
+    }
+  }
+}

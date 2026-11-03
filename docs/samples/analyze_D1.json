@@ -1,0 +1,83 @@
+{
+  "note": "D1 사내 처리 · 단순 작업 — 기대 결정 local — 사내 처리 · 구간 없음 · 승인 카드 없음",
+  "http_status": 200,
+  "request": {
+    "text": "아래 공지문을 자연스럽게 다듬어 주세요.\n\n[공지] 11월 수입검사 기준 변경 안내\n11월 3일부터 수입검사 샘플링 기준이 변경됩니다. 기존 AQL 1.0에서 AQL 0.65로 강화되며, 검사 성적서는 입고 후 24시간 이내에 시스템에 등록해야 합니다. 변경 기준은 품질팀 게시판에 올려두었으니 확인 바랍니다. 문의는 품질팀으로 연락 주세요.",
+    "request_id": "sample-D1",
+    "doc_name": "D1.pdf",
+    "policy": {
+      "mask_person": false,
+      "mask_company": true
+    }
+  },
+  "response": {
+    "request_id": "sample-D1",
+    "doc_name": "D1.pdf",
+    "text_chars": 191,
+    "body_offset": 0,
+    "mode": "full",
+    "spans": [],
+    "rule_spans": [],
+    "llm_spans": [],
+    "sensitive": false,
+    "route": {
+      "choice": "local",
+      "probabilities": {
+        "local": 0.7741,
+        "external": 0.2234,
+        "block": 0.0024
+      },
+      "confidence": 0.6612,
+      "seconds": 2.016,
+      "input_tokens": 288
+    },
+    "route_error": null,
+    "decision": {
+      "action": "local",
+      "needs_approval": false,
+      "reasons": [
+        "tev1 local 0.77"
+      ],
+      "warnings": []
+    },
+    "mask": {
+      "masked": "아래 공지문을 자연스럽게 다듬어 주세요.\n\n[공지] 11월 수입검사 기준 변경 안내\n11월 3일부터 수입검사 샘플링 기준이 변경됩니다. 기존 AQL 1.0에서 AQL 0.65로 강화되며, 검사 성적서는 입고 후 24시간 이내에 시스템에 등록해야 합니다. 변경 기준은 품질팀 게시판에 올려두었으니 확인 바랍니다. 문의는 품질팀으로 연락 주세요.",
+      "mapping": {},
+      "entries": [],
+      "unmasked": [],
+      "policy": {
+        "mask_person": false,
+        "mask_company": true
+      }
+    },
+    "external_instruction": "본문의 [[ORG_1]], [[AMT_2]] 같은 표기는 가려진 자리표입니다. 답변(번역·요약 포함)에서도 자리표를 글자 그대로 유지하고, 무엇인지 추측해 채우지 마세요. 자리표에 대한 설명이나 주석은 답변에 넣지 마세요.",
+    "warnings": [],
+    "dropped": [],
+    "timing": {
+      "rules_ms": 0.18,
+      "ner_s": 0.023,
+      "injection_blanked": 0,
+      "chunks": 1,
+      "llm_total_s": 17.473,
+      "llm_load_s": 15.631,
+      "llm_prompt_eval_s": 1.663,
+      "llm_eval_s": 0.166,
+      "llm_prompt_tokens": 637,
+      "llm_eval_tokens": 7,
+      "route_s": 2.016,
+      "total_s": 17.499
+    },
+    "versions": {
+      "service": "woowang-model-service",
+      "version": "0.1.0",
+      "code": "b4ee02f0ee",
+      "dict": "857cd7cff0",
+      "llm_model": "qwen3:30b-a3b-instruct-2507-q4_K_M",
+      "prompt_mode": "C",
+      "route_model": "tev1-cpu",
+      "route_variant": "v1_en_capability",
+      "ner_model": "atonlee/koelectra-ko-pii-ner",
+      "embed_model": "bge-m3-cpu"
+    }
+  }
+}

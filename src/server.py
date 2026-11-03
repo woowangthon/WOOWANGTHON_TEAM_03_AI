@@ -404,9 +404,11 @@ async def analyze(inp: AnalyzeIn):
     STATE["analyze"] += 1
     log.info("analyze id=%s chars=%d spans=%d action=%s approval=%s mode=%s %.2fs",
              inp.request_id, len(text), len(det["spans"]), d["action"], d["needs_approval"], mode, total)
+    placeholder_at = {(e["start"], e["end"]): e["placeholder"] for e in m["entries"]}  # 화면 하이라이트용: 구간마다 가려졌는지와 자리표
     return {
         "request_id": inp.request_id, "doc_name": inp.doc_name, "text_chars": len(text), "body_offset": off, "mode": mode,
-        "spans": [span_out(s) for s in det["spans"]],
+        "spans": [{**span_out(s), "masked": (s.start, s.end) in placeholder_at, "placeholder": placeholder_at.get((s.start, s.end))}
+                  for s in det["spans"]],
         "rule_spans": [span_out(s) for s in det["rule_spans"]],
         "llm_spans": [span_out(s) for s in det["llm_spans"]],
         "sensitive": det["sensitive"],
