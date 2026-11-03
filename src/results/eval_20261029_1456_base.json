@@ -1,0 +1,764 @@
+{
+ "summary": {
+  "rules": {
+   "recall": 1.0,
+   "exact_recall": 1.0,
+   "label_acc": 1.0,
+   "precision": 1.0,
+   "fp": 0,
+   "pred": 23,
+   "gold": 23,
+   "hits": 23,
+   "sensitive_acc": 1.0
+  },
+  "llm": {
+   "recall": 0.8695652173913043,
+   "exact_recall": 0.8260869565217391,
+   "label_acc": 1.0,
+   "precision": 0.9523809523809523,
+   "fp": 1,
+   "pred": 21,
+   "gold": 23,
+   "hits": 20,
+   "sensitive_acc": 0.9
+  },
+  "hybrid": {
+   "recall": 1.0,
+   "exact_recall": 1.0,
+   "label_acc": 1.0,
+   "precision": 0.9583333333333334,
+   "fp": 1,
+   "pred": 24,
+   "gold": 23,
+   "hits": 23,
+   "sensitive_acc": 1.0
+  }
+ },
+ "latency": {
+  "rules_ms_p50": 0.19,
+  "rules_ms_p95": 0.26,
+  "llm_s_p50": 0.795,
+  "llm_s_p95": 3.515,
+  "llm_s_max": 3.515
+ },
+ "rows": [
+  {
+   "id": "S01",
+   "category": "sensitive",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.25,
+    "llm_total_s": 3.515,
+    "llm_load_s": 0.005,
+    "llm_prompt_eval_s": 0.999,
+    "llm_eval_s": 2.441,
+    "llm_prompt_tokens": 521,
+    "llm_eval_tokens": 99
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 4,
+     "end": 10,
+     "text": "LIG넥스원",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 26,
+     "end": 39,
+     "text": "DWG-2025-0417",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "rule:doc_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 53,
+     "end": 61,
+     "text": "850,000원",
+     "label": "price",
+     "sources": [
+      "rule:price_krw",
+      "llm"
+     ]
+    },
+    {
+     "start": 68,
+     "end": 71,
+     "text": "박지훈",
+     "label": "person",
+     "sources": [
+      "rule:person_cue",
+      "rule:name_title",
+      "llm"
+     ]
+    },
+    {
+     "start": 75,
+     "end": 88,
+     "text": "010-2345-6789",
+     "label": "contact",
+     "sources": [
+      "rule:mobile",
+      "llm"
+     ]
+    },
+    {
+     "start": 90,
+     "end": 114,
+     "text": "jh.park@sejin-tech.co.kr",
+     "label": "contact",
+     "sources": [
+      "rule:email",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "S02",
+   "category": "sensitive",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.22,
+    "llm_total_s": 2.537,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.629,
+    "llm_eval_s": 1.897,
+    "llm_prompt_tokens": 512,
+    "llm_eval_tokens": 77
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 0,
+     "end": 9,
+     "text": "한화에어로스페이스",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt"
+     ]
+    },
+    {
+     "start": 38,
+     "end": 43,
+     "text": "가온 사업",
+     "label": "project",
+     "sources": [
+      "dict:projects.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 56,
+     "end": 67,
+     "text": "PO-24-11873",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "rule:doc_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 134,
+     "end": 141,
+     "text": "1,200만원",
+     "label": "price",
+     "sources": [
+      "rule:price_unit",
+      "llm"
+     ]
+    },
+    {
+     "start": 156,
+     "end": 159,
+     "text": "최은영",
+     "label": "person",
+     "sources": [
+      "rule:person_cue",
+      "rule:name_title",
+      "llm"
+     ]
+    },
+    {
+     "start": 168,
+     "end": 180,
+     "text": "031-555-0192",
+     "label": "contact",
+     "sources": [
+      "rule:landline",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 6,
+    "hits": 5,
+    "exact": 5,
+    "label_ok": 5,
+    "pred": 5,
+    "fp": 0,
+    "misses": [
+     "한화에어로스페이스(company)"
+    ],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "S03",
+   "category": "sensitive",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.26,
+    "llm_total_s": 2.205,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.612,
+    "llm_eval_s": 1.582,
+    "llm_prompt_tokens": 501,
+    "llm_eval_tokens": 63
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 4,
+    "hits": 4,
+    "exact": 4,
+    "label_ok": 4,
+    "pred": 4,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 4,
+    "hits": 4,
+    "exact": 4,
+    "label_ok": 4,
+    "pred": 4,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 58,
+     "end": 70,
+     "text": "BRK-1120-03A",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "rule:doc_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 76,
+     "end": 86,
+     "text": "L240918-07",
+     "label": "doc_no",
+     "sources": [
+      "rule:lot_code",
+      "rule:doc_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 93,
+     "end": 97,
+     "text": "현대로템",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 186,
+     "end": 189,
+     "text": "김도윤",
+     "label": "person",
+     "sources": [
+      "rule:person_cue",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 4,
+    "hits": 4,
+    "exact": 4,
+    "label_ok": 4,
+    "pred": 4,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "S04",
+   "category": "sensitive",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.19,
+    "llm_total_s": 2.796,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.615,
+    "llm_eval_s": 2.171,
+    "llm_prompt_tokens": 499,
+    "llm_eval_tokens": 88
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 7,
+    "fp": 1,
+    "misses": [],
+    "fp_texts": [
+     "8,000개(price)"
+    ]
+   },
+   "pred_spans": [
+    {
+     "start": 32,
+     "end": 36,
+     "text": "동아금속",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 43,
+     "end": 55,
+     "text": "123-45-67890",
+     "label": "biz_no",
+     "sources": [
+      "rule:biz_no",
+      "llm"
+     ]
+    },
+    {
+     "start": 61,
+     "end": 68,
+     "text": "32,500원",
+     "label": "price",
+     "sources": [
+      "rule:price_krw",
+      "llm"
+     ]
+    },
+    {
+     "start": 91,
+     "end": 95,
+     "text": "세진테크",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt"
+     ]
+    },
+    {
+     "start": 100,
+     "end": 107,
+     "text": "29,800원",
+     "label": "price",
+     "sources": [
+      "rule:price_krw",
+      "llm"
+     ]
+    },
+    {
+     "start": 141,
+     "end": 147,
+     "text": "8,000개",
+     "label": "price",
+     "sources": [
+      "llm"
+     ]
+    },
+    {
+     "start": 150,
+     "end": 157,
+     "text": "SR-7 양산",
+     "label": "project",
+     "sources": [
+      "dict:projects.txt",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 6,
+    "hits": 5,
+    "exact": 4,
+    "label_ok": 5,
+    "pred": 6,
+    "fp": 1,
+    "misses": [
+     "세진테크(company)"
+    ],
+    "fp_texts": [
+     "8,000개(price)"
+    ]
+   }
+  },
+  {
+   "id": "S05",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.1,
+    "llm_total_s": 0.699,
+    "llm_load_s": 0.005,
+    "llm_prompt_eval_s": 0.556,
+    "llm_eval_s": 0.132,
+    "llm_prompt_tokens": 448,
+    "llm_eval_tokens": 6
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "S06",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.13,
+    "llm_total_s": 0.701,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.565,
+    "llm_eval_s": 0.126,
+    "llm_prompt_tokens": 452,
+    "llm_eval_tokens": 6
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "S07",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.17,
+    "llm_total_s": 0.714,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.58,
+    "llm_eval_s": 0.123,
+    "llm_prompt_tokens": 479,
+    "llm_eval_tokens": 6
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 1,
+    "hits": 1,
+    "exact": 1,
+    "label_ok": 1,
+    "pred": 1,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 1,
+    "hits": 1,
+    "exact": 1,
+    "label_ok": 1,
+    "pred": 1,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 143,
+     "end": 146,
+     "text": "이서준",
+     "label": "person",
+     "sources": [
+      "rule:person_cue",
+      "rule:name_title"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 1,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [
+     "이서준(person)"
+    ],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "S08",
+   "category": "external",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.1,
+    "llm_total_s": 0.695,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.535,
+    "llm_eval_s": 0.151,
+    "llm_prompt_tokens": 416,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "S09",
+   "category": "external",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.22,
+    "llm_total_s": 0.795,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.633,
+    "llm_eval_s": 0.15,
+    "llm_prompt_tokens": 433,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "S10",
+   "category": "external",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.1,
+    "llm_total_s": 0.775,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.595,
+    "llm_eval_s": 0.154,
+    "llm_prompt_tokens": 446,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  }
+ ]
+}

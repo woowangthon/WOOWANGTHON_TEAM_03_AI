@@ -1,0 +1,10 @@
+{
+ "files": {
+  "영어 12": "src/data/candidates/english_round1_20261029_1920.jsonl"
+ },
+ "changes": [
+  {"set": "영어 12", "id": "E03-1", "op": "retext", "text": "Kestrel-2024-MK3", "new_text": "Project Kestrel-2024-MK3", "label": "project", "reason": "영어 사업명은 본문 표기대로 'Project …'까지(E01·E02 정답과 통일). 한국어는 '프로젝트' 접미어를 빼는 것과 반대 방향이지만 영어는 'Project'가 이름의 일부"},
+  {"set": "영어 12", "id": "E03-2", "op": "retext", "text": "Iron Shield-2024-Phase2", "new_text": "Project Iron Shield-2024-Phase2", "label": "project", "reason": "같은 규칙"},
+  {"set": "영어 12", "id": "E03-4", "op": "retext", "text": "Thunderbolt-2024-S1", "new_text": "Project Thunderbolt-2024-S1", "label": "project", "reason": "같은 규칙"}
+ ]
+}

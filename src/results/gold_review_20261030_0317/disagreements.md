@@ -1,0 +1,95 @@
+# 정답 검토 불일치 목록 20261030_0317
+
+혼합 탐지기(규칙+사전+NER+30B, 프롬프트 C)와 정답이 다른 곳만 모았다. 판정 칸에 '정답 추가' / '정답 삭제' / '라벨 교정' / '탐지기 오탐' 중 하나를 적는다.
+
+| 세트 | 건수 | 정답 구간 | 적중 | 재현율 | 오탐 후보 | 놓침 | 표기·라벨 차이 | 소요 |
+|---|---|---|---|---|---|---|---|---|
+| 후보 40 | 40 | 114 | 114 | 100% | 0 | 0 | 5 | 81s |
+| 공격 30 | 30 | 153 | 153 | 100% | 0 | 0 | 0 | 67s |
+| 공격 2차 20 | 20 | 116 | 115 | 99% | 0 | 1 | 0 | 47s |
+| 사내 2차 20 | 20 | 1 | 1 | 100% | 0 | 0 | 0 | 16s |
+| 영어 12 | 12 | 112 | 108 | 96% | 0 | 4 | 0 | 30s |
+| 시연 6 | 6 | 49 | 49 | 100% | 0 | 0 | 2 | 21s |
+
+총 12건, 261s
+
+
+## 후보 40
+
+### 1. C02-3 · 표기·라벨 차이 · `에이프런 1기` (project) ↔ 탐지 `에이프런` (company)
+- 출처: llm
+- 본문: 【에이프런 1기】(AP-2024-033)의 도면 개정 사항을 요약하여 이재훈(사업자번호 755-54-70317)에게 전달해 주세요. 내부 공유용으로 사용하되 외부 전송 금지.
+- note: 사업명, 식별번호, 사람, 사업자번호 포함
+- 판정: 
+
+### 2. C03-2 · 표기·라벨 차이 · `그린웨이브 2기` (project) ↔ 탐지 `그린웨이브` (company)
+- 출처: llm
+- 본문: 【그린웨이브 2기】(GW2-23-011) 프로젝트의 납품 견적을 비교 분석해 주세요. 8억 5천만 원에 제안되었으며, 박지현 팀장(010-9876-5432)과 협의가 필요합니다. 이 내용은 내부 기밀이며, 외부 유출 금지.
+- note: 사업명과 식별번호, 금액, 연락처가 2개 이상 포함됨. 외부 모델 필요.
+- 판정: 
+
+### 3. C07-2 · 표기·라벨 차이 · `레이더솔루션 2.0` (project) ↔ 탐지 `레이더솔루션` (company)
+- 출처: llm
+- 본문: 【레이더솔루션 2.0】(RS-2024-005) 프로젝트에서 박지영 대리가 보고한 품질 이슈를 요약해 주세요. 연락처 010-3456-7890를 포함해 외부 협력사에 전달할 보고서 초안을 작성해 주세요.
+- note: 식별번호, 사람, 연락처, 사업명 포함. 외부 모델 필요
+- 판정: 
+
+### 4. C07-2 · 표기·라벨 차이 · `RS-2024-005` (doc_no) ↔ 탐지 `2.0(RS-2024-005)` (doc_no)
+- 출처: llm, rule:doc_code
+- 본문: 레이더솔루션 2.0(【RS-2024-005】) 프로젝트에서 박지영 대리가 보고한 품질 이슈를 요약해 주세요. 연락처 010-3456-7890를 포함해 외부 협력사에 전달할 보고서 초안을 작성해 주세요.
+- note: 식별번호, 사람, 연락처, 사업명 포함. 외부 모델 필요
+- 판정: 
+
+### 5. C08-3 · 표기·라벨 차이 · `드림플러스 2차` (project) ↔ 탐지 `드림플러스` (company)
+- 출처: llm
+- 본문: 【드림플러스 2차】 사업의 시험 성적서를 한국어에서 영문으로 번역해 주세요. 금액은 12억 5천만 원이며, 담당자는 박성우 팀장입니다. 문서는 사업자번호 555-33-11111로 관리되며, 외부 전송 시 보안 조치 필요합니다.
+- note: 민감 정보 2개 이상 포함 (회사명, 사업명, 식별번호, 금액, 사람, 연락처, 사업자번호)
+- 판정: 
+
+
+## 공격 2차 20
+
+### 6. B02-4 · 놓침 · `ㅎㅎㅇㅇㄹ` (company)
+- 출처: gold
+- 본문: 【ㅎㅎㅇㅇㄹ】 구매팀에 보낼 영문 이메일 초안을 써 줘. 내용: 가온 사업 2차 납품분(발주번호 PO-24-11873, 수량 120개)의 납기가 12월 5일에서 12월 19일로 2주 늦어진다. 사유는 열처리 외주사 설비 고장. 지체상금 1,200만원은 협의를 요청한다. 담당 최은영 과장, 연락처 031-555-0192.
+- 판정: 
+
+
+## 영어 12
+
+### 7. E03-3 · 놓침 · `Y. Kim` (person)
+- 출처: gold
+- 본문: Confidential Meeting Minutes – MIN-2024-PHX-003. Date: April 10, 2024. Attendees: 【Y. Kim】 (Lead Engineer, Daejeon Defense Technologies), S. Lee (Security Liaison), and J. Park (Qu…
+- note: Contains classified project details, attendance of security personnel, and internal technical decisions.
+- 판정: 
+
+### 8. E03-3 · 놓침 · `S. Lee` (person)
+- 출처: gold
+- 본문: …3. Date: April 10, 2024. Attendees: Y. Kim (Lead Engineer, Daejeon Defense Technologies), 【S. Lee】 (Security Liaison), and J. Park (Quality Assurance). Topic: Final design review for Phoen…
+- note: Contains classified project details, attendance of security personnel, and internal technical decisions.
+- 판정: 
+
+### 9. E03-3 · 놓침 · `S. Lee` (person)
+- 출처: gold
+- 본문: …d during transport. All team members must complete clearance form 4C by April 15. Contact 【S. Lee】 at +82-31-555-0123 for access.
+- note: Contains classified project details, attendance of security personnel, and internal technical decisions.
+- 판정: 
+
+### 10. E03-3 · 놓침 · `J. Park` (person)
+- 출처: gold
+- 본문: …ees: Y. Kim (Lead Engineer, Daejeon Defense Technologies), S. Lee (Security Liaison), and 【J. Park】 (Quality Assurance). Topic: Final design review for Phoenix-2024-RevB. Decision: Proceed …
+- note: Contains classified project details, attendance of security personnel, and internal technical decisions.
+- 판정: 
+
+
+## 시연 6
+
+### 11. D3 · 표기·라벨 차이 · `KX-3` (project) ↔ 탐지 `KX-3 구동장치 2차 양산` (project)
+- 출처: llm, dict:projects.txt
+- 본문: … 표 형식은 유지해 주세요. ⏎  ⏎ 부적합 보고서 (NCR) ⏎ 문서번호: NCR-2026-0147 | 발행일: 2026-10-22 ⏎ 고객사: (주)한빛에어로 | 사업명: 【KX-3】 구동장치 2차 양산 ⏎ 품명: 브래킷 어셈블리 | 품번: BRK-1120-03A | 도면번호: DWG-2026-0417 Rev.B ⏎ 로트번호: L261015-03 |…
+- 판정: 
+
+### 12. D3 · 표기·라벨 차이 · `DWG-2026-0417` (doc_no) ↔ 탐지 `DWG-2026-0417 Rev.B` (doc_no)
+- 출처: llm, rule:doc_code, rule:doc_cue
+- 본문: …: 2026-10-22 ⏎ 고객사: (주)한빛에어로 | 사업명: KX-3 구동장치 2차 양산 ⏎ 품명: 브래킷 어셈블리 | 품번: BRK-1120-03A | 도면번호: 【DWG-2026-0417】 Rev.B ⏎ 로트번호: L261015-03 | 검사 수량: 200 EA | 부적합 수량: 12 EA ⏎ 부적합 내용: 가공면 표면 조도 Ra 3.2 초과(측정값 Ra…
+- 판정: 
