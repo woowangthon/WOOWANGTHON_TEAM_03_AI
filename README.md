@@ -10,8 +10,11 @@
 WOOWANGTHON_TEAM_03_AI/
 ├─ README.md
 ├─ requirements.txt                 실행 환경 고정 버전 (Python 3.12, Windows)
+├─ requirements-dev.txt             단위 테스트·Actions 용 최소 의존성 (Ollama·torch 불필요)
 ├─ AGENTS.md                        팀 개발 에이전트 지침 요약 (PM 등록)
 ├─ .github/pull_request_template.md
+├─ .github/workflows/tests.yml      push·PR 마다 pytest 실행
+├─ tests/                           순수 함수 단위 테스트 (가림·복원, 결정 규칙, 정규식 규칙, 분할·병합·전파, 유출 검사, 서비스 입력 검증)
 ├─ src/                             모델 코드. 모듈이 서로를 최상위 이름으로 import 하므로 src 를 경로에 두고 실행한다
 │  ├─ common.py                     경로, Ollama 호출(반드시 127.0.0.1), Span 자료형, 라벨 7종
 │  ├─ extract.py                    PDF → 글자 (PyMuPDF). 글자를 고치지 않고 쪽 사이 빈 줄 하나. 흐름도 ①
@@ -98,6 +101,15 @@ $env:ANTHROPIC_API_KEY = "<외부 LLM 키>"             # /answer_external 용. 
 | ⑧ 사전 재적재, ⑨ 임베딩 | `server.py` `/dict/reload`, `/embed` (pgvector 검색·배치 로직은 백엔드) | 집 PC |
 
 ⑥ 로그 DB, ⑦ 집계·대시보드, ① 접수 API·상태 폴링, ④ 승인 큐는 BE·FE 저장소 범위다.
+
+## 테스트
+
+```powershell
+.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+.venv\Scripts\python.exe -m pytest -q
+```
+
+`tests/` 는 Ollama·GPU·외부 API 없이 순수 함수만 확인한다. 가림 뒤 복원이 원문과 같은지, 자리표 변형(`[[ ORG_1 ]]`, `[ORG_1]`, `[[org-1]]`) 복원, 결정 규칙 여덟 개, 정규식 규칙별 적중과 공개 규격 제외, 긴 글 분할·병합·전파·다듬기, 전송 직전 유출 검사, 서비스 입력 검증과 키 검사. GitHub Actions(`.github/workflows/tests.yml`)가 push 와 PR 마다 같은 테스트를 돈다. 모델 품질(재현율·오탐·지연)은 테스트가 아니라 아래 점검 스크립트와 결과 파일로 본다.
 
 ## 검증 결과 (2026-11-03, 집 PC 실측)
 
