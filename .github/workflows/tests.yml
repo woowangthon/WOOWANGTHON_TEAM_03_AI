@@ -1,0 +1,17 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # 순수 함수 테스트만 돈다. Ollama·torch·transformers 는 필요 없다 (NER 모듈은 transformers 가 없으면 빈 결과를 돌려준다)
+      - run: pip install -r requirements-dev.txt
+      - run: pytest -q

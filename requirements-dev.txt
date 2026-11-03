@@ -1,0 +1,5 @@
+# 단위 테스트(tests/)와 GitHub Actions 용 최소 의존성. 모델 실행 환경은 requirements.txt.
+pytest>=8
+fastapi==0.162.0
+pydantic==2.14.2
+anthropic==2.4.0
