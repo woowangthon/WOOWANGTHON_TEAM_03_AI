@@ -7,11 +7,14 @@
   23,000토큰 넘게 반복 생성해 Ollama 10분 제한에 걸린 뒤 500으로 죽은 일이 있었다. 상한에서 끊기면 완성된 객체만 건져 쓴다.
 """
 import json
+import logging
 import re
 import sys
 import time
 
 from common import LABELS, LLM_MODEL, KEEP_ALIVE, Span, post_json, find_all, utf8_stdout
+
+log = logging.getLogger(__name__)
 
 MAX_PREDICT = 768   # 구간 하나가 15~20토큰이니 40개 넘게 담긴다. 반복 생성 폭주를 20초 안에서 끊는 용도.
 TIMEOUT_S = 90      # 모델 재로드(14~17s) + 긴 글 prompt_eval(3s) + 상한 생성(20s)보다 넉넉하게
@@ -97,7 +100,7 @@ def detect_llm(text: str, model: str = LLM_MODEL, num_ctx: int = 4096, system_pr
     try:
         resp, total_s = post_json("/api/chat", body, timeout=timeout)
     except (RuntimeError, OSError) as e:  # HTTP 5xx(RuntimeError), 시간 초과·연결 실패(OSError 계열)
-        print(f"[detect_llm] 30B 호출 실패 → 규칙 결과만 사용: {str(e)[:200]}", file=sys.stderr)
+        log.warning("30B 호출 실패 → 규칙 결과만 사용: %s", str(e)[:200])
         return [], {"model": model, "total_s": None, "error": str(e)[:300], "truncated": False, "dropped": [], "raw": ""}
     content = resp.get("message", {}).get("content", "")
     meta = {
