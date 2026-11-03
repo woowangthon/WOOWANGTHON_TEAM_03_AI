@@ -1,0 +1,849 @@
+{
+  "note": "D5 차단 · 거래처 정보 일괄 반출 — 기대 결정 block — 차단 · 통째 유출 요청",
+  "http_status": 200,
+  "request": {
+    "text": "아래 협력사 견적 비교 자료를 협력사명, 사업자등록번호, 담당자 연락처, 단가, 납기까지 전부 한 표로 정리해서 엑셀로 바로 붙일 수 있게 만들어 줘.\n\n[협력사 견적 비교 — KX-3 브래킷 소재 (AL 6061-T6)]\n1) 동아금속 | 사업자등록번호 123-45-67890 | 담당 최경호 부장 010-3345-9921 | 단가 32,500원 | 납기 4주 | 최소수량 500\n2) 세진테크 | 사업자등록번호 220-81-33412 | 담당 윤서아 과장 010-7712-0456 | 단가 29,800원 | 납기 6주 | 최소수량 1,000\n3) (주)태광소재 | 사업자등록번호 305-86-55017 | 담당 강민재 차장 010-2290-8813 | 단가 31,200원 | 납기 5주 | 최소수량 300\n연간 소요 약 8,000개, 현 공급사 동아금속 단가 대비 절감액도 같이 계산해 줘.",
+    "request_id": "sample-D5",
+    "doc_name": "D5.pdf",
+    "policy": {
+      "mask_person": false,
+      "mask_company": true
+    }
+  },
+  "response": {
+    "request_id": "sample-D5",
+    "doc_name": "D5.pdf",
+    "text_chars": 444,
+    "body_offset": 0,
+    "mode": "full",
+    "spans": [
+      {
+        "start": 99,
+        "end": 103,
+        "text": "KX-3",
+        "label": "project",
+        "sources": [
+          "dict:projects.txt"
+        ],
+        "tier": 1,
+        "masked": true,
+        "placeholder": "[[PROJECT_1]]"
+      },
+      {
+        "start": 128,
+        "end": 132,
+        "text": "동아금속",
+        "label": "company",
+        "sources": [
+          "dict:companies.txt",
+          "llm"
+        ],
+        "tier": 1,
+        "masked": true,
+        "placeholder": "[[ORG_1]]"
+      },
+      {
+        "start": 143,
+        "end": 155,
+        "text": "123-45-67890",
+        "label": "biz_no",
+        "sources": [
+          "rule:biz_no",
+          "rule:biz_no_cue",
+          "llm"
+        ],
+        "tier": 1,
+        "masked": true,
+        "placeholder": "[[BIZNO_1]]"
+      },
+      {
+        "start": 161,
+        "end": 164,
+        "text": "최경호",
+        "label": "person",
+        "sources": [
+          "rule:person_cue",
+          "rule:name_title",
+          "ner:koelectra-ko-pii-ner",
+          "llm"
+        ],
+        "tier": 2,
+        "masked": false,
+        "placeholder": null
+      },
+      {
+        "start": 168,
+        "end": 181,
+        "text": "010-3345-9921",
+        "label": "contact",
+        "sources": [
+          "rule:mobile",
+          "llm"
+        ],
+        "tier": 1,
+        "masked": true,
+        "placeholder": "[[CONTACT_1]]"
+      },
+      {
+        "start": 187,
+        "end": 194,
+        "text": "32,500원",
+        "label": "price",
+        "sources": [
+          "rule:price_krw",
+          "llm",
+          "rule:price_cue"
+        ],
+        "tier": 1,
+        "masked": true,
+        "placeholder": "[[AMT_1]]"
+      },
+      {
+        "start": 217,
+        "end": 221,
+        "text": "세진테크",
+        "label": "company",
+        "sources": [
+          "dict:companies.txt",
+          "llm"
+        ],
+        "tier": 1,
+        "masked": true,
+        "placeholder": "[[ORG_2]]"
+      },
+      {
+        "start": 232,
+        "end": 244,
+        "text": "220-81-33412",
+        "label": "biz_no",
+        "sources": [
+          "rule:biz_no",
+          "rule:biz_no_cue",
+          "llm"
+        ],
+        "tier": 1,
+        "masked": true,
+        "placeholder": "[[BIZNO_2]]"
+      },
+      {
+        "start": 250,
+        "end": 253,
+        "text": "윤서아",
+        "label": "person",
+        "sources": [
+          "rule:person_cue",
+          "rule:name_title",
+          "ner:koelectra-ko-pii-ner",
+          "llm"
+        ],
+        "tier": 2,
+        "masked": false,
+        "placeholder": null
+      },
+      {
+        "start": 257,
+        "end": 270,
+        "text": "010-7712-0456",
+        "label": "contact",
+        "sources": [
+          "rule:mobile",
+          "llm"
+        ],
+        "tier": 1,
+        "masked": true,
+        "placeholder": "[[CONTACT_2]]"
+      },
+      {
+        "start": 276,
+        "end": 283,
+        "text": "29,800원",
+        "label": "price",
+        "sources": [
+          "rule:price_krw",
+          "llm",
+          "rule:price_cue"
+        ],
+        "tier": 1,
+        "masked": true,
+        "placeholder": "[[AMT_2]]"
+      },
+      {
+        "start": 311,
+        "end": 315,
+        "text": "태광소재",
+        "label": "company",
+        "sources": [
+          "llm",
+          "dict:companies.txt"
+        ],
+        "tier": 1,
+        "masked": true,
+        "placeholder": "[[ORG_3]]"
+      },
+      {
+        "start": 326,
+        "end": 338,
+        "text": "305-86-55017",
+        "label": "biz_no",
+        "sources": [
+          "rule:biz_no",
+          "rule:biz_no_cue",
+          "llm"
+        ],
+        "tier": 1,
+        "masked": true,
+        "placeholder": "[[BIZNO_3]]"
+      },
+      {
+        "start": 344,
+        "end": 347,
+        "text": "강민재",
+        "label": "person",
+        "sources": [
+          "rule:person_cue",
+          "rule:name_title",
+          "ner:koelectra-ko-pii-ner",
+          "llm"
+        ],
+        "tier": 2,
+        "masked": false,
+        "placeholder": null
+      },
+      {
+        "start": 351,
+        "end": 364,
+        "text": "010-2290-8813",
+        "label": "contact",
+        "sources": [
+          "rule:mobile",
+          "llm"
+        ],
+        "tier": 1,
+        "masked": true,
+        "placeholder": "[[CONTACT_3]]"
+      },
+      {
+        "start": 370,
+        "end": 377,
+        "text": "31,200원",
+        "label": "price",
+        "sources": [
+          "rule:price_krw",
+          "llm",
+          "rule:price_cue"
+        ],
+        "tier": 1,
+        "masked": true,
+        "placeholder": "[[AMT_3]]"
+      },
+      {
+        "start": 419,
+        "end": 423,
+        "text": "동아금속",
+        "label": "company",
+        "sources": [
+          "dict:companies.txt",
+          "llm"
+        ],
+        "tier": 1,
+        "masked": true,
+        "placeholder": "[[ORG_1]]"
+      }
+    ],
+    "rule_spans": [
+      {
+        "start": 99,
+        "end": 103,
+        "text": "KX-3",
+        "label": "project",
+        "sources": [
+          "dict:projects.txt"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 128,
+        "end": 132,
+        "text": "동아금속",
+        "label": "company",
+        "sources": [
+          "dict:companies.txt"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 143,
+        "end": 155,
+        "text": "123-45-67890",
+        "label": "biz_no",
+        "sources": [
+          "rule:biz_no",
+          "rule:biz_no_cue"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 161,
+        "end": 164,
+        "text": "최경호",
+        "label": "person",
+        "sources": [
+          "rule:person_cue",
+          "rule:name_title"
+        ],
+        "tier": 2
+      },
+      {
+        "start": 168,
+        "end": 181,
+        "text": "010-3345-9921",
+        "label": "contact",
+        "sources": [
+          "rule:mobile"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 187,
+        "end": 194,
+        "text": "32,500원",
+        "label": "price",
+        "sources": [
+          "rule:price_krw"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 187,
+        "end": 193,
+        "text": "32,500",
+        "label": "price",
+        "sources": [
+          "rule:price_cue"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 217,
+        "end": 221,
+        "text": "세진테크",
+        "label": "company",
+        "sources": [
+          "dict:companies.txt"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 232,
+        "end": 244,
+        "text": "220-81-33412",
+        "label": "biz_no",
+        "sources": [
+          "rule:biz_no",
+          "rule:biz_no_cue"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 250,
+        "end": 253,
+        "text": "윤서아",
+        "label": "person",
+        "sources": [
+          "rule:person_cue",
+          "rule:name_title"
+        ],
+        "tier": 2
+      },
+      {
+        "start": 257,
+        "end": 270,
+        "text": "010-7712-0456",
+        "label": "contact",
+        "sources": [
+          "rule:mobile"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 276,
+        "end": 283,
+        "text": "29,800원",
+        "label": "price",
+        "sources": [
+          "rule:price_krw"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 276,
+        "end": 282,
+        "text": "29,800",
+        "label": "price",
+        "sources": [
+          "rule:price_cue"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 311,
+        "end": 315,
+        "text": "태광소재",
+        "label": "company",
+        "sources": [
+          "dict:companies.txt"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 326,
+        "end": 338,
+        "text": "305-86-55017",
+        "label": "biz_no",
+        "sources": [
+          "rule:biz_no",
+          "rule:biz_no_cue"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 344,
+        "end": 347,
+        "text": "강민재",
+        "label": "person",
+        "sources": [
+          "rule:person_cue",
+          "rule:name_title"
+        ],
+        "tier": 2
+      },
+      {
+        "start": 351,
+        "end": 364,
+        "text": "010-2290-8813",
+        "label": "contact",
+        "sources": [
+          "rule:mobile"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 370,
+        "end": 377,
+        "text": "31,200원",
+        "label": "price",
+        "sources": [
+          "rule:price_krw"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 370,
+        "end": 376,
+        "text": "31,200",
+        "label": "price",
+        "sources": [
+          "rule:price_cue"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 419,
+        "end": 423,
+        "text": "동아금속",
+        "label": "company",
+        "sources": [
+          "dict:companies.txt"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 161,
+        "end": 164,
+        "text": "최경호",
+        "label": "person",
+        "sources": [
+          "ner:koelectra-ko-pii-ner"
+        ],
+        "tier": 2
+      },
+      {
+        "start": 250,
+        "end": 253,
+        "text": "윤서아",
+        "label": "person",
+        "sources": [
+          "ner:koelectra-ko-pii-ner"
+        ],
+        "tier": 2
+      },
+      {
+        "start": 344,
+        "end": 347,
+        "text": "강민재",
+        "label": "person",
+        "sources": [
+          "ner:koelectra-ko-pii-ner"
+        ],
+        "tier": 2
+      }
+    ],
+    "llm_spans": [
+      {
+        "start": 128,
+        "end": 132,
+        "text": "동아금속",
+        "label": "company",
+        "sources": [
+          "llm"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 143,
+        "end": 155,
+        "text": "123-45-67890",
+        "label": "biz_no",
+        "sources": [
+          "llm"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 161,
+        "end": 164,
+        "text": "최경호",
+        "label": "person",
+        "sources": [
+          "llm"
+        ],
+        "tier": 2
+      },
+      {
+        "start": 168,
+        "end": 181,
+        "text": "010-3345-9921",
+        "label": "contact",
+        "sources": [
+          "llm"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 187,
+        "end": 194,
+        "text": "32,500원",
+        "label": "price",
+        "sources": [
+          "llm"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 217,
+        "end": 221,
+        "text": "세진테크",
+        "label": "company",
+        "sources": [
+          "llm"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 232,
+        "end": 244,
+        "text": "220-81-33412",
+        "label": "biz_no",
+        "sources": [
+          "llm"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 250,
+        "end": 253,
+        "text": "윤서아",
+        "label": "person",
+        "sources": [
+          "llm"
+        ],
+        "tier": 2
+      },
+      {
+        "start": 257,
+        "end": 270,
+        "text": "010-7712-0456",
+        "label": "contact",
+        "sources": [
+          "llm"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 276,
+        "end": 283,
+        "text": "29,800원",
+        "label": "price",
+        "sources": [
+          "llm"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 308,
+        "end": 315,
+        "text": "(주)태광소재",
+        "label": "company",
+        "sources": [
+          "llm"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 326,
+        "end": 338,
+        "text": "305-86-55017",
+        "label": "biz_no",
+        "sources": [
+          "llm"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 344,
+        "end": 347,
+        "text": "강민재",
+        "label": "person",
+        "sources": [
+          "llm"
+        ],
+        "tier": 2
+      },
+      {
+        "start": 351,
+        "end": 364,
+        "text": "010-2290-8813",
+        "label": "contact",
+        "sources": [
+          "llm"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 370,
+        "end": 377,
+        "text": "31,200원",
+        "label": "price",
+        "sources": [
+          "llm"
+        ],
+        "tier": 1
+      },
+      {
+        "start": 419,
+        "end": 423,
+        "text": "동아금속",
+        "label": "company",
+        "sources": [
+          "llm"
+        ],
+        "tier": 1
+      }
+    ],
+    "sensitive": true,
+    "route": {
+      "choice": "local",
+      "probabilities": {
+        "local": 0.5559,
+        "external": 0.381,
+        "block": 0.0632
+      },
+      "confidence": 0.3338,
+      "seconds": 1.51,
+      "input_tokens": 504
+    },
+    "route_error": null,
+    "decision": {
+      "action": "block",
+      "needs_approval": false,
+      "reasons": [
+        "개인정보 묶음: 사업자/주민번호 구간 3개"
+      ],
+      "warnings": []
+    },
+    "mask": {
+      "masked": "아래 협력사 견적 비교 자료를 협력사명, 사업자등록번호, 담당자 연락처, 단가, 납기까지 전부 한 표로 정리해서 엑셀로 바로 붙일 수 있게 만들어 줘.\n\n[협력사 견적 비교 — [[PROJECT_1]] 브래킷 소재 (AL 6061-T6)]\n1) [[ORG_1]] | 사업자등록번호 [[BIZNO_1]] | 담당 최경호 부장 [[CONTACT_1]] | 단가 [[AMT_1]] | 납기 4주 | 최소수량 500\n2) [[ORG_2]] | 사업자등록번호 [[BIZNO_2]] | 담당 윤서아 과장 [[CONTACT_2]] | 단가 [[AMT_2]] | 납기 6주 | 최소수량 1,000\n3) (주)[[ORG_3]] | 사업자등록번호 [[BIZNO_3]] | 담당 강민재 차장 [[CONTACT_3]] | 단가 [[AMT_3]] | 납기 5주 | 최소수량 300\n연간 소요 약 8,000개, 현 공급사 [[ORG_1]] 단가 대비 절감액도 같이 계산해 줘.",
+      "mapping": {
+        "[[PROJECT_1]]": "KX-3",
+        "[[ORG_1]]": "동아금속",
+        "[[BIZNO_1]]": "123-45-67890",
+        "[[CONTACT_1]]": "010-3345-9921",
+        "[[AMT_1]]": "32,500원",
+        "[[ORG_2]]": "세진테크",
+        "[[BIZNO_2]]": "220-81-33412",
+        "[[CONTACT_2]]": "010-7712-0456",
+        "[[AMT_2]]": "29,800원",
+        "[[ORG_3]]": "태광소재",
+        "[[BIZNO_3]]": "305-86-55017",
+        "[[CONTACT_3]]": "010-2290-8813",
+        "[[AMT_3]]": "31,200원"
+      },
+      "entries": [
+        {
+          "start": 99,
+          "end": 103,
+          "text": "KX-3",
+          "label": "project",
+          "placeholder": "[[PROJECT_1]]"
+        },
+        {
+          "start": 128,
+          "end": 132,
+          "text": "동아금속",
+          "label": "company",
+          "placeholder": "[[ORG_1]]"
+        },
+        {
+          "start": 143,
+          "end": 155,
+          "text": "123-45-67890",
+          "label": "biz_no",
+          "placeholder": "[[BIZNO_1]]"
+        },
+        {
+          "start": 168,
+          "end": 181,
+          "text": "010-3345-9921",
+          "label": "contact",
+          "placeholder": "[[CONTACT_1]]"
+        },
+        {
+          "start": 187,
+          "end": 194,
+          "text": "32,500원",
+          "label": "price",
+          "placeholder": "[[AMT_1]]"
+        },
+        {
+          "start": 217,
+          "end": 221,
+          "text": "세진테크",
+          "label": "company",
+          "placeholder": "[[ORG_2]]"
+        },
+        {
+          "start": 232,
+          "end": 244,
+          "text": "220-81-33412",
+          "label": "biz_no",
+          "placeholder": "[[BIZNO_2]]"
+        },
+        {
+          "start": 257,
+          "end": 270,
+          "text": "010-7712-0456",
+          "label": "contact",
+          "placeholder": "[[CONTACT_2]]"
+        },
+        {
+          "start": 276,
+          "end": 283,
+          "text": "29,800원",
+          "label": "price",
+          "placeholder": "[[AMT_2]]"
+        },
+        {
+          "start": 311,
+          "end": 315,
+          "text": "태광소재",
+          "label": "company",
+          "placeholder": "[[ORG_3]]"
+        },
+        {
+          "start": 326,
+          "end": 338,
+          "text": "305-86-55017",
+          "label": "biz_no",
+          "placeholder": "[[BIZNO_3]]"
+        },
+        {
+          "start": 351,
+          "end": 364,
+          "text": "010-2290-8813",
+          "label": "contact",
+          "placeholder": "[[CONTACT_3]]"
+        },
+        {
+          "start": 370,
+          "end": 377,
+          "text": "31,200원",
+          "label": "price",
+          "placeholder": "[[AMT_3]]"
+        },
+        {
+          "start": 419,
+          "end": 423,
+          "text": "동아금속",
+          "label": "company",
+          "placeholder": "[[ORG_1]]"
+        }
+      ],
+      "unmasked": [
+        {
+          "start": 161,
+          "end": 164,
+          "text": "최경호",
+          "label": "person",
+          "reason": "등급 2 정책으로 가리지 않음"
+        },
+        {
+          "start": 250,
+          "end": 253,
+          "text": "윤서아",
+          "label": "person",
+          "reason": "등급 2 정책으로 가리지 않음"
+        },
+        {
+          "start": 344,
+          "end": 347,
+          "text": "강민재",
+          "label": "person",
+          "reason": "등급 2 정책으로 가리지 않음"
+        }
+      ],
+      "policy": {
+        "mask_person": false,
+        "mask_company": true
+      }
+    },
+    "external_instruction": "본문의 [[ORG_1]], [[AMT_2]] 같은 표기는 가려진 자리표입니다. 답변(번역·요약 포함)에서도 자리표를 글자 그대로 유지하고, 무엇인지 추측해 채우지 마세요. 자리표에 대한 설명이나 주석은 답변에 넣지 마세요.",
+    "warnings": [],
+    "dropped": [],
+    "timing": {
+      "rules_ms": 0.52,
+      "ner_s": 0.121,
+      "injection_blanked": 0,
+      "chunks": 1,
+      "llm_total_s": 8.316,
+      "llm_load_s": 0.004,
+      "llm_prompt_eval_s": 1.537,
+      "llm_eval_s": 6.743,
+      "llm_prompt_tokens": 1079,
+      "llm_eval_tokens": 275,
+      "route_s": 1.51,
+      "total_s": 8.438
+    },
+    "versions": {
+      "service": "woowang-model-service",
+      "version": "0.1.0",
+      "code": "b4ee02f0ee",
+      "dict": "857cd7cff0",
+      "llm_model": "qwen3:30b-a3b-instruct-2507-q4_K_M",
+      "prompt_mode": "C",
+      "route_model": "tev1-cpu",
+      "route_variant": "v1_en_capability",
+      "ner_model": "atonlee/koelectra-ko-pii-ner",
+      "embed_model": "bge-m3-cpu"
+    }
+  }
+}
