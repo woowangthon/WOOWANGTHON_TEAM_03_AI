@@ -1,0 +1,27 @@
+# 가상환경·캐시
+.venv/
+__pycache__/
+*.pyc
+*.tmp
+*.bak
+
+# 개인 자료 (저장소 밖)
+이전/
+/*.txt
+/*.pdf
+/*.docx
+/*.pptx
+/*.html
+/*.md
+!/README.md
+
+# 비밀
+.env
+*.key
+
+# Office 임시 파일
+~$*
+Thumbs.db
+
+# requirements.txt 는 /*.txt 예외
+!/requirements.txt

@@ -1,0 +1,13 @@
+# 집 PC 모델 서비스 실행 환경 (Python 3.12, Windows). 2026-11-03 .venv 기준 고정 버전.
+# torch 는 CPU 판: pip install torch==2.15.0 --index-url https://download.pytorch.org/whl/cpu 를 먼저 실행한 뒤 이 파일을 설치한다.
+fastapi==0.162.0
+uvicorn[standard]==0.54.0
+pydantic==2.14.2
+anthropic==2.4.0
+pymupdf==2.0
+transformers==5.21.1
+numpy==2.5.4
+# 문서 도구 (Windows 전용: md2pdf 는 Word COM, export_pptx 는 PowerPoint COM)
+Markdown==3.11.2
+pywin32==312
+python-pptx==1.0.2
