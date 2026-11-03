@@ -1,0 +1,9 @@
+{
+ "first_token_s": 3.22,
+ "total_s": 6.445,
+ "prompt_tokens": 2353,
+ "eval_tokens": 133,
+ "prompt_eval_s": 3.206,
+ "n_spans": 8,
+ "chars": 8101
+}

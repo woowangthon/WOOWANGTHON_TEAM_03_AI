@@ -1,0 +1,195 @@
+시작 2026-10-29 01:03:18  샘플 10개  출력 C:\Users\예준\Desktop\claude\woowang\src\results\night_20261029_0103
+ps: [{'name': 'tev1-cpu:latest', 'size_gb': 1.3, 'vram_gb': 0.0, 'gpu_pct': 0}, {'name': 'qwen3:30b-a3b-instruct-2507-q4_K_M', 'size_gb': 19.2, 'vram_gb': 6.2, 'gpu_pct': 32}]
+
+===== 1. 라우팅 3안 =====  01:03:18
+v1_en_capability       S01 gold=external got=external p={'local': 0.4, 'external': 0.55, 'block': 0.05} 1.05s
+v1_en_capability       S01 gold=external got=external p={'local': 0.4, 'external': 0.55, 'block': 0.05} 1.14s
+v1_en_capability       S01 gold=external got=external p={'local': 0.4, 'external': 0.55, 'block': 0.05} 1.06s
+v1_en_capability       S02 gold=external got=external p={'local': 0.28, 'external': 0.67, 'block': 0.05} 0.92s
+v1_en_capability       S02 gold=external got=external p={'local': 0.28, 'external': 0.67, 'block': 0.05} 0.94s
+v1_en_capability       S02 gold=external got=external p={'local': 0.28, 'external': 0.67, 'block': 0.05} 0.97s
+v1_en_capability       S03 gold=external got=external p={'local': 0.24, 'external': 0.72, 'block': 0.04} 0.84s
+v1_en_capability       S03 gold=external got=external p={'local': 0.24, 'external': 0.72, 'block': 0.04} 0.88s
+v1_en_capability       S03 gold=external got=external p={'local': 0.24, 'external': 0.72, 'block': 0.04} 0.98s
+v1_en_capability       S04 gold=external got=external p={'local': 0.21, 'external': 0.77, 'block': 0.02} 0.87s
+v1_en_capability       S04 gold=external got=external p={'local': 0.21, 'external': 0.77, 'block': 0.02} 0.88s
+v1_en_capability       S04 gold=external got=external p={'local': 0.21, 'external': 0.77, 'block': 0.02} 0.92s
+v1_en_capability       S05 gold=local    got=local    p={'local': 0.98, 'external': 0.02, 'block': 0.0} 0.73s
+v1_en_capability       S05 gold=local    got=local    p={'local': 0.98, 'external': 0.02, 'block': 0.0} 0.80s
+v1_en_capability       S05 gold=local    got=local    p={'local': 0.98, 'external': 0.02, 'block': 0.0} 0.73s
+v1_en_capability       S06 gold=local    got=local    p={'local': 0.75, 'external': 0.24, 'block': 0.02} 0.79s
+v1_en_capability       S06 gold=local    got=local    p={'local': 0.75, 'external': 0.24, 'block': 0.02} 0.80s
+v1_en_capability       S06 gold=local    got=local    p={'local': 0.75, 'external': 0.24, 'block': 0.02} 0.76s
+v1_en_capability       S07 gold=local    got=local    p={'local': 0.85, 'external': 0.14, 'block': 0.01} 0.82s
+v1_en_capability       S07 gold=local    got=local    p={'local': 0.85, 'external': 0.14, 'block': 0.01} 0.78s
+v1_en_capability       S07 gold=local    got=local    p={'local': 0.85, 'external': 0.14, 'block': 0.01} 0.83s
+v1_en_capability       S08 gold=external got=external p={'local': 0.05, 'external': 0.93, 'block': 0.02} 0.69s
+v1_en_capability       S08 gold=external got=external p={'local': 0.05, 'external': 0.93, 'block': 0.02} 0.77s
+v1_en_capability       S08 gold=external got=external p={'local': 0.05, 'external': 0.93, 'block': 0.02} 0.80s
+v1_en_capability       S09 gold=external got=external p={'local': 0.35, 'external': 0.64, 'block': 0.0} 0.82s
+v1_en_capability       S09 gold=external got=external p={'local': 0.35, 'external': 0.64, 'block': 0.0} 0.79s
+v1_en_capability       S09 gold=external got=external p={'local': 0.35, 'external': 0.64, 'block': 0.0} 0.80s
+v1_en_capability       S10 gold=external got=external p={'local': 0.36, 'external': 0.57, 'block': 0.07} 0.71s
+v1_en_capability       S10 gold=external got=external p={'local': 0.36, 'external': 0.57, 'block': 0.07} 0.83s
+v1_en_capability       S10 gold=external got=external p={'local': 0.36, 'external': 0.57, 'block': 0.07} 0.80s
+v2_ko_capability       S01 gold=external got=local    p={'local': 0.62, 'external': 0.36, 'block': 0.02} 1.16s
+v2_ko_capability       S01 gold=external got=local    p={'local': 0.62, 'external': 0.36, 'block': 0.02} 1.24s
+v2_ko_capability       S01 gold=external got=local    p={'local': 0.62, 'external': 0.36, 'block': 0.02} 1.17s
+v2_ko_capability       S02 gold=external got=external p={'local': 0.35, 'external': 0.6, 'block': 0.05} 1.17s
+v2_ko_capability       S02 gold=external got=external p={'local': 0.35, 'external': 0.6, 'block': 0.05} 1.08s
+v2_ko_capability       S02 gold=external got=external p={'local': 0.35, 'external': 0.6, 'block': 0.05} 1.12s
+v2_ko_capability       S03 gold=external got=local    p={'local': 0.56, 'external': 0.4, 'block': 0.04} 1.05s
+v2_ko_capability       S03 gold=external got=local    p={'local': 0.56, 'external': 0.4, 'block': 0.04} 1.06s
+v2_ko_capability       S03 gold=external got=local    p={'local': 0.56, 'external': 0.4, 'block': 0.04} 1.10s
+v2_ko_capability       S04 gold=external got=external p={'local': 0.33, 'external': 0.66, 'block': 0.01} 1.07s
+v2_ko_capability       S04 gold=external got=external p={'local': 0.33, 'external': 0.66, 'block': 0.01} 1.11s
+v2_ko_capability       S04 gold=external got=external p={'local': 0.33, 'external': 0.66, 'block': 0.01} 0.97s
+v2_ko_capability       S05 gold=local    got=local    p={'local': 0.99, 'external': 0.01, 'block': 0.0} 0.80s
+v2_ko_capability       S05 gold=local    got=local    p={'local': 0.99, 'external': 0.01, 'block': 0.0} 0.77s
+v2_ko_capability       S05 gold=local    got=local    p={'local': 0.99, 'external': 0.01, 'block': 0.0} 0.79s
+v2_ko_capability       S06 gold=local    got=local    p={'local': 0.83, 'external': 0.14, 'block': 0.03} 0.88s
+v2_ko_capability       S06 gold=local    got=local    p={'local': 0.83, 'external': 0.14, 'block': 0.03} 0.82s
+v2_ko_capability       S06 gold=local    got=local    p={'local': 0.83, 'external': 0.14, 'block': 0.03} 0.90s
+v2_ko_capability       S07 gold=local    got=local    p={'local': 0.92, 'external': 0.07, 'block': 0.01} 0.85s
+v2_ko_capability       S07 gold=local    got=local    p={'local': 0.92, 'external': 0.07, 'block': 0.01} 0.88s
+v2_ko_capability       S07 gold=local    got=local    p={'local': 0.92, 'external': 0.07, 'block': 0.01} 0.87s
+v2_ko_capability       S08 gold=external got=external p={'local': 0.14, 'external': 0.84, 'block': 0.02} 0.74s
+v2_ko_capability       S08 gold=external got=external p={'local': 0.14, 'external': 0.84, 'block': 0.02} 0.74s
+v2_ko_capability       S08 gold=external got=external p={'local': 0.14, 'external': 0.84, 'block': 0.02} 0.79s
+v2_ko_capability       S09 gold=external got=local    p={'local': 0.69, 'external': 0.3, 'block': 0.01} 0.84s
+v2_ko_capability       S09 gold=external got=local    p={'local': 0.69, 'external': 0.3, 'block': 0.01} 0.85s
+v2_ko_capability       S09 gold=external got=local    p={'local': 0.69, 'external': 0.3, 'block': 0.01} 0.79s
+v2_ko_capability       S10 gold=external got=external p={'local': 0.23, 'external': 0.71, 'block': 0.06} 0.79s
+v2_ko_capability       S10 gold=external got=external p={'local': 0.23, 'external': 0.71, 'block': 0.06} 0.84s
+v2_ko_capability       S10 gold=external got=external p={'local': 0.23, 'external': 0.71, 'block': 0.06} 0.84s
+v3_ko_policy_examples  S01 gold=external got=external p={'local': 0.48, 'external': 0.48, 'block': 0.04} 1.37s
+v3_ko_policy_examples  S01 gold=external got=external p={'local': 0.48, 'external': 0.48, 'block': 0.04} 1.33s
+v3_ko_policy_examples  S01 gold=external got=external p={'local': 0.48, 'external': 0.48, 'block': 0.04} 1.42s
+v3_ko_policy_examples  S02 gold=external got=external p={'local': 0.23, 'external': 0.74, 'block': 0.02} 1.38s
+v3_ko_policy_examples  S02 gold=external got=external p={'local': 0.23, 'external': 0.74, 'block': 0.02} 1.26s
+v3_ko_policy_examples  S02 gold=external got=external p={'local': 0.23, 'external': 0.74, 'block': 0.02} 1.16s
+v3_ko_policy_examples  S03 gold=external got=external p={'local': 0.09, 'external': 0.87, 'block': 0.04} 1.25s
+v3_ko_policy_examples  S03 gold=external got=external p={'local': 0.09, 'external': 0.87, 'block': 0.04} 1.32s
+v3_ko_policy_examples  S03 gold=external got=external p={'local': 0.09, 'external': 0.87, 'block': 0.04} 1.28s
+v3_ko_policy_examples  S04 gold=external got=local    p={'local': 0.48, 'external': 0.27, 'block': 0.25} 1.27s
+v3_ko_policy_examples  S04 gold=external got=local    p={'local': 0.48, 'external': 0.27, 'block': 0.25} 1.27s
+v3_ko_policy_examples  S04 gold=external got=local    p={'local': 0.48, 'external': 0.27, 'block': 0.25} 1.21s
+v3_ko_policy_examples  S05 gold=local    got=local    p={'local': 0.9, 'external': 0.06, 'block': 0.04} 1.08s
+v3_ko_policy_examples  S05 gold=local    got=local    p={'local': 0.9, 'external': 0.06, 'block': 0.04} 1.07s
+v3_ko_policy_examples  S05 gold=local    got=local    p={'local': 0.9, 'external': 0.06, 'block': 0.04} 1.11s
+v3_ko_policy_examples  S06 gold=local    got=local    p={'local': 0.78, 'external': 0.08, 'block': 0.14} 1.21s
+v3_ko_policy_examples  S06 gold=local    got=local    p={'local': 0.78, 'external': 0.08, 'block': 0.14} 1.16s
+v3_ko_policy_examples  S06 gold=local    got=local    p={'local': 0.78, 'external': 0.08, 'block': 0.14} 1.14s
+v3_ko_policy_examples  S07 gold=local    got=local    p={'local': 0.82, 'external': 0.08, 'block': 0.11} 1.09s
+v3_ko_policy_examples  S07 gold=local    got=local    p={'local': 0.82, 'external': 0.08, 'block': 0.11} 1.35s
+v3_ko_policy_examples  S07 gold=local    got=local    p={'local': 0.82, 'external': 0.08, 'block': 0.11} 1.05s
+v3_ko_policy_examples  S08 gold=external got=external p={'local': 0.22, 'external': 0.72, 'block': 0.06} 1.01s
+v3_ko_policy_examples  S08 gold=external got=external p={'local': 0.22, 'external': 0.72, 'block': 0.06} 1.11s
+v3_ko_policy_examples  S08 gold=external got=external p={'local': 0.22, 'external': 0.72, 'block': 0.06} 1.00s
+v3_ko_policy_examples  S09 gold=external got=external p={'local': 0.22, 'external': 0.74, 'block': 0.04} 1.10s
+v3_ko_policy_examples  S09 gold=external got=external p={'local': 0.22, 'external': 0.74, 'block': 0.04} 1.02s
+v3_ko_policy_examples  S09 gold=external got=external p={'local': 0.22, 'external': 0.74, 'block': 0.04} 1.09s
+v3_ko_policy_examples  S10 gold=external got=external p={'local': 0.3, 'external': 0.61, 'block': 0.08} 1.07s
+v3_ko_policy_examples  S10 gold=external got=external p={'local': 0.3, 'external': 0.61, 'block': 0.08} 1.18s
+v3_ko_policy_examples  S10 gold=external got=external p={'local': 0.3, 'external': 0.61, 'block': 0.08} 1.04s
+[v1_en_capability] acc=100% margin=0.52 gold_p=0.74 p50=0.82s wrong=[]
+[v2_ko_capability] acc=70% margin=0.51 gold_p=0.66 p50=0.88s wrong=['S01→local', 'S03→local', 'S09→local']
+[v3_ko_policy_examples] acc=90% margin=0.50 gold_p=0.69 p50=1.16s wrong=['S04→local']
+----- 완료 89s
+
+===== 2. 혼합 탐지 5회 =====  01:04:48
+rep1 S01 llm 3.76s (load 0.0s, prompt 521 tok, out 99 tok) spans=6
+rep1 S02 llm 2.56s (load 0.0s, prompt 512 tok, out 77 tok) spans=6
+rep1 S03 llm 2.21s (load 0.0s, prompt 501 tok, out 63 tok) spans=4
+rep1 S04 llm 2.83s (load 0.0s, prompt 499 tok, out 88 tok) spans=7
+rep1 S05 llm 0.71s (load 0.0s, prompt 448 tok, out 6 tok) spans=0
+rep1 S06 llm 0.70s (load 0.0s, prompt 452 tok, out 6 tok) spans=0
+rep1 S07 llm 0.71s (load 0.0s, prompt 479 tok, out 6 tok) spans=1
+rep1 S08 llm 0.70s (load 0.0s, prompt 416 tok, out 7 tok) spans=0
+rep1 S09 llm 0.80s (load 0.0s, prompt 433 tok, out 7 tok) spans=0
+rep1 S10 llm 0.76s (load 0.0s, prompt 446 tok, out 7 tok) spans=0
+rep2 S01 llm 3.23s (load 0.0s, prompt 521 tok, out 99 tok) spans=6
+rep2 S02 llm 2.52s (load 0.0s, prompt 512 tok, out 77 tok) spans=6
+rep2 S03 llm 2.15s (load 0.0s, prompt 501 tok, out 63 tok) spans=4
+rep2 S04 llm 2.80s (load 0.0s, prompt 499 tok, out 88 tok) spans=7
+rep2 S05 llm 0.71s (load 0.0s, prompt 448 tok, out 6 tok) spans=0
+rep2 S06 llm 0.70s (load 0.0s, prompt 452 tok, out 6 tok) spans=0
+rep2 S07 llm 0.72s (load 0.0s, prompt 479 tok, out 6 tok) spans=1
+rep2 S08 llm 0.71s (load 0.0s, prompt 416 tok, out 7 tok) spans=0
+rep2 S09 llm 0.80s (load 0.0s, prompt 433 tok, out 7 tok) spans=0
+rep2 S10 llm 0.76s (load 0.0s, prompt 446 tok, out 7 tok) spans=0
+rep3 S01 llm 3.29s (load 0.0s, prompt 521 tok, out 99 tok) spans=6
+rep3 S02 llm 2.57s (load 0.0s, prompt 512 tok, out 77 tok) spans=6
+rep3 S03 llm 2.23s (load 0.0s, prompt 501 tok, out 63 tok) spans=4
+rep3 S04 llm 2.79s (load 0.0s, prompt 499 tok, out 88 tok) spans=7
+rep3 S05 llm 0.69s (load 0.0s, prompt 448 tok, out 6 tok) spans=0
+rep3 S06 llm 0.70s (load 0.0s, prompt 452 tok, out 6 tok) spans=0
+rep3 S07 llm 0.71s (load 0.0s, prompt 479 tok, out 6 tok) spans=1
+rep3 S08 llm 0.70s (load 0.0s, prompt 416 tok, out 7 tok) spans=0
+rep3 S09 llm 0.80s (load 0.0s, prompt 433 tok, out 7 tok) spans=0
+rep3 S10 llm 0.76s (load 0.0s, prompt 446 tok, out 7 tok) spans=0
+rep4 S01 llm 3.18s (load 0.0s, prompt 521 tok, out 99 tok) spans=6
+rep4 S02 llm 2.50s (load 0.0s, prompt 512 tok, out 77 tok) spans=6
+rep4 S03 llm 2.17s (load 0.0s, prompt 501 tok, out 63 tok) spans=4
+rep4 S04 llm 2.81s (load 0.0s, prompt 499 tok, out 88 tok) spans=7
+rep4 S05 llm 0.69s (load 0.0s, prompt 448 tok, out 6 tok) spans=0
+rep4 S06 llm 0.70s (load 0.0s, prompt 452 tok, out 6 tok) spans=0
+rep4 S07 llm 0.71s (load 0.0s, prompt 479 tok, out 6 tok) spans=1
+rep4 S08 llm 0.69s (load 0.0s, prompt 416 tok, out 7 tok) spans=0
+rep4 S09 llm 0.79s (load 0.0s, prompt 433 tok, out 7 tok) spans=0
+rep4 S10 llm 0.75s (load 0.0s, prompt 446 tok, out 7 tok) spans=0
+rep5 S01 llm 3.17s (load 0.0s, prompt 521 tok, out 99 tok) spans=6
+rep5 S02 llm 2.54s (load 0.0s, prompt 512 tok, out 77 tok) spans=6
+rep5 S03 llm 2.22s (load 0.0s, prompt 501 tok, out 63 tok) spans=4
+rep5 S04 llm 2.83s (load 0.0s, prompt 499 tok, out 88 tok) spans=7
+rep5 S05 llm 0.70s (load 0.0s, prompt 448 tok, out 6 tok) spans=0
+rep5 S06 llm 0.71s (load 0.0s, prompt 452 tok, out 6 tok) spans=0
+rep5 S07 llm 0.71s (load 0.0s, prompt 479 tok, out 6 tok) spans=1
+rep5 S08 llm 0.70s (load 0.0s, prompt 416 tok, out 7 tok) spans=0
+rep5 S09 llm 0.81s (load 0.0s, prompt 433 tok, out 7 tok) spans=0
+rep5 S10 llm 0.76s (load 0.0s, prompt 446 tok, out 7 tok) spans=0
+30B 지연(로드 제외) n=50 p50=0.79 p95=3.23 max=3.76 cold_loads=[]
+----- 완료 76s
+
+===== 3. 긴 텍스트 =====  01:06:04
+long run1: prompt 1361 tok, first token 1.709s, total 5.025s, prompt_eval 1.696s, spans=8
+long run2: prompt 1361 tok, first token 0.041s, total 3.416s, prompt_eval 0.028s, spans=8
+long run3: prompt 1361 tok, first token 0.04s, total 3.329s, prompt_eval 0.026s, spans=8
+----- 완료 12s
+
+===== 4. 임베딩 =====  01:06:16
+ps before: [{'name': 'qwen3:30b-a3b-instruct-2507-q4_K_M', 'size_gb': 19.2, 'vram_gb': 6.2, 'gpu_pct': 32}, {'name': 'tev1-cpu:latest', 'size_gb': 1.3, 'vram_gb': 0.0, 'gpu_pct': 0}]
+bge-m3: dim=1024 first=8.35s warm p50=0.015s max=0.016s  ps=[{'name': 'bge-m3:latest', 'size_gb': 0.7, 'vram_gb': 0.7, 'gpu_pct': 100}, {'name': 'tev1-cpu:latest', 'size_gb': 1.3, 'vram_gb': 0.0, 'gpu_pct': 0}]
+bge-m3-cpu: dim=1024 first=1.78s warm p50=0.114s max=0.153s  ps=[{'name': 'bge-m3-cpu:latest', 'size_gb': 1.2, 'vram_gb': 0.0, 'gpu_pct': 0}, {'name': 'tev1-cpu:latest', 'size_gb': 1.3, 'vram_gb': 0.0, 'gpu_pct': 0}]
+임베딩 뒤 30B 호출: {'rules_ms': 0.11, 'llm_total_s': 16.48, 'llm_load_s': 12.584, 'llm_prompt_eval_s': 1.44, 'llm_eval_s': 2.444, 'llm_prompt_tokens': 521, 'llm_eval_tokens': 99}
+----- 완료 28s
+
+===== 5a. 샘플 후보 생성 =====  01:06:43
+샘플 배치 1: 5건 29s, 유효 3건
+샘플 배치 2: 5건 20s, 유효 5건
+샘플 배치 3: 5건 29s, 유효 3건
+샘플 배치 4: 5건 27s, 유효 2건
+샘플 배치 5: 5건 46s, 유효 3건
+샘플 배치 6: 5건 47s, 유효 3건
+샘플 배치 7: 5건 45s, 유효 5건
+샘플 배치 8: 5건 20s, 유효 5건
+샘플 후보 저장: C:\Users\예준\Desktop\claude\woowang\src\data\candidates\samples_candidates_20261029_0103.jsonl (40건, 유효 29건)
+----- 완료 263s
+
+===== 5b. 공격 후보 생성 =====  01:11:06
+공격 배치 1: 5건 31s, 유효 4건
+공격 배치 2: 5건 37s, 유효 3건
+공격 배치 3: 5건 43s, 유효 2건
+공격 배치 4: 5건 42s, 유효 2건
+공격 배치 5: 5건 23s, 유효 5건
+공격 배치 6: 5건 32s, 유효 5건
+공격 후보 저장: C:\Users\예준\Desktop\claude\woowang\src\data\candidates\attack_candidates_20261029_0103.jsonl (30건, 유효 21건)
+----- 완료 208s
+
+===== 6. 후보 미리 탐지 =====  01:14:34
+gen_s: n=18 gold=53 규칙 재현율=45% 혼합=91% 오탐=9
+gen_a: n=21 gold=94 규칙 재현율=78% 혼합=96% 오탐=34
+----- 완료 81s
+
+보고서: C:\Users\예준\Desktop\claude\woowang\src\results\night_20261029_0103\report.md
+끝 2026-10-29 01:15:56

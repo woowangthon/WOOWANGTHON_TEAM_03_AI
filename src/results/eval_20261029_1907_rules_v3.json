@@ -1,0 +1,639 @@
+{
+ "summary": {
+  "rules": {
+   "recall": 0.0,
+   "exact_recall": 0.0,
+   "label_acc": null,
+   "precision": null,
+   "fp": 0,
+   "pred": 0,
+   "gold": 1,
+   "hits": 0,
+   "sensitive_acc": 0.95
+  },
+  "hybrid": {
+   "recall": 0.0,
+   "exact_recall": 0.0,
+   "label_acc": null,
+   "precision": null,
+   "fp": 0,
+   "pred": 0,
+   "gold": 1,
+   "hits": 0,
+   "sensitive_acc": 0.95
+  }
+ },
+ "latency": {
+  "rules_ms_p50": 0.07,
+  "rules_ms_p95": 0.11,
+  "llm_s_p50": null,
+  "llm_s_p95": null,
+  "llm_s_max": null
+ },
+ "rows": [
+  {
+   "id": "L01-1",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.11
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": []
+  },
+  {
+   "id": "L01-2",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.07
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": []
+  },
+  {
+   "id": "L01-3",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.07
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": []
+  },
+  {
+   "id": "L01-4",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.08
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": []
+  },
+  {
+   "id": "L01-5",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.09
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": []
+  },
+  {
+   "id": "L02-1",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.08
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": []
+  },
+  {
+   "id": "L02-2",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.08
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": []
+  },
+  {
+   "id": "L02-3",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.07
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": []
+  },
+  {
+   "id": "L02-4",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.07
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": []
+  },
+  {
+   "id": "L02-5",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.06
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": []
+  },
+  {
+   "id": "L03-1",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.07
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": []
+  },
+  {
+   "id": "L03-2",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.06
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": []
+  },
+  {
+   "id": "L03-3",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.07
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": []
+  },
+  {
+   "id": "L03-4",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.09
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 1,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [
+     "김지영(person)"
+    ],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 1,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [
+     "김지영(person)"
+    ],
+    "fp_texts": []
+   },
+   "pred_spans": []
+  },
+  {
+   "id": "L03-5",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.06
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": []
+  },
+  {
+   "id": "L04-1",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.09
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": []
+  },
+  {
+   "id": "L04-2",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.08
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": []
+  },
+  {
+   "id": "L04-3",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.07
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": []
+  },
+  {
+   "id": "L04-4",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.08
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": []
+  },
+  {
+   "id": "L04-5",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.07
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": []
+  }
+ ]
+}

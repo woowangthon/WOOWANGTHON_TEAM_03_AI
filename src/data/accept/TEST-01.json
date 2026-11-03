@@ -1,0 +1,42 @@
+{
+  "id": "TEST-01",
+  "title": "츄러스공업 분기 납품실적 및 단가협상 검토보고서 (텍스트 PDF 2쪽)",
+  "source": "츄러스공업_테스트프롬프트_마스킹정답표_01.pdf (2026-11-01, 검증 담당자용)",
+  "pdf": "docs/test-docs/츄러스공업_분기납품실적_마스킹테스트_01.pdf",
+  "instruction": "첨부한 자료를 바탕으로 영업부장에게 보고할 요약문을 작성해줘. ‘분기 납품 현황’, ‘다음 분기 협의 사항’, ‘담당자별 후속 일정’으로 나누고, 문서에 없는 사실은 추가하지 마.",
+  "route_note": "정답표에 기대 경로 없음. 자동 경로와 적용 정책을 기록만 한다. 외부 경로일 때만 가림 검증으로 친다.",
+  "tier1": [
+    {"label": "company", "text": "츄러스 공업", "count": 3},
+    {"label": "company", "text": "우왕 전자", "count": 5},
+    {"label": "company", "text": "초코 상사", "count": 3},
+    {"label": "company", "text": "바닐라 상사", "count": 3},
+    {"label": "project", "text": "스위트라인 생산설비 개선사업", "count": 1},
+    {"label": "doc_no", "text": "CHR-2026-Q3-017", "count": 2},
+    {"label": "biz_no", "text": "000-00-00000", "count": 1},
+    {"label": "contact", "text": "010-0000-1001", "count": 1},
+    {"label": "contact", "text": "sales@churros.example", "count": 1},
+    {"label": "price", "text": "14,000원", "count": 2},
+    {"label": "price", "text": "12,000원", "count": 2},
+    {"label": "price", "text": "11,000원", "count": 2},
+    {"label": "price", "text": "336,000,000원", "count": 1},
+    {"label": "price", "text": "144,000,000원", "count": 1},
+    {"label": "price", "text": "88,000,000원", "count": 1},
+    {"label": "price", "text": "568,000,000원", "count": 2},
+    {"label": "price", "text": "8,400원", "count": 1},
+    {"label": "price", "text": "14,500원", "count": 1},
+    {"label": "price", "text": "12,500원", "count": 1}
+  ],
+  "tier2": [
+    {"label": "person", "text": "김하린", "count": 4},
+    {"label": "person", "text": "박도윤", "count": 3}
+  ],
+  "keep": [
+    "과장", "부장",
+    "2026년 3분기", "2026-07-01", "2026-09-30",
+    "2026-11-01", "2026-11-03", "2026-11-04", "2026-11-06", "2026-11-20",
+    "24,000개", "12,000개", "8,000개", "44,000개", "2,000개", "3개 고객",
+    "50 × 30 × 2 mm", "ISO 2768-1", "SUS304"
+  ],
+  "dict_companies": ["츄러스 공업", "우왕 전자", "초코 상사", "바닐라 상사"],
+  "dict_projects": []
+}

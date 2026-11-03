@@ -1,0 +1,1038 @@
+{
+ "summary": {
+  "rules": {
+   "recall": 1.0,
+   "exact_recall": 1.0,
+   "label_acc": 1.0,
+   "precision": 1.0,
+   "fp": 0,
+   "pred": 1,
+   "gold": 1,
+   "hits": 1,
+   "sensitive_acc": 1.0
+  },
+  "llm": {
+   "recall": 0.0,
+   "exact_recall": 0.0,
+   "label_acc": null,
+   "precision": null,
+   "fp": 0,
+   "pred": 0,
+   "gold": 1,
+   "hits": 0,
+   "sensitive_acc": 0.95
+  },
+  "hybrid": {
+   "recall": 1.0,
+   "exact_recall": 1.0,
+   "label_acc": 1.0,
+   "precision": 1.0,
+   "fp": 0,
+   "pred": 1,
+   "gold": 1,
+   "hits": 1,
+   "sensitive_acc": 1.0
+  }
+ },
+ "latency": {
+  "rules_ms_p50": 0.15,
+  "rules_ms_p95": 0.21,
+  "llm_s_p50": 0.748,
+  "llm_s_p95": 0.933,
+  "llm_s_max": 0.933
+ },
+ "rows": [
+  {
+   "id": "L01-1",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.11,
+    "ner_s": 3.841,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.933,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.747,
+    "llm_eval_s": 0.147,
+    "llm_prompt_tokens": 635,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "L01-2",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.11,
+    "ner_s": 0.011,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.678,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.516,
+    "llm_eval_s": 0.151,
+    "llm_prompt_tokens": 567,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "L01-3",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.15,
+    "ner_s": 0.011,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.713,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.553,
+    "llm_eval_s": 0.149,
+    "llm_prompt_tokens": 579,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "L01-4",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.15,
+    "ner_s": 0.012,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.701,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.532,
+    "llm_eval_s": 0.157,
+    "llm_prompt_tokens": 590,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "L01-5",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.2,
+    "ner_s": 0.015,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.739,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.571,
+    "llm_eval_s": 0.156,
+    "llm_prompt_tokens": 591,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "L02-1",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.15,
+    "ner_s": 0.011,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.766,
+    "llm_load_s": 0.005,
+    "llm_prompt_eval_s": 0.607,
+    "llm_eval_s": 0.147,
+    "llm_prompt_tokens": 594,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "L02-2",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.17,
+    "ner_s": 0.014,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.784,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.618,
+    "llm_eval_s": 0.155,
+    "llm_prompt_tokens": 606,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "L02-3",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.13,
+    "ner_s": 0.01,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.748,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.586,
+    "llm_eval_s": 0.15,
+    "llm_prompt_tokens": 598,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "L02-4",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.16,
+    "ner_s": 0.01,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.711,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.55,
+    "llm_eval_s": 0.149,
+    "llm_prompt_tokens": 571,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "L02-5",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.14,
+    "ner_s": 0.01,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.713,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.575,
+    "llm_eval_s": 0.127,
+    "llm_prompt_tokens": 579,
+    "llm_eval_tokens": 6
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "L03-1",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.14,
+    "ner_s": 0.01,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.747,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.586,
+    "llm_eval_s": 0.149,
+    "llm_prompt_tokens": 598,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "L03-2",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.15,
+    "ner_s": 0.011,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.705,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.546,
+    "llm_eval_s": 0.148,
+    "llm_prompt_tokens": 594,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "L03-3",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.12,
+    "ner_s": 0.013,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.78,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.618,
+    "llm_eval_s": 0.151,
+    "llm_prompt_tokens": 610,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "L03-4",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.18,
+    "ner_s": 0.012,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.852,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.715,
+    "llm_eval_s": 0.125,
+    "llm_prompt_tokens": 601,
+    "llm_eval_tokens": 6
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 1,
+    "hits": 1,
+    "exact": 1,
+    "label_ok": 1,
+    "pred": 1,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 1,
+    "hits": 1,
+    "exact": 1,
+    "label_ok": 1,
+    "pred": 1,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 11,
+     "end": 14,
+     "text": "김지영",
+     "label": "person",
+     "sources": [
+      "ner:koelectra-ko-pii-ner"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 1,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [
+     "김지영(person)"
+    ],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "L03-5",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.12,
+    "ner_s": 0.011,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.877,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.7,
+    "llm_eval_s": 0.165,
+    "llm_prompt_tokens": 590,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "L04-1",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.15,
+    "ner_s": 0.014,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.809,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.645,
+    "llm_eval_s": 0.152,
+    "llm_prompt_tokens": 612,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "L04-2",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.13,
+    "ner_s": 0.013,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.789,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.625,
+    "llm_eval_s": 0.153,
+    "llm_prompt_tokens": 603,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "L04-3",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.17,
+    "ner_s": 0.014,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.745,
+    "llm_load_s": 0.005,
+    "llm_prompt_eval_s": 0.572,
+    "llm_eval_s": 0.161,
+    "llm_prompt_tokens": 586,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "L04-4",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.21,
+    "ner_s": 0.015,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.775,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.604,
+    "llm_eval_s": 0.158,
+    "llm_prompt_tokens": 608,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "L04-5",
+   "category": "local",
+   "route": "local",
+   "timing": {
+    "rules_ms": 0.11,
+    "ner_s": 0.011,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.757,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.59,
+    "llm_eval_s": 0.156,
+    "llm_prompt_tokens": 588,
+    "llm_eval_tokens": 7
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [],
+   "llm": {
+    "gold": 0,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  }
+ ]
+}

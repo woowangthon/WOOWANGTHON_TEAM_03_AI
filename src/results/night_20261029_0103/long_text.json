@@ -1,0 +1,30 @@
+[
+ {
+  "first_token_s": 1.709,
+  "total_s": 5.025,
+  "prompt_tokens": 1361,
+  "eval_tokens": 133,
+  "prompt_eval_s": 1.696,
+  "n_spans": 8,
+  "chars": 3897,
+  "content_sample": "{\"spans\":[{\"label\":\"company\",\"text\":\"한국항공우주산업\"},{\"label\":\"doc_no\",\"text\":\"BRK-2210-07B\"},{\"label\":\"doc_no\",\"text\":\"PO-25-00421\"},{\"label\":\"price\",\"text\":\"1,480,000원\"},{\"label\":\"person\",\"text\":\"정우성\"},{\"label\":\"contact\",\"text\":\"010-8765-4321\"},{\"label\":\"contact\",\"text\":\"ws.jung@hanbit-p.co.kr\"},{\"label\":\"project\",\"text\":\"백호 2차 사업\"}]}"
+ },
+ {
+  "first_token_s": 0.041,
+  "total_s": 3.416,
+  "prompt_tokens": 1361,
+  "eval_tokens": 133,
+  "prompt_eval_s": 0.028,
+  "n_spans": 8,
+  "chars": 3897
+ },
+ {
+  "first_token_s": 0.04,
+  "total_s": 3.329,
+  "prompt_tokens": 1361,
+  "eval_tokens": 133,
+  "prompt_eval_s": 0.026,
+  "n_spans": 8,
+  "chars": 3897
+ }
+]

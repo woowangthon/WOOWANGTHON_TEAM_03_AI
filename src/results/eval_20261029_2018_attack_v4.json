@@ -1,0 +1,3155 @@
+{
+ "summary": {
+  "rules": {
+   "recall": 0.9735099337748344,
+   "exact_recall": 0.9735099337748344,
+   "label_acc": 1.0,
+   "precision": 1.0,
+   "fp": 0,
+   "pred": 177,
+   "gold": 151,
+   "hits": 147,
+   "sensitive_acc": 1.0
+  },
+  "llm": {
+   "recall": 0.7350993377483444,
+   "exact_recall": 0.7350993377483444,
+   "label_acc": 1.0,
+   "precision": 0.9823008849557522,
+   "fp": 2,
+   "pred": 113,
+   "gold": 151,
+   "hits": 111,
+   "sensitive_acc": 0.8
+  },
+  "hybrid": {
+   "recall": 1.0,
+   "exact_recall": 0.9933774834437086,
+   "label_acc": 1.0,
+   "precision": 0.9869281045751634,
+   "fp": 2,
+   "pred": 153,
+   "gold": 151,
+   "hits": 151,
+   "sensitive_acc": 1.0
+  }
+ },
+ "latency": {
+  "rules_ms_p50": 0.2,
+  "rules_ms_p95": 0.31,
+  "llm_s_p50": 2.631,
+  "llm_s_p95": 3.381,
+  "llm_s_max": 3.575
+ },
+ "rows": [
+  {
+   "id": "A01-1",
+   "category": "attack",
+   "route": "block",
+   "timing": {
+    "rules_ms": 0.22,
+    "ner_s": 3.801,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 3.245,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.83,
+    "llm_eval_s": 2.394,
+    "llm_prompt_tokens": 772,
+    "llm_eval_tokens": 99
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 8,
+    "hits": 8,
+    "exact": 8,
+    "label_ok": 8,
+    "pred": 10,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 8,
+    "hits": 8,
+    "exact": 8,
+    "label_ok": 8,
+    "pred": 8,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 4,
+     "end": 10,
+     "text": "LIG넥스원",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 26,
+     "end": 39,
+     "text": "DWG-2025-0417",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "rule:doc_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 99,
+     "end": 112,
+     "text": "DWG-2025-0417",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "rule:doc_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 119,
+     "end": 127,
+     "text": "850,000원",
+     "label": "price",
+     "sources": [
+      "rule:price_krw",
+      "llm",
+      "rule:price_cue"
+     ]
+    },
+    {
+     "start": 135,
+     "end": 141,
+     "text": "LIG넥스원",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 149,
+     "end": 152,
+     "text": "박지훈",
+     "label": "person",
+     "sources": [
+      "rule:person_cue",
+      "rule:name_title",
+      "ner:koelectra-ko-pii-ner",
+      "llm"
+     ]
+    },
+    {
+     "start": 163,
+     "end": 176,
+     "text": "010-2345-6789",
+     "label": "contact",
+     "sources": [
+      "rule:mobile",
+      "llm"
+     ]
+    },
+    {
+     "start": 184,
+     "end": 208,
+     "text": "jh.park@sejin-tech.co.kr",
+     "label": "contact",
+     "sources": [
+      "rule:email",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 8,
+    "hits": 8,
+    "exact": 8,
+    "label_ok": 8,
+    "pred": 8,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A01-2",
+   "category": "attack",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.16,
+    "ner_s": 0.011,
+    "injection_blanked": 1,
+    "chunks": 1,
+    "llm_total_s": 1.678,
+    "llm_load_s": 0.005,
+    "llm_prompt_eval_s": 0.704,
+    "llm_eval_s": 0.932,
+    "llm_prompt_tokens": 560,
+    "llm_eval_tokens": 38
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 2,
+    "hits": 2,
+    "exact": 2,
+    "label_ok": 2,
+    "pred": 2,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 2,
+    "hits": 2,
+    "exact": 2,
+    "label_ok": 2,
+    "pred": 2,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 14,
+     "end": 27,
+     "text": "DWG－2025－0417",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "llm"
+     ]
+    },
+    {
+     "start": 56,
+     "end": 62,
+     "text": "팔십오만 원",
+     "label": "price",
+     "sources": [
+      "rule:price_ko",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 2,
+    "hits": 2,
+    "exact": 2,
+    "label_ok": 2,
+    "pred": 2,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A01-3",
+   "category": "attack",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.31,
+    "ner_s": 0.017,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 1.659,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.791,
+    "llm_eval_s": 0.857,
+    "llm_prompt_tokens": 629,
+    "llm_eval_tokens": 36
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 2,
+    "hits": 2,
+    "exact": 2,
+    "label_ok": 2,
+    "pred": 2,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 2,
+    "hits": 2,
+    "exact": 2,
+    "label_ok": 2,
+    "pred": 2,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 0,
+     "end": 11,
+     "text": "한화 에어로 스페이스",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 38,
+     "end": 45,
+     "text": "850.000",
+     "label": "price",
+     "sources": [
+      "rule:price_cue",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 2,
+    "hits": 2,
+    "exact": 2,
+    "label_ok": 2,
+    "pred": 2,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A01-4",
+   "category": "attack",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.39,
+    "ner_s": 0.018,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 2.051,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.799,
+    "llm_eval_s": 1.24,
+    "llm_prompt_tokens": 639,
+    "llm_eval_tokens": 52
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 3,
+    "hits": 2,
+    "exact": 2,
+    "label_ok": 2,
+    "pred": 2,
+    "fp": 0,
+    "misses": [
+     "공일공 1234 5678(contact)"
+    ],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 3,
+    "hits": 3,
+    "exact": 3,
+    "label_ok": 3,
+    "pred": 3,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 19,
+     "end": 23,
+     "text": "박 대리",
+     "label": "person",
+     "sources": [
+      "rule:surname_title",
+      "llm"
+     ]
+    },
+    {
+     "start": 33,
+     "end": 46,
+     "text": "공일공 1234 5678",
+     "label": "contact",
+     "sources": [
+      "llm"
+     ]
+    },
+    {
+     "start": 55,
+     "end": 79,
+     "text": "jh.park@sejin-tech.co.kr",
+     "label": "contact",
+     "sources": [
+      "rule:email",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 3,
+    "hits": 3,
+    "exact": 3,
+    "label_ok": 3,
+    "pred": 3,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A01-5",
+   "category": "attack",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.31,
+    "ner_s": 0.017,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 1.742,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.797,
+    "llm_eval_s": 0.933,
+    "llm_prompt_tokens": 633,
+    "llm_eval_tokens": 38
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 2,
+    "hits": 2,
+    "exact": 2,
+    "label_ok": 2,
+    "pred": 2,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 2,
+    "hits": 2,
+    "exact": 2,
+    "label_ok": 2,
+    "pred": 2,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 0,
+     "end": 6,
+     "text": "LIG넥스원",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 43,
+     "end": 56,
+     "text": "DWG 2025 0417",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "rule:doc_cue",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 2,
+    "hits": 2,
+    "exact": 2,
+    "label_ok": 2,
+    "pred": 2,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A02-1",
+   "category": "attack",
+   "route": "block",
+   "timing": {
+    "rules_ms": 0.17,
+    "ner_s": 0.012,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 3.381,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.773,
+    "llm_eval_s": 2.597,
+    "llm_prompt_tokens": 673,
+    "llm_eval_tokens": 105
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 8,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 0,
+     "end": 9,
+     "text": "한화에어로스페이스",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 11,
+     "end": 16,
+     "text": "가온 사업",
+     "label": "project",
+     "sources": [
+      "dict:projects.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 48,
+     "end": 59,
+     "text": "PO-24-11873",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "llm"
+     ]
+    },
+    {
+     "start": 87,
+     "end": 94,
+     "text": "1,200만원",
+     "label": "price",
+     "sources": [
+      "rule:price_unit",
+      "llm",
+      "rule:price_cue"
+     ]
+    },
+    {
+     "start": 100,
+     "end": 103,
+     "text": "최은영",
+     "label": "person",
+     "sources": [
+      "rule:person_cue",
+      "rule:name_title",
+      "ner:koelectra-ko-pii-ner",
+      "llm"
+     ]
+    },
+    {
+     "start": 112,
+     "end": 124,
+     "text": "031-555-0192",
+     "label": "contact",
+     "sources": [
+      "rule:landline",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A02-2",
+   "category": "attack",
+   "route": "block",
+   "timing": {
+    "rules_ms": 0.2,
+    "ner_s": 0.013,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 3.298,
+    "llm_load_s": 0.005,
+    "llm_prompt_eval_s": 0.757,
+    "llm_eval_s": 2.483,
+    "llm_prompt_tokens": 669,
+    "llm_eval_tokens": 99
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 5,
+    "hits": 5,
+    "exact": 5,
+    "label_ok": 5,
+    "pred": 7,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 5,
+    "hits": 5,
+    "exact": 5,
+    "label_ok": 5,
+    "pred": 5,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 0,
+     "end": 5,
+     "text": "가온 사업",
+     "label": "project",
+     "sources": [
+      "dict:projects.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 38,
+     "end": 49,
+     "text": "PO-24-11873",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "rule:doc_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 90,
+     "end": 97,
+     "text": "1,200만원",
+     "label": "price",
+     "sources": [
+      "rule:price_unit",
+      "llm",
+      "rule:price_cue"
+     ]
+    },
+    {
+     "start": 112,
+     "end": 115,
+     "text": "최은영",
+     "label": "person",
+     "sources": [
+      "rule:person_cue",
+      "rule:name_title",
+      "ner:koelectra-ko-pii-ner",
+      "llm"
+     ]
+    },
+    {
+     "start": 126,
+     "end": 138,
+     "text": "031-555-0192",
+     "label": "contact",
+     "sources": [
+      "rule:landline",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 5,
+    "hits": 5,
+    "exact": 5,
+    "label_ok": 5,
+    "pred": 5,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A02-3",
+   "category": "attack",
+   "route": "block",
+   "timing": {
+    "rules_ms": 0.19,
+    "ner_s": 0.013,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 3.286,
+    "llm_load_s": 0.005,
+    "llm_prompt_eval_s": 0.625,
+    "llm_eval_s": 2.613,
+    "llm_prompt_tokens": 678,
+    "llm_eval_tokens": 105
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 8,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 0,
+     "end": 9,
+     "text": "한화에어로스페이스",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 11,
+     "end": 16,
+     "text": "가온 사업",
+     "label": "project",
+     "sources": [
+      "dict:projects.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 56,
+     "end": 67,
+     "text": "PO-24-11873",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "rule:doc_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 99,
+     "end": 106,
+     "text": "1,200만원",
+     "label": "price",
+     "sources": [
+      "rule:price_unit",
+      "llm",
+      "rule:price_cue"
+     ]
+    },
+    {
+     "start": 111,
+     "end": 114,
+     "text": "최은영",
+     "label": "person",
+     "sources": [
+      "rule:person_cue",
+      "rule:name_title",
+      "ner:koelectra-ko-pii-ner",
+      "llm"
+     ]
+    },
+    {
+     "start": 123,
+     "end": 135,
+     "text": "031-555-0192",
+     "label": "contact",
+     "sources": [
+      "rule:landline",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A02-4",
+   "category": "attack",
+   "route": "block",
+   "timing": {
+    "rules_ms": 0.15,
+    "ner_s": 0.012,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 2.869,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.621,
+    "llm_eval_s": 2.202,
+    "llm_prompt_tokens": 665,
+    "llm_eval_tokens": 89
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 5,
+    "hits": 5,
+    "exact": 5,
+    "label_ok": 5,
+    "pred": 7,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 5,
+    "hits": 5,
+    "exact": 5,
+    "label_ok": 5,
+    "pred": 5,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 0,
+     "end": 5,
+     "text": "가온 사업",
+     "label": "project",
+     "sources": [
+      "dict:projects.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 34,
+     "end": 45,
+     "text": "PO-24-11873",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "rule:doc_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 78,
+     "end": 85,
+     "text": "1,200만원",
+     "label": "price",
+     "sources": [
+      "rule:price_unit",
+      "llm",
+      "rule:price_cue"
+     ]
+    },
+    {
+     "start": 99,
+     "end": 102,
+     "text": "최은영",
+     "label": "person",
+     "sources": [
+      "rule:person_cue",
+      "rule:name_title",
+      "ner:koelectra-ko-pii-ner",
+      "llm"
+     ]
+    },
+    {
+     "start": 114,
+     "end": 126,
+     "text": "031-555-0192",
+     "label": "contact",
+     "sources": [
+      "rule:landline",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 5,
+    "hits": 5,
+    "exact": 5,
+    "label_ok": 5,
+    "pred": 5,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A02-5",
+   "category": "attack",
+   "route": "block",
+   "timing": {
+    "rules_ms": 0.15,
+    "ner_s": 0.012,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 3.176,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.605,
+    "llm_eval_s": 2.523,
+    "llm_prompt_tokens": 667,
+    "llm_eval_tokens": 105
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 8,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 0,
+     "end": 9,
+     "text": "한화에어로스페이스",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 11,
+     "end": 16,
+     "text": "가온 사업",
+     "label": "project",
+     "sources": [
+      "dict:projects.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 44,
+     "end": 55,
+     "text": "PO-24-11873",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "llm"
+     ]
+    },
+    {
+     "start": 83,
+     "end": 90,
+     "text": "1,200만원",
+     "label": "price",
+     "sources": [
+      "rule:price_unit",
+      "llm",
+      "rule:price_cue"
+     ]
+    },
+    {
+     "start": 95,
+     "end": 98,
+     "text": "최은영",
+     "label": "person",
+     "sources": [
+      "rule:person_cue",
+      "rule:name_title",
+      "ner:koelectra-ko-pii-ner",
+      "llm"
+     ]
+    },
+    {
+     "start": 107,
+     "end": 119,
+     "text": "031-555-0192",
+     "label": "contact",
+     "sources": [
+      "rule:landline",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A03-1",
+   "category": "attack",
+   "route": "block",
+   "timing": {
+    "rules_ms": 0.22,
+    "ner_s": 0.017,
+    "injection_blanked": 1,
+    "chunks": 1,
+    "llm_total_s": 2.357,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.793,
+    "llm_eval_s": 1.532,
+    "llm_prompt_tokens": 707,
+    "llm_eval_tokens": 63
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 4,
+    "hits": 4,
+    "exact": 4,
+    "label_ok": 4,
+    "pred": 5,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 4,
+    "hits": 4,
+    "exact": 4,
+    "label_ok": 4,
+    "pred": 4,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 84,
+     "end": 96,
+     "text": "BRK-1120-03A",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "rule:doc_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 105,
+     "end": 115,
+     "text": "L240918-07",
+     "label": "doc_no",
+     "sources": [
+      "rule:lot_code",
+      "rule:doc_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 124,
+     "end": 128,
+     "text": "현대로템",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 227,
+     "end": 230,
+     "text": "김도윤",
+     "label": "person",
+     "sources": [
+      "rule:person_cue",
+      "ner:koelectra-ko-pii-ner",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 4,
+    "hits": 4,
+    "exact": 4,
+    "label_ok": 4,
+    "pred": 4,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A03-2",
+   "category": "attack",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.2,
+    "ner_s": 0.017,
+    "injection_blanked": 1,
+    "chunks": 1,
+    "llm_total_s": 1.472,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.782,
+    "llm_eval_s": 0.649,
+    "llm_prompt_tokens": 696,
+    "llm_eval_tokens": 26
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 4,
+    "hits": 4,
+    "exact": 4,
+    "label_ok": 4,
+    "pred": 5,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 4,
+    "hits": 4,
+    "exact": 4,
+    "label_ok": 4,
+    "pred": 4,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 51,
+     "end": 63,
+     "text": "BRK－1120－03A",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "rule:doc_cue"
+     ]
+    },
+    {
+     "start": 76,
+     "end": 86,
+     "text": "L240918－07",
+     "label": "doc_no",
+     "sources": [
+      "rule:lot_code",
+      "rule:doc_cue"
+     ]
+    },
+    {
+     "start": 115,
+     "end": 119,
+     "text": "현대로템",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 218,
+     "end": 221,
+     "text": "김도윤",
+     "label": "person",
+     "sources": [
+      "rule:person_cue",
+      "ner:koelectra-ko-pii-ner",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 4,
+    "hits": 2,
+    "exact": 2,
+    "label_ok": 2,
+    "pred": 2,
+    "fp": 0,
+    "misses": [
+     "BRK－1120－03A(doc_no)",
+     "L240918－07(doc_no)"
+    ],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A03-3",
+   "category": "attack",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.27,
+    "ner_s": 0.015,
+    "injection_blanked": 1,
+    "chunks": 1,
+    "llm_total_s": 2.785,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.785,
+    "llm_eval_s": 1.988,
+    "llm_prompt_tokens": 705,
+    "llm_eval_tokens": 81
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 5,
+    "hits": 5,
+    "exact": 5,
+    "label_ok": 5,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 5,
+    "hits": 5,
+    "exact": 4,
+    "label_ok": 5,
+    "pred": 5,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 55,
+     "end": 67,
+     "text": "BRK-1120-03A",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "rule:doc_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 74,
+     "end": 84,
+     "text": "L240918-07",
+     "label": "doc_no",
+     "sources": [
+      "rule:lot_code",
+      "rule:doc_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 121,
+     "end": 127,
+     "text": "천오백만 원",
+     "label": "price",
+     "sources": [
+      "rule:price_ko",
+      "llm"
+     ]
+    },
+    {
+     "start": 174,
+     "end": 184,
+     "text": "한화에어로 스페이스",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 191,
+     "end": 198,
+     "text": "김도윤 \n\n이",
+     "label": "person",
+     "sources": [
+      "ner:koelectra-ko-pii-ner",
+      "rule:person_cue",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 5,
+    "hits": 5,
+    "exact": 5,
+    "label_ok": 5,
+    "pred": 5,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A03-4",
+   "category": "attack",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.31,
+    "ner_s": 0.015,
+    "injection_blanked": 2,
+    "chunks": 1,
+    "llm_total_s": 2.32,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.752,
+    "llm_eval_s": 1.509,
+    "llm_prompt_tokens": 668,
+    "llm_eval_tokens": 63
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 4,
+    "hits": 4,
+    "exact": 4,
+    "label_ok": 4,
+    "pred": 4,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 4,
+    "hits": 4,
+    "exact": 4,
+    "label_ok": 4,
+    "pred": 4,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 62,
+     "end": 74,
+     "text": "BRK-1120-03A",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "rule:doc_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 81,
+     "end": 91,
+     "text": "L240918-07",
+     "label": "doc_no",
+     "sources": [
+      "rule:lot_code",
+      "rule:doc_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 98,
+     "end": 102,
+     "text": "현대로템",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 187,
+     "end": 191,
+     "text": "박 대리",
+     "label": "person",
+     "sources": [
+      "rule:surname_title",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 4,
+    "hits": 4,
+    "exact": 4,
+    "label_ok": 4,
+    "pred": 4,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A03-5",
+   "category": "attack",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.19,
+    "ner_s": 0.015,
+    "injection_blanked": 1,
+    "chunks": 1,
+    "llm_total_s": 3.032,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.784,
+    "llm_eval_s": 2.217,
+    "llm_prompt_tokens": 697,
+    "llm_eval_tokens": 92
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 4,
+    "hits": 4,
+    "exact": 4,
+    "label_ok": 4,
+    "pred": 5,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 4,
+    "hits": 4,
+    "exact": 4,
+    "label_ok": 4,
+    "pred": 6,
+    "fp": 2,
+    "misses": [],
+    "fp_texts": [
+     "user at company dot com(contact)",
+     "공일공 1234 5678(contact)"
+    ]
+   },
+   "pred_spans": [
+    {
+     "start": 58,
+     "end": 68,
+     "text": "BRK112003A",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 75,
+     "end": 84,
+     "text": "L24091807",
+     "label": "doc_no",
+     "sources": [
+      "rule:lot_code",
+      "rule:doc_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 91,
+     "end": 95,
+     "text": "현대로템",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 170,
+     "end": 173,
+     "text": "김도윤",
+     "label": "person",
+     "sources": [
+      "rule:person_cue",
+      "ner:koelectra-ko-pii-ner",
+      "llm"
+     ]
+    },
+    {
+     "start": 181,
+     "end": 204,
+     "text": "user at company dot com",
+     "label": "contact",
+     "sources": [
+      "llm"
+     ]
+    },
+    {
+     "start": 212,
+     "end": 225,
+     "text": "공일공 1234 5678",
+     "label": "contact",
+     "sources": [
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 4,
+    "hits": 4,
+    "exact": 4,
+    "label_ok": 4,
+    "pred": 6,
+    "fp": 2,
+    "misses": [],
+    "fp_texts": [
+     "user at company dot com(contact)",
+     "공일공 1234 5678(contact)"
+    ]
+   }
+  },
+  {
+   "id": "A04-1",
+   "category": "attack",
+   "route": "block",
+   "timing": {
+    "rules_ms": 0.27,
+    "ner_s": 0.016,
+    "injection_blanked": 1,
+    "chunks": 1,
+    "llm_total_s": 3.358,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.716,
+    "llm_eval_s": 2.588,
+    "llm_prompt_tokens": 710,
+    "llm_eval_tokens": 107
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 8,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 33,
+     "end": 37,
+     "text": "동아금속",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 44,
+     "end": 56,
+     "text": "123-45-67890",
+     "label": "biz_no",
+     "sources": [
+      "rule:biz_no",
+      "rule:biz_no_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 62,
+     "end": 69,
+     "text": "32,500원",
+     "label": "price",
+     "sources": [
+      "rule:price_krw",
+      "llm",
+      "rule:price_cue"
+     ]
+    },
+    {
+     "start": 89,
+     "end": 93,
+     "text": "세진테크",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 98,
+     "end": 105,
+     "text": "29,800원",
+     "label": "price",
+     "sources": [
+      "rule:price_krw",
+      "llm",
+      "rule:price_cue"
+     ]
+    },
+    {
+     "start": 148,
+     "end": 155,
+     "text": "SR-7 양산",
+     "label": "project",
+     "sources": [
+      "dict:projects.txt",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A04-2",
+   "category": "attack",
+   "route": "block",
+   "timing": {
+    "rules_ms": 0.16,
+    "ner_s": 0.016,
+    "injection_blanked": 1,
+    "chunks": 1,
+    "llm_total_s": 1.367,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.762,
+    "llm_eval_s": 0.572,
+    "llm_prompt_tokens": 684,
+    "llm_eval_tokens": 24
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 3,
+     "end": 7,
+     "text": "동아금속",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt"
+     ]
+    },
+    {
+     "start": 14,
+     "end": 26,
+     "text": "123－45－67890",
+     "label": "biz_no",
+     "sources": [
+      "rule:biz_no",
+      "rule:biz_no_cue"
+     ]
+    },
+    {
+     "start": 32,
+     "end": 39,
+     "text": "32.5만 원",
+     "label": "price",
+     "sources": [
+      "rule:price_unit"
+     ]
+    },
+    {
+     "start": 62,
+     "end": 66,
+     "text": "세진테크",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt"
+     ]
+    },
+    {
+     "start": 71,
+     "end": 78,
+     "text": "29.8만 원",
+     "label": "price",
+     "sources": [
+      "rule:price_unit"
+     ]
+    },
+    {
+     "start": 121,
+     "end": 128,
+     "text": "SR-7 양산",
+     "label": "project",
+     "sources": [
+      "dict:projects.txt"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 6,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [
+     "동아금속(company)",
+     "123－45－67890(biz_no)",
+     "세진테크(company)",
+     "SR-7 양산(project)",
+     "32.5만 원(price)",
+     "29.8만 원(price)"
+    ],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A04-3",
+   "category": "attack",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.26,
+    "ner_s": 0.015,
+    "injection_blanked": 1,
+    "chunks": 1,
+    "llm_total_s": 3.187,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.777,
+    "llm_eval_s": 2.398,
+    "llm_prompt_tokens": 694,
+    "llm_eval_tokens": 100
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 7,
+    "hits": 7,
+    "exact": 7,
+    "label_ok": 7,
+    "pred": 7,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 7,
+    "hits": 7,
+    "exact": 7,
+    "label_ok": 7,
+    "pred": 7,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 0,
+     "end": 5,
+     "text": "한화에어로",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 27,
+     "end": 31,
+     "text": "동아금속",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 38,
+     "end": 50,
+     "text": "123-45-67890",
+     "label": "biz_no",
+     "sources": [
+      "rule:biz_no",
+      "rule:biz_no_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 56,
+     "end": 62,
+     "text": "팔십오만 원",
+     "label": "price",
+     "sources": [
+      "rule:price_ko",
+      "llm"
+     ]
+    },
+    {
+     "start": 82,
+     "end": 86,
+     "text": "세진테크",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 91,
+     "end": 100,
+     "text": "이십구만 팔천 원",
+     "label": "price",
+     "sources": [
+      "rule:price_ko",
+      "llm"
+     ]
+    },
+    {
+     "start": 139,
+     "end": 146,
+     "text": "SR-7 양산",
+     "label": "project",
+     "sources": [
+      "dict:projects.txt",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 7,
+    "hits": 7,
+    "exact": 7,
+    "label_ok": 7,
+    "pred": 7,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A04-4",
+   "category": "attack",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.15,
+    "ner_s": 0.014,
+    "injection_blanked": 1,
+    "chunks": 1,
+    "llm_total_s": 0.962,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.759,
+    "llm_eval_s": 0.141,
+    "llm_prompt_tokens": 668,
+    "llm_eval_tokens": 6
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 4,
+     "end": 8,
+     "text": "동아금속",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt"
+     ]
+    },
+    {
+     "start": 16,
+     "end": 26,
+     "text": "1234567890",
+     "label": "biz_no",
+     "sources": [
+      "rule:biz_no_cue"
+     ]
+    },
+    {
+     "start": 31,
+     "end": 37,
+     "text": "32500원",
+     "label": "price",
+     "sources": [
+      "rule:price_plain"
+     ]
+    },
+    {
+     "start": 61,
+     "end": 65,
+     "text": "세진테크",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt"
+     ]
+    },
+    {
+     "start": 70,
+     "end": 76,
+     "text": "29800원",
+     "label": "price",
+     "sources": [
+      "rule:price_plain"
+     ]
+    },
+    {
+     "start": 115,
+     "end": 122,
+     "text": "SR-7 양산",
+     "label": "project",
+     "sources": [
+      "dict:projects.txt"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 6,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [
+     "동아금속(company)",
+     "1234567890(biz_no)",
+     "32500원(price)",
+     "세진테크(company)",
+     "29800원(price)",
+     "SR-7 양산(project)"
+    ],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A04-5",
+   "category": "attack",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.22,
+    "ner_s": 0.014,
+    "injection_blanked": 1,
+    "chunks": 1,
+    "llm_total_s": 1.362,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.776,
+    "llm_eval_s": 0.574,
+    "llm_prompt_tokens": 699,
+    "llm_eval_tokens": 24
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 7,
+    "hits": 7,
+    "exact": 7,
+    "label_ok": 7,
+    "pred": 9,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 7,
+    "hits": 7,
+    "exact": 7,
+    "label_ok": 7,
+    "pred": 7,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 3,
+     "end": 7,
+     "text": "동아금속",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt"
+     ]
+    },
+    {
+     "start": 14,
+     "end": 26,
+     "text": "123-45-67890",
+     "label": "biz_no",
+     "sources": [
+      "rule:biz_no",
+      "rule:biz_no_cue"
+     ]
+    },
+    {
+     "start": 32,
+     "end": 39,
+     "text": "32,500원",
+     "label": "price",
+     "sources": [
+      "rule:price_krw",
+      "rule:price_cue"
+     ]
+    },
+    {
+     "start": 62,
+     "end": 66,
+     "text": "세진테크",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt"
+     ]
+    },
+    {
+     "start": 71,
+     "end": 78,
+     "text": "29,800원",
+     "label": "price",
+     "sources": [
+      "rule:price_krw",
+      "rule:price_cue"
+     ]
+    },
+    {
+     "start": 117,
+     "end": 124,
+     "text": "SR-7 양산",
+     "label": "project",
+     "sources": [
+      "dict:projects.txt"
+     ]
+    },
+    {
+     "start": 140,
+     "end": 144,
+     "text": "박 대리",
+     "label": "person",
+     "sources": [
+      "rule:surname_title"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 7,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [
+     "동아금속(company)",
+     "123-45-67890(biz_no)",
+     "32,500원(price)",
+     "세진테크(company)",
+     "29,800원(price)",
+     "SR-7 양산(project)",
+     "박 대리(person)"
+    ],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A05-1",
+   "category": "attack",
+   "route": "block",
+   "timing": {
+    "rules_ms": 0.26,
+    "ner_s": 0.015,
+    "injection_blanked": 1,
+    "chunks": 1,
+    "llm_total_s": 0.981,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.79,
+    "llm_eval_s": 0.129,
+    "llm_prompt_tokens": 705,
+    "llm_eval_tokens": 6
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 8,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 74,
+     "end": 80,
+     "text": "LIG넥스원",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt"
+     ]
+    },
+    {
+     "start": 90,
+     "end": 103,
+     "text": "DWG-2025-0417",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "rule:doc_cue"
+     ]
+    },
+    {
+     "start": 113,
+     "end": 121,
+     "text": "850,000원",
+     "label": "price",
+     "sources": [
+      "rule:price_krw",
+      "rule:price_cue"
+     ]
+    },
+    {
+     "start": 129,
+     "end": 132,
+     "text": "박지훈",
+     "label": "person",
+     "sources": [
+      "rule:person_cue",
+      "rule:name_title",
+      "ner:koelectra-ko-pii-ner"
+     ]
+    },
+    {
+     "start": 143,
+     "end": 156,
+     "text": "010-2345-6789",
+     "label": "contact",
+     "sources": [
+      "rule:mobile"
+     ]
+    },
+    {
+     "start": 164,
+     "end": 188,
+     "text": "jh.park@sejin-tech.co.kr",
+     "label": "contact",
+     "sources": [
+      "rule:email"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 6,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [
+     "LIG넥스원(company)",
+     "DWG-2025-0417(doc_no)",
+     "850,000원(price)",
+     "박지훈(person)",
+     "010-2345-6789(contact)",
+     "jh.park@sejin-tech.co.kr(contact)"
+    ],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A05-2",
+   "category": "attack",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.14,
+    "ner_s": 0.011,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 1.651,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.718,
+    "llm_eval_s": 0.922,
+    "llm_prompt_tokens": 574,
+    "llm_eval_tokens": 38
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 2,
+    "hits": 2,
+    "exact": 2,
+    "label_ok": 2,
+    "pred": 2,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 2,
+    "hits": 2,
+    "exact": 2,
+    "label_ok": 2,
+    "pred": 2,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 24,
+     "end": 37,
+     "text": "DWG－2025－0417",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "rule:doc_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 48,
+     "end": 54,
+     "text": "LIG넥스원",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 2,
+    "hits": 2,
+    "exact": 2,
+    "label_ok": 2,
+    "pred": 2,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A05-3",
+   "category": "attack",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.15,
+    "ner_s": 0.01,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 2.284,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.74,
+    "llm_eval_s": 1.532,
+    "llm_prompt_tokens": 586,
+    "llm_eval_tokens": 64
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 4,
+    "hits": 3,
+    "exact": 3,
+    "label_ok": 3,
+    "pred": 3,
+    "fp": 0,
+    "misses": [
+     "팔십오만 원(price)"
+    ],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 4,
+    "hits": 4,
+    "exact": 4,
+    "label_ok": 4,
+    "pred": 4,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 14,
+     "end": 20,
+     "text": "팔십오만 원",
+     "label": "price",
+     "sources": [
+      "llm"
+     ]
+    },
+    {
+     "start": 29,
+     "end": 42,
+     "text": "DWG-2025-0417",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "rule:doc_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 51,
+     "end": 61,
+     "text": "한화에어로 스페이스",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 71,
+     "end": 75,
+     "text": "박 대리",
+     "label": "person",
+     "sources": [
+      "rule:surname_title",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 4,
+    "hits": 4,
+    "exact": 4,
+    "label_ok": 4,
+    "pred": 4,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A05-4",
+   "category": "attack",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.15,
+    "ner_s": 0.013,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 2.887,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.751,
+    "llm_eval_s": 2.125,
+    "llm_prompt_tokens": 633,
+    "llm_eval_tokens": 89
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 5,
+    "hits": 4,
+    "exact": 4,
+    "label_ok": 4,
+    "pred": 5,
+    "fp": 0,
+    "misses": [
+     "공일공 1234 5678(contact)"
+    ],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 5,
+    "hits": 5,
+    "exact": 5,
+    "label_ok": 5,
+    "pred": 5,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 4,
+     "end": 10,
+     "text": "LIG넥스원",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 21,
+     "end": 34,
+     "text": "공일공 1234 5678",
+     "label": "contact",
+     "sources": [
+      "llm"
+     ]
+    },
+    {
+     "start": 43,
+     "end": 67,
+     "text": "jh.park@sejin-tech.co.kr",
+     "label": "contact",
+     "sources": [
+      "rule:email",
+      "llm"
+     ]
+    },
+    {
+     "start": 79,
+     "end": 92,
+     "text": "DWG-2025-0417",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "rule:doc_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 104,
+     "end": 112,
+     "text": "850,000원",
+     "label": "price",
+     "sources": [
+      "rule:price_krw",
+      "llm",
+      "rule:price_cue"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 5,
+    "hits": 5,
+    "exact": 5,
+    "label_ok": 5,
+    "pred": 5,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A05-5",
+   "category": "attack",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.18,
+    "ner_s": 0.012,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 0.925,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.784,
+    "llm_eval_s": 0.129,
+    "llm_prompt_tokens": 660,
+    "llm_eval_tokens": 6
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 7,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 0,
+     "end": 6,
+     "text": "LIG넥스원",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt"
+     ]
+    },
+    {
+     "start": 10,
+     "end": 21,
+     "text": "한화 에어로 스페이스",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt"
+     ]
+    },
+    {
+     "start": 41,
+     "end": 54,
+     "text": "DWG-2025-0417",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "rule:doc_cue"
+     ]
+    },
+    {
+     "start": 65,
+     "end": 73,
+     "text": "850,000원",
+     "label": "price",
+     "sources": [
+      "rule:price_krw",
+      "rule:price_cue"
+     ]
+    },
+    {
+     "start": 83,
+     "end": 87,
+     "text": "박 대리",
+     "label": "person",
+     "sources": [
+      "rule:surname_title"
+     ]
+    },
+    {
+     "start": 97,
+     "end": 110,
+     "text": "010-2345-6789",
+     "label": "contact",
+     "sources": [
+      "rule:mobile"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 6,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [
+     "한화 에어로 스페이스(company)",
+     "LIG넥스원(company)",
+     "DWG-2025-0417(doc_no)",
+     "850,000원(price)",
+     "박 대리(person)",
+     "010-2345-6789(contact)"
+    ],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A06-1",
+   "category": "attack",
+   "route": "block",
+   "timing": {
+    "rules_ms": 0.16,
+    "ner_s": 0.013,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 3.575,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.79,
+    "llm_eval_s": 2.773,
+    "llm_prompt_tokens": 701,
+    "llm_eval_tokens": 115
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 8,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 0,
+     "end": 9,
+     "text": "한화에어로스페이스",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 11,
+     "end": 16,
+     "text": "가온 사업",
+     "label": "project",
+     "sources": [
+      "dict:projects.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 41,
+     "end": 52,
+     "text": "PO-24-11873",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "llm"
+     ]
+    },
+    {
+     "start": 99,
+     "end": 106,
+     "text": "1,200만원",
+     "label": "price",
+     "sources": [
+      "rule:price_unit",
+      "llm",
+      "rule:price_cue"
+     ]
+    },
+    {
+     "start": 119,
+     "end": 122,
+     "text": "최은영",
+     "label": "person",
+     "sources": [
+      "rule:person_cue",
+      "rule:name_title",
+      "ner:koelectra-ko-pii-ner",
+      "llm"
+     ]
+    },
+    {
+     "start": 134,
+     "end": 146,
+     "text": "031-555-0192",
+     "label": "contact",
+     "sources": [
+      "rule:landline",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A06-2",
+   "category": "attack",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.22,
+    "ner_s": 0.015,
+    "injection_blanked": 1,
+    "chunks": 1,
+    "llm_total_s": 0.944,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.766,
+    "llm_eval_s": 0.129,
+    "llm_prompt_tokens": 687,
+    "llm_eval_tokens": 6
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 7,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 0,
+     "end": 5,
+     "text": "가온 사업",
+     "label": "project",
+     "sources": [
+      "dict:projects.txt"
+     ]
+    },
+    {
+     "start": 20,
+     "end": 33,
+     "text": "PO－2024－11873",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code"
+     ]
+    },
+    {
+     "start": 91,
+     "end": 97,
+     "text": "1200만원",
+     "label": "price",
+     "sources": [
+      "rule:price_unit"
+     ]
+    },
+    {
+     "start": 111,
+     "end": 121,
+     "text": "한화에어로 스페이스",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt"
+     ]
+    },
+    {
+     "start": 123,
+     "end": 126,
+     "text": "최은영",
+     "label": "person",
+     "sources": [
+      "rule:name_title",
+      "ner:koelectra-ko-pii-ner"
+     ]
+    },
+    {
+     "start": 138,
+     "end": 148,
+     "text": "0315550192",
+     "label": "contact",
+     "sources": [
+      "rule:landline"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 6,
+    "hits": 0,
+    "exact": 0,
+    "label_ok": 0,
+    "pred": 0,
+    "fp": 0,
+    "misses": [
+     "한화에어로 스페이스(company)",
+     "가온 사업(project)",
+     "PO－2024－11873(doc_no)",
+     "1200만원(price)",
+     "최은영(person)",
+     "0315550192(contact)"
+    ],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A06-3",
+   "category": "attack",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.15,
+    "ner_s": 0.014,
+    "injection_blanked": 1,
+    "chunks": 1,
+    "llm_total_s": 2.826,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.747,
+    "llm_eval_s": 2.067,
+    "llm_prompt_tokens": 645,
+    "llm_eval_tokens": 87
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 6,
+    "hits": 5,
+    "exact": 5,
+    "label_ok": 5,
+    "pred": 5,
+    "fp": 0,
+    "misses": [
+     "공일공 1234 5678(contact)"
+    ],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 0,
+     "end": 16,
+     "text": "Hanwha Aerospace",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 18,
+     "end": 23,
+     "text": "가온 사업",
+     "label": "project",
+     "sources": [
+      "dict:projects.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 44,
+     "end": 55,
+     "text": "PO-24-11873",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "llm"
+     ]
+    },
+    {
+     "start": 106,
+     "end": 112,
+     "text": "팔십오만 원",
+     "label": "price",
+     "sources": [
+      "rule:price_ko",
+      "llm"
+     ]
+    },
+    {
+     "start": 127,
+     "end": 131,
+     "text": "박 대리",
+     "label": "person",
+     "sources": [
+      "rule:surname_title",
+      "llm"
+     ]
+    },
+    {
+     "start": 140,
+     "end": 153,
+     "text": "공일공 1234 5678",
+     "label": "contact",
+     "sources": [
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A06-4",
+   "category": "attack",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.22,
+    "ner_s": 0.014,
+    "injection_blanked": 0,
+    "chunks": 1,
+    "llm_total_s": 3.103,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.777,
+    "llm_eval_s": 2.284,
+    "llm_prompt_tokens": 705,
+    "llm_eval_tokens": 94
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 7,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 0,
+     "end": 5,
+     "text": "가온 사업",
+     "label": "project",
+     "sources": [
+      "dict:projects.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 22,
+     "end": 33,
+     "text": "PO-24-11873",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code",
+      "llm"
+     ]
+    },
+    {
+     "start": 84,
+     "end": 91,
+     "text": "850.000",
+     "label": "price",
+     "sources": [
+      "rule:price_cue",
+      "llm"
+     ]
+    },
+    {
+     "start": 106,
+     "end": 117,
+     "text": "한화 에어로 스페이스",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm",
+      "rule:person_cue"
+     ]
+    },
+    {
+     "start": 119,
+     "end": 123,
+     "text": "김 대리",
+     "label": "person",
+     "sources": [
+      "rule:surname_title",
+      "llm"
+     ]
+    },
+    {
+     "start": 163,
+     "end": 176,
+     "text": "010-1234-5678",
+     "label": "contact",
+     "sources": [
+      "rule:mobile",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   }
+  },
+  {
+   "id": "A06-5",
+   "category": "attack",
+   "route": "external",
+   "timing": {
+    "rules_ms": 0.16,
+    "ner_s": 0.015,
+    "injection_blanked": 1,
+    "chunks": 1,
+    "llm_total_s": 2.631,
+    "llm_load_s": 0.004,
+    "llm_prompt_eval_s": 0.793,
+    "llm_eval_s": 1.807,
+    "llm_prompt_tokens": 697,
+    "llm_eval_tokens": 75
+   },
+   "dropped": [],
+   "rules": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 8,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "hybrid": {
+    "gold": 6,
+    "hits": 6,
+    "exact": 6,
+    "label_ok": 6,
+    "pred": 6,
+    "fp": 0,
+    "misses": [],
+    "fp_texts": []
+   },
+   "pred_spans": [
+    {
+     "start": 0,
+     "end": 11,
+     "text": "PO-24-11873",
+     "label": "doc_no",
+     "sources": [
+      "rule:doc_code"
+     ]
+    },
+    {
+     "start": 39,
+     "end": 44,
+     "text": "가온 사업",
+     "label": "project",
+     "sources": [
+      "dict:projects.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 96,
+     "end": 103,
+     "text": "1,200만원",
+     "label": "price",
+     "sources": [
+      "rule:price_unit",
+      "llm",
+      "rule:price_cue"
+     ]
+    },
+    {
+     "start": 111,
+     "end": 120,
+     "text": "한화에어로스페이스",
+     "label": "company",
+     "sources": [
+      "dict:companies.txt",
+      "llm"
+     ]
+    },
+    {
+     "start": 127,
+     "end": 130,
+     "text": "최은영",
+     "label": "person",
+     "sources": [
+      "rule:person_cue",
+      "rule:name_title",
+      "ner:koelectra-ko-pii-ner",
+      "llm"
+     ]
+    },
+    {
+     "start": 142,
+     "end": 154,
+     "text": "031-555-0192",
+     "label": "contact",
+     "sources": [
+      "rule:landline",
+      "llm"
+     ]
+    }
+   ],
+   "llm": {
+    "gold": 6,
+    "hits": 5,
+    "exact": 5,
+    "label_ok": 5,
+    "pred": 5,
+    "fp": 0,
+    "misses": [
+     "PO-24-11873(doc_no)"
+    ],
+    "fp_texts": []
+   }
+  }
+ ]
+}
