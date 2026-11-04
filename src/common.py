@@ -1,5 +1,6 @@
 """공통 유틸: 경로, Ollama 호출, 구간(span) 자료형, 통계."""
 import json
+import os
 import sys
 import time
 import urllib.error
@@ -16,7 +17,10 @@ RESULTS = ROOT / "results"
 OLLAMA = "http://127.0.0.1:11434"
 LLM_MODEL = "qwen3:30b-a3b-instruct-2507-q4_K_M"
 DECISION_MODEL = "tev1-cpu"
-KEEP_ALIVE = "30m"
+# 요청마다 Ollama 에 넘기는 keep_alive. 요청 값이 서버 환경변수 OLLAMA_KEEP_ALIVE 보다 우선하므로, 상시 가동(ops/)에서는
+# MODEL_KEEP_ALIVE=-1 로 세 모델을 내리지 않는다(내려가면 30B 첫 호출이 14~17초). 숫자는 초(음수 = 무기한), 문자열은 "30m" 같은 기간.
+_keep_alive = os.environ.get("MODEL_KEEP_ALIVE", "30m").strip() or "30m"
+KEEP_ALIVE = int(_keep_alive) if _keep_alive.lstrip("-").isdigit() else _keep_alive
 
 LABELS = ["company", "project", "doc_no", "price", "person", "contact", "biz_no", "other"]
 LABEL_KO = {

@@ -15,8 +15,10 @@ __pycache__/
 /*.md
 !/README.md
 
-# 비밀
+# 비밀 (ops/service.env 의 실제 파일은 %LOCALAPPDATA%\woowang 에 둔다)
 .env
+*.env
+!ops/service.env.example
 *.key
 
 # Office 임시 파일
