@@ -52,6 +52,7 @@ WOOWANGTHON_TEAM_03_AI/
 │     ├─ night_run.py ~ night_run4.py  밤 배치 실험: 라우팅 반복, 지연, few-shot 효과, 동시 호출, 긴 글, 프롬프트 3종, NER, RAG 게이트, M 모드
 │     ├─ md2pdf.py                  md → PDF (Word COM). 팀 문서는 md 와 pdf 를 같이 둔다
 │     └─ export_pptx.py, build_flow_pptx.py, build_flow_b2_pptx.py  흐름도 pptx 생성과 PNG/PDF 내보내기 (PowerPoint COM)
+├─ ops/                             집 PC 상시 가동: 작업 스케줄러 등록(설치·제거), 감시, 상태 보기, 재시작 스크립트. 설명은 ops/README.md
 └─ docs/                            팀 문서. PDF 는 공유용으로만 만들고 저장소에는 두지 않는다
    ├─ 모델 서비스 API v1 (2026-11-03).md       백엔드용 HTTP 명세: 경로별 입출력, 실패 동작, 시간, ⑥ 로그 DB 저장 대응
    ├─ 모델 설명서 (2026-10-31).html            단계별 모델 동작, 규칙 전체 목록, 데모 결과, 한계, 예상 질문
@@ -85,6 +86,18 @@ $env:ANTHROPIC_API_KEY = "<외부 LLM 키>"             # /answer_external 용. 
 ```
 
 백엔드가 부르는 경로와 응답 형식은 `docs/모델 서비스 API v1 (2026-11-03).md` 에 있다. 요청 하나의 순서는 접수 때 `/detect/instant`(수십 ms, 1차 카드) → 배경에서 `/analyze`(1~8초, 결정·가림 미리보기) → 승인 뒤 `/answer_external` 또는 `/answer_local` 이다.
+
+## 상시 가동 (집 PC 운영)
+
+연동·심사 기간에는 위 2) 를 손으로 띄우지 않고 `ops/` 로 작업 스케줄러에 등록해 둔다. 부팅 때 로그인 없이 Ollama 와 모델 서비스가 뜨고, 5분마다 감시가 상태를 기록하고 죽으면 다시 띄운다. 키·경로는 저장소 밖 `%LOCALAPPDATA%\woowang\service.env` 에 둔다.
+
+```powershell
+powershell -ExecutionPolicy Bypass -File ops\install_always_on.ps1   # 관리자, 한 번
+powershell -ExecutionPolicy Bypass -File ops\status.ps1              # 상태·heartbeat 요약
+powershell -ExecutionPolicy Bypass -File ops\restart.ps1             # 코드 갱신 뒤 (관리자)
+```
+
+자세한 구성·로그 위치·되돌리기는 `ops/README.md`.
 
 ## 코드와 전체 흐름도 대응
 
@@ -136,5 +149,6 @@ $env:ANTHROPIC_API_KEY = "<외부 LLM 키>"             # /answer_external 용. 
 - TK-37 AI 저장소 초기 등록: https://app.notion.com/p/ad50622a602b4a03a006a166764e4f38
 - TK-31 집 PC 모델 서비스(FastAPI) 포장: https://app.notion.com/p/f1ef2c7e78c84a1cad528beef7ea71ba
 - TK-32 사내 답변 /answer_local 구현: https://app.notion.com/p/4f8f3a8f87c84d5a82e4061e2339c856
+- TK-48 집 PC 상시 가동 설정: https://app.notion.com/p/40e3c6fc5e82812f89e3dc5b0d7bb8f5
 - DC-9 모델 서비스 배치(집 PC FastAPI + Tailscale): https://app.notion.com/p/419f17e213c0462c9dee01c471f32f87
 - AI Agent 개발 지침: https://app.notion.com/p/4033c6fc5e8280a38dd6fd42c3f3c31d
