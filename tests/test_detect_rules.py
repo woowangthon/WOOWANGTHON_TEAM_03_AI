@@ -20,6 +20,22 @@ def test_business_and_resident_numbers():
     assert ("biz_no", "123-45-67890") in got and ("biz_no", "900101-1234567") in got
 
 
+def test_hotline_and_voip_numbers_are_contacts():
+    got = pairs("고객센터 1566-0000 · 1588-1234, 인터넷전화 070-7777-1234, 수신자부담 080-123-4567, 안심번호 0505-1234-5678")
+    assert {("contact", "1566-0000"), ("contact", "1588-1234"), ("contact", "070-7777-1234"),
+            ("contact", "080-123-4567"), ("contact", "0505-1234-5678")} <= got
+
+
+def test_year_time_and_count_ranges_are_not_hotlines():
+    got = pairs("1950-1999년 자료, 1600-1800시 사이, 1500-2000명 참가, 1800-2400원 구간, 품번 1700-1234")
+    assert not [p for p in got if p[0] == "contact"]
+
+
+def test_area_codes_with_parentheses():
+    got = pairs("서울 (02) 555-0198, 대전 042)123-4567, 충북 043-222-1234, 경기 031-777-0215")
+    assert {("contact", "02) 555-0198"), ("contact", "042)123-4567"), ("contact", "043-222-1234"), ("contact", "031-777-0215")} <= got
+
+
 def test_document_codes_including_fullwidth_digits():
     got = pairs("도면 DWG-2025-0417, 품번 BRK-1120-03A, 전각 BRK－1120－03A, 로트 L240918-07")
     assert {("doc_no", "DWG-2025-0417"), ("doc_no", "BRK-1120-03A"), ("doc_no", "BRK－1120－03A"), ("doc_no", "L240918-07")} <= got

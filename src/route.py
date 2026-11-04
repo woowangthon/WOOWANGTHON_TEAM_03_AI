@@ -1,7 +1,8 @@
 """라우팅: tev1 결정 모델(/v1/systemone)에 choice 1문항을 던져 local / external / block 중 하나를 고른다.
 
 기준 문구(criteria)에 따라 확률이 흔들리므로 3안을 두고 평가한다 (VARIANTS).
-route(text, variant) -> {"choice", "probabilities", "confidence", "seconds", "input_tokens"}
+route(text, variant) -> {"choice", "probabilities", "confidence", "seconds", "input_tokens", "state_chars", "truncated"}
+글이 ROUTE_MAX_CHARS를 넘으면 앞부분만 tev1에 보낸다(route_state).
 """
 import sys
 
@@ -59,13 +60,30 @@ VARIANTS = {
 
 
 DEFAULT_VARIANT = "v1_en_capability"  # 10-29 밤 배치: 샘플 10개에서 v1 10/10, v3 9/10, v2 7/10
+# 11-05 재측정(results/route_check_20261105_*, route_longdoc_20261105.md): v1은 샘플 10/10·시연 4/6(D5·D6는 결정 규칙이 바로잡음).
+# v3은 11쪽 금융 보고서의 번역·요약 요청을 외부로 보내지만 S01·S04·D4가 사내로 틀어져 기본값은 v1을 유지한다.
+
+# tev1 컨텍스트는 8,192토큰. 한국어 문서는 약 2자/토큰이라 16,679자(RS-6, 11쪽)가 8,355토큰이 되어 HTTP 400이 났고, 그러면 서버는
+# 축소 모드·사내 폴백으로 빠진다. 경로 판정에 필요한 것은 요청 문장과 문서의 성격이므로 앞부분만 보낸다(지시문은 항상 글 앞에 있다).
+# 6,000자 ≈ 3,200토큰, 약 6초. 1,500~9,000자 사이에서 판정은 같았다.
+ROUTE_MAX_CHARS = 6000
+
+
+def route_state(text: str, limit: int = ROUTE_MAX_CHARS) -> str:
+    """tev1에 보낼 글. limit를 넘으면 앞부분만 남기고(가능하면 줄 끝에서 끊어) 생략 표시를 붙인다."""
+    if len(text) <= limit:
+        return text
+    cut = text.rfind("\n", limit // 2, limit)
+    head = text[:cut if cut > 0 else limit].rstrip()
+    return f"{head}\n…(이하 생략, 전체 {len(text):,}자)"
 
 
 def route(text: str, variant: str = DEFAULT_VARIANT, model: str = DECISION_MODEL):
     q = VARIANTS[variant]
+    state = route_state(text)
     body = {
         "model": model,
-        "state": text,
+        "state": state,
         "questions": {"route": {"type": "choice", "instructions": q["instructions"], "criteria": q["criteria"]}},
         "keep_alive": KEEP_ALIVE,
     }
@@ -77,6 +95,8 @@ def route(text: str, variant: str = DEFAULT_VARIANT, model: str = DECISION_MODEL
         "confidence": round(float(a.get("confidence", 0)), 4),
         "seconds": round(secs, 3),
         "input_tokens": resp.get("usage", {}).get("input_tokens"),
+        "state_chars": len(state),
+        "truncated": len(text) > ROUTE_MAX_CHARS,
     }
 
 

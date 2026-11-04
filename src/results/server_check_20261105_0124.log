@@ -1,0 +1,41 @@
+INFO:     Started server process [6600]
+INFO:     Waiting for application startup.
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 11176.95it/s]
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8010 (Press CTRL+C to quit)
+INFO:     127.0.0.1:57765 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57766 - "GET /status HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:57767 - "GET /status HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:57768 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57770 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57771 - "POST /detect/instant HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57773 - "POST /detect/instant HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57774 - "POST /detect/instant HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57775 - "POST /detect/instant HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57776 - "POST /detect/instant HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57777 - "POST /detect/instant HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57778 - "POST /detect/instant HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:57779 - "POST /detect/instant HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:57780 - "POST /analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57790 - "POST /restore HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57791 - "POST /analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57801 - "POST /restore HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57802 - "POST /analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57812 - "POST /restore HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57813 - "POST /analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57823 - "POST /restore HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57824 - "POST /analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51527 - "POST /restore HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51528 - "POST /analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51539 - "POST /restore HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51540 - "POST /analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51544 - "POST /analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51545 - "POST /analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51564 - "POST /analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51574 - "POST /mask HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51575 - "POST /answer_local HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51582 - "POST /answer_external HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:51583 - "POST /embed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51592 - "POST /dict/reload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51593 - "POST /mask HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:51594 - "GET /status HTTP/1.1" 200 OK

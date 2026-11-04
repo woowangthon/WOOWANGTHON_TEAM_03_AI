@@ -24,7 +24,7 @@ WOOWANGTHON_TEAM_03_AI/
 │  ├─ ner_detect.py                 공개 한국어 NER(atonlee/koelectra-ko-pii-ner, CPU)로 사람 이름만. 흐름도 ②
 │  ├─ detect_llm.py                 Ollama 30B(qwen3:30b-a3b-instruct) JSON 스키마 구간 추출, 원문 포함 검사. 흐름도 2-1
 │  ├─ detect.py                     즉시 경로와 30B 결과 병합·전파·다듬기, 지시 삽입 문장 지우기, 구분자 감싸기, 긴 글 분할. detect(text)
-│  ├─ route.py                      tev1(/v1/systemone)에 기준 문구를 주고 사내·외부·차단 확률. 흐름도 3.1 → ③
+│  ├─ route.py                      tev1(/v1/systemone)에 기준 문구를 주고 사내·외부·차단 확률. 글이 길면 앞 6,000자만 보낸다. 흐름도 3.1 → ③
 │  ├─ decide.py                     결정 규칙: 개인정보 묶음·통째 유출 차단, 내부 전용 사내 강제, 애매 판정, 승인 카드 필요 여부. 흐름도 ④
 │  ├─ mask.py                       자리표 가림, 등급 정책(1 항상·2 이름 토글·3 비가림), 복원, 외부 안내문. 흐름도 ⑤
 │  ├─ answer_external.py            Anthropic API(claude-sonnet-5-5) 호출: 전송 직전 유출 검사, 답변 자리표 복원, 거부·비용 추정. 흐름도 4.2
