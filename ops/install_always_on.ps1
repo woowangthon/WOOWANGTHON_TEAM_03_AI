@@ -159,7 +159,8 @@ $principalHighest = New-ScheduledTaskPrincipal -UserId $user -LogonType S4U -Run
 $trigOllama = New-ScheduledTaskTrigger -AtStartup; $trigOllama.Delay = 'PT30S'
 $trigService = New-ScheduledTaskTrigger -AtStartup; $trigService.Delay = 'PT45S'
 $trigWatchBoot = New-ScheduledTaskTrigger -AtStartup; $trigWatchBoot.Delay = 'PT3M'
-$trigWatchRepeat = New-ScheduledTaskTrigger -Once -At (Get-Date).Date -RepetitionInterval (New-TimeSpan -Minutes 5) -RepetitionDuration ([TimeSpan]::MaxValue)
+# [TimeSpan]::MaxValue 는 P99999999D... 로 바뀌어 Windows 11 에서 등록이 거부된다(0x80041318). 사실상 무기한인 10년을 쓴다.
+$trigWatchRepeat = New-ScheduledTaskTrigger -Once -At (Get-Date).Date -RepetitionInterval (New-TimeSpan -Minutes 5) -RepetitionDuration (New-TimeSpan -Days 3650)
 
 foreach ($name in @($script:OpsTaskOllama, $script:OpsTaskService, $script:OpsTaskWatchdog)) {
     if (Get-OpsTask $name) { Stop-ScheduledTask -TaskPath $script:OpsTaskPath -TaskName $name -ErrorAction SilentlyContinue; Unregister-ScheduledTask -TaskPath $script:OpsTaskPath -TaskName $name -Confirm:$false }
