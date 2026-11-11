@@ -1,9 +1,12 @@
 """detect.py 의 순수 함수: 긴 글 분할, 지시 삽입 문장 지우기, 30B 구간 상식 필터, 병합, 다듬기, 전파, 프롬프트 선택.
-30B 호출 자체(detect(use_llm=True))는 Ollama 가 필요해 여기서 다루지 않는다."""
+30B 호출 자체는 Ollama 가 필요해 여기서 다루지 않고, detect() 의 조립 순서는 30B·NER 을 가짜로 바꿔 확인한다."""
+import detect as detect_mod
+from answer_external import leak_check
 from common import Span
 from detect import (blank_injections, context_filter, merge_spans, prompt_for, propagate, sanity_filter, split_chunks,
                     trim_spans)
 from detect_llm import SYSTEM_PROMPT
+from mask import mask
 
 
 def sp(text, sub, label, sources, nth=0):
@@ -72,10 +75,37 @@ def test_propagate_adds_other_occurrences_of_dictionary_terms():
     assert len(out) == 3 and all(s.label == "company" for s in out) and out[1].sources == ["propagate"]
 
 
-def test_propagate_skips_llm_only_projects_and_frequent_terms():
-    text = " ".join(["규격 구절"] * 12)
-    assert len(propagate(text, [sp(text, "규격 구절", "project", ["llm"])])) == 1
-    assert len(propagate(text, [sp(text, "규격 구절", "company", ["llm"])])) == 1  # 사전 밖 표기가 10회 넘으면 전파하지 않는다
+def test_propagate_covers_every_occurrence_whatever_the_label_source_or_count():
+    # 일부만 가리면 전송 직전 유출 검사가 요청 전체를 막는다. 11-11 K-49: 쪽 머리말이 18회 중 4회만 가려졌다
+    text = "\n".join(f"K-49 | {n:02d}/18 본문" for n in range(1, 19))
+    out = propagate(text, [sp(text, "K-49", "project", ["llm"]), sp(text, "K-49", "doc_no", ["llm"], nth=3)])
+    assert len(out) == 18 and [s.sources for s in out[2:]] == [["propagate"]] * 16
+    m = mask(text, out)
+    assert "K-49" not in m["masked"] and leak_check(m["masked"], m["mapping"]) == []
+
+
+def test_detect_covers_what_the_llm_returned_in_one_chunk_only(monkeypatch):
+    """긴 글은 조각마다 30B를 따로 부른다. 한 조각에서만 돌아온 표기도, 다듬기로 짧아진 표기도 문서 전체에서 가려져야 한다."""
+    filler = "가나다라마바사 " * 400 + "\n"  # 쪽 하나가 조각 하나(3,600자)에 들어가는 길이
+    pages = [f"K-49 | {n:02d}/04\n" + ("검토 남궁민수 부장\n" if n == 1 else "") + filler for n in range(1, 5)]
+    text = "".join(pages) + "남궁민수 드림\n"
+    calls = []
+
+    def fake_llm(wrapped, system_prompt=None, **kw):
+        calls.append(wrapped)
+        if len(calls) > 1:  # 첫 조각에서만 돌려준다
+            return [], {}
+        found = (("K-49", "project"), ("남궁민수 부장", "person"))
+        return [Span(wrapped.index(t), wrapped.index(t) + len(t), t, label, ["llm"]) for t, label in found], {}
+
+    monkeypatch.setattr(detect_mod, "detect_llm", fake_llm)
+    monkeypatch.setattr(detect_mod, "ner_detect", lambda text, labels=None: ([], {}))
+    spans = detect_mod.detect(text)["spans"]
+    assert len(calls) > 1
+    m = mask(text, spans, {"mask_person": True})
+    assert leak_check(m["masked"], m["mapping"]) == []
+    assert "K-49" not in m["masked"] and "남궁민수" not in m["masked"]
+    assert "[[PERSON_1]] 부장" in m["masked"] and "[[PERSON_1]] 드림" in m["masked"]  # 직함은 남는다
 
 
 def test_prompt_for_modes():
