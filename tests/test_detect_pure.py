@@ -114,3 +114,16 @@ def test_prompt_for_modes():
     c = prompt_for(rules, "C")
     assert c.startswith(SYSTEM_PROMPT) and "KX-3(project)" in c and "규칙이 놓친" in c
     assert "없음" in prompt_for([], "C")
+
+
+def test_sanity_filter_drops_common_words_the_llm_called_people():
+    llm = lambda text: Span(0, len(text), text, "person", ["llm"])  # noqa: E731
+    keep = sanity_filter([llm("변경사항"), llm("대조하여"), llm("항목은"), llm("나지아"), llm("이영철 부장"), llm("J. Park")])
+    assert [s.text for s in keep] == ["나지아", "이영철 부장", "J. Park"]
+
+
+def test_sanity_filter_drops_standards_and_dates_labelled_as_registration_numbers():
+    # 11-11 K-53: 30B 가 'ISO 9001' 을 사업자번호로 냈고 전파로 4개가 되어 개인정보 묶음 차단 조건(3개)에 걸렸다
+    llm = lambda text: Span(0, len(text), text, "biz_no", ["llm"])  # noqa: E731
+    keep = sanity_filter([llm("ISO 9001"), llm("2026-11-18"), llm("3회"), llm("123-45-67890"), llm("900101-1234567"), llm("1234567890")])
+    assert [s.text for s in keep] == ["123-45-67890", "900101-1234567", "1234567890"]

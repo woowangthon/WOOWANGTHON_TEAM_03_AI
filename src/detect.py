@@ -121,6 +121,8 @@ def sanity_filter(llm_spans):
             continue  # 'form 4C' 같은 짧은 표식 (E03-3)
         if sp.label in ("contact", "price", "doc_no") and (EN_DATE.match(t) or DATE_RE.match(t)):
             continue  # 영문·숫자 날짜
+        if sp.label == "biz_no" and (len(re.sub(r"\D", "", t)) < 8 or DATE_RE.match(t) or STD_REF.search(t)):
+            continue  # 사업자·주민번호 꼴이 아닌 것. 30B 가 'ISO 9001'·날짜를 이 라벨로 냈고, 3개가 넘으면 요청이 차단된다 (11-11 K-52·K-53)
         if sp.label == "person" and not _person_ok(t):
             continue  # 표 머리말·일반명사('예정일', '담당자')를 이름으로 낸 것 (11-01 TEST-01). 규칙 층과 같은 목록
         keep.append(sp)

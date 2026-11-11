@@ -77,3 +77,33 @@ def test_dictionary_ignores_spaces_and_drops_contained_alias(temp_dict):
 def test_normalize_keeps_length_and_maps_fullwidth():
     s = "ＢＲＫ－１１２０　ａ–ｂ"
     assert len(normalize(s)) == len(s) and normalize(s) == "BRK-1120 a-b"
+
+
+def test_common_words_after_person_cue_are_not_names():
+    # 11-11 K-51~53: 단서어 뒤의 일반 낱말을 이름으로 잡았고 전파가 문서 전체로 퍼뜨렸다
+    got = pairs("생산기술 담당은 변경사항의 적용범위를 확인하였다. 별도 담당자가 대조하여 누락된 이동 기록을 처리하였다. "
+                "장비 담당자가 현품 위치변경을 작업대장에 기입했다. 미정리 항목은 책임 작업자에게 재확인을 요청하였다. "
+                "생산 책임자\n승인담당 확인 후 차기 작업에 적용하도록 정리했다. 승인 범위를 과장하지 않는다.")
+    assert not [p for p in got if p[0] == "person"]
+
+
+def test_names_in_table_cells_keep_their_surname():
+    got = pairs("현장 담당   강미온   작업배치\n계측자   노유원   조치 검토\n실무 검수자   주연담   추가 분석\n"
+                "담당 이다희 대리, 담당 이민수(품질팀), 검토자 허준 과장, 담당자는 나지아입니다.")
+    assert {("person", "강미온"), ("person", "노유원"), ("person", "주연담"), ("person", "이다희"), ("person", "이민수"),
+            ("person", "허준"), ("person", "나지아")} <= got
+    assert ("person", "다희") not in got and ("person", "민수") not in got
+
+
+def test_person_shape_check_keeps_names_and_titles():
+    for ok in ("나지아", "해도준", "남궁민수", "허준", "박 대리", "김철수님", "Kim Minsoo", "박지훈 대리"):
+        assert dr._person_ok(ok), ok
+    for bad in ("변경사항", "대조하여", "승인담당", "항목은", "범위를", "확인하지"):
+        assert not dr._person_ok(bad), bad
+
+
+def test_letter_letter_number_codes_are_doc_numbers():
+    # 11-11 K-51: 작업지시 번호 18개 중 하나를 30B 가 놓쳤고 이 꼴은 규칙이 없었다
+    got = pairs("작업지시 번호   HFQ-WO-118   전표 대조, 결함 기호 NC-HFQ-214, 기준 IPC-A-610 및 MIL-STD-810")
+    assert {("doc_no", "HFQ-WO-118"), ("doc_no", "NC-HFQ-214")} <= got
+    assert not [p for p in got if p[1] in ("IPC-A-610", "MIL-STD-810")]

@@ -44,3 +44,8 @@ def test_api_key_check():
 def test_span_out_adds_tier():
     assert server.span_out(Span(0, 4, "KX-3", "project", ["dict:projects.txt"]))["tier"] == 1
     assert server.span_out({"start": 0, "end": 3, "text": "김지영", "label": "person", "sources": []})["tier"] == 2
+
+
+def test_answer_external_default_limit_leaves_room_for_long_answers():
+    # 11-11 K-52: 18쪽 전체 번역이 8192 토큰 상한에서 잘려 실패했다
+    assert server.AnswerExternalIn(masked="[[ORG_1]]", mapping={"[[ORG_1]]": "a"}).max_tokens == 16000
