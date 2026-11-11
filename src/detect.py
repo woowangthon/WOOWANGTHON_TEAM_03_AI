@@ -160,26 +160,21 @@ def trim_spans(text: str, spans):
 
 
 def propagate(text: str, spans):
-    """회사·사업·사람 구간의 핵심 표기(법인 접두어 제거)를 본문 전체에서 찾아 빠진 자리도 구간으로 추가.
-    D3: 30B가 '(주)한빛에어로'만 돌려줘 두 번째 '한빛에어로'가 가려지지 않았다."""
-    extra, covered = [], [(s.start, s.end) for s in spans]
+    """구간의 표기를 본문 전체에서 찾아 빠진 자리도 같은 라벨의 구간으로 추가한다. 다듬기(trim_spans) 뒤에 부른다.
+    한 표기를 일부만 가리면 가림 대응표의 값이 전송문에 남아, 전송 직전 유출 검사(answer_external.leak_check)가 요청 전체를 막는다(409).
+    그래서 라벨·출처·출현 횟수로 건너뛰지 않는다. 30B 오탐이 문서 전체로 퍼져 과하게 가려질 수는 있어도 요청은 처리된다.
+    11-11 K-49(18쪽·8조각): 30B가 쪽 머리말 'K-49'를 앞 4조각에서만 돌려줘 18회 중 4회만 가려졌고 승인 뒤 전송이 막혔다.
+    그 전에는 회사·사람·사전 사업명만 퍼뜨리고 사전 밖 표기가 10회를 넘으면 건너뛰었다(10-29 밤 배치의 전파 오탐 대책이었다)."""
+    extra, covered, done = [], [(s.start, s.end) for s in spans], set()
     for sp in spans:
-        if sp.label not in ("company", "project", "person"):
+        surface = sp.text.strip()
+        if len(surface) < 2 or surface in done:
             continue
-        llm_only = all(src.startswith("llm") for src in sp.sources)
-        if sp.label == "project" and llm_only:
-            continue  # 30B가 영문 규격 구절을 project로 라벨하면 반복 문단마다 퍼졌다(밤 배치 3 ⑥: 전파 오탐 212). 사업명은 사전으로.
-        core = CORP_PREFIX.sub("", sp.text).strip()
-        if len(core) < 2 or len(core) > 30:
-            continue
-        occ = find_all(text, core)
-        trusted = any(src.startswith("dict") for src in sp.sources)
-        if not trusted and len(occ) > 10:
-            continue  # 사전 등록어가 아닌데 10회 넘게 나오면 상용구·기술 용어일 가능성(45k자 문서에서 NER 오탐 '염수분무' 20회 전파)
-        for s, e in occ:
+        done.add(surface)
+        for s, e in find_all(text, surface):
             if any(a <= s and e <= b for a, b in covered):
                 continue
-            extra.append(Span(s, e, core, sp.label, ["propagate"]))
+            extra.append(Span(s, e, surface, sp.label, ["propagate"]))
             covered.append((s, e))
     return spans + extra
 
@@ -260,10 +255,11 @@ def detect(text: str, use_rules: bool = True, use_llm: bool = True, prompt_mode:
             warnings.append("정밀 검사(30B) 호출 실패 → 규칙 결과만 적용: " + errors[0][:120])
         if any(m.get("truncated") for m in metas):
             warnings.append("정밀 검사 출력이 생성 상한에서 끊김 → 구간 일부가 빠졌을 수 있음")
-    merged = merge_spans(propagate(text, merge_spans(rule_spans + llm_spans)))
+    merged = trim_spans(text, merge_spans(rule_spans + llm_spans))
+    # 다듬은 뒤의 표기('(주)'·직함을 뗀 꼴)가 가림 대응표의 값이 되므로 전파는 다듬기 뒤에 한다
+    merged = merge_spans(propagate(text, merged))
     for sp in merged:
         sp.text = text[sp.start:sp.end]
-    merged = trim_spans(text, merged)
     return {
         "spans": merged,
         "rule_spans": rule_spans,
