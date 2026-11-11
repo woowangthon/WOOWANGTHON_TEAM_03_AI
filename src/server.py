@@ -198,7 +198,7 @@ class AnswerExternalIn(BaseModel):
     request_id: str | None = Field(default=None, max_length=64)
     model: str = EXTERNAL_MODEL
     effort: str = Field(default="medium", pattern="^(low|medium|high|xhigh|max)$")
-    max_tokens: int = Field(default=8192, ge=256, le=32000)
+    max_tokens: int = Field(default=16000, ge=256, le=32000)
     fallback: bool = True
 
     @model_validator(mode="after")

@@ -22,7 +22,7 @@ from mask import PLACEHOLDER_RE, instruction_for_external, mask, restore
 
 MODEL = os.environ.get("EXTERNAL_MODEL", "claude-sonnet-5-5")
 EFFORT = os.environ.get("EXTERNAL_EFFORT", "medium")   # low | medium | high | xhigh | max
-MAX_TOKENS = 8192
+MAX_TOKENS = 16000
 TIMEOUT_S = 180
 FALLBACK_BETA = "server-side-fallback-2026-07-01"
 # USD / 1M 토큰 (입력, 출력, 캐시 읽기). 2026-10 가격표 기준 추정용. 실제 청구는 Console 에서 본다

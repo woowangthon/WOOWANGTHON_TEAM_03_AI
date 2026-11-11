@@ -15,6 +15,7 @@ import re
 import sys
 
 from common import DICT_DIR, Span, utf8_stdout
+from ner_detect import SURNAMES, SURNAMES2
 
 # ---------- 정규화 (길이 보존) ----------
 _NORM = {c: c - 0xFEE0 for c in range(0xFF01, 0xFF5F)}  # 전각 ！..～ → 반각 !..~ (숫자·영문·'－' 포함)
@@ -30,7 +31,7 @@ def normalize(text: str) -> str:
 
 TITLES = r"(?:과장|대리|부장|차장|사원|팀장|주임|이사|상무|전무|책임|수석|선임|매니저|연구원|기사)"
 # 공개 규격 번호 접두: 식별번호로 잡지 않는다
-STD_PREFIX = re.compile(r"^(?:ISO|IEC|ASTM|AWS|MIL|KS|EN|DIN|JIS|SAE|NAS|AMS|MS|STD|AN|ANSI|API|NADCAP|AS|AQAP|KDS)(?![A-Z])", re.I)
+STD_PREFIX = re.compile(r"^(?:ISO|IEC|ASTM|AWS|MIL|KS|EN|DIN|JIS|SAE|NAS|AMS|MS|STD|AN|ANSI|API|NADCAP|AS|AQAP|KDS|IPC|WHMA|IEEE)(?![A-Z])", re.I)
 VERB_ENDINGS = ("니다", "세요", "해요", "하며", "하고", "한다", "했다", "된다", "되며", "드림", "바람", "요망", "주세요", "십시오")
 
 # (이름, 라벨, 정규식). 캡처 그룹이 있으면 그룹 1이 구간, 없으면 전체 매치가 구간.
@@ -62,6 +63,8 @@ RULES = [
     ("part_code", "doc_no", re.compile(r"(?<![A-Z0-9-])(?<!모델 )(?<!model )(?<!Model )(?<!기종 )[A-Z]{1,3}-\d{3,5}(?![A-Z0-9-])")),  # 앞에 '-'(MIL-A-8625의 A-8625)나 '모델 '(설비 모델 Z-300, 사내 L04-5)이 있으면 제외
     # 연도 접두: 2024-DR-887
     ("doc_code_rev", "doc_no", re.compile(r"(?<![A-Z0-9])\d{4}-[A-Z]{1,4}-\d{2,5}(?![A-Z0-9])")),
+    # 글자-글자-숫자: HFQ-WO-118, NC-HFQ-214 (11-11 K-51: 작업지시 번호 18개 중 하나를 30B 가 놓쳤고 이 꼴은 규칙이 없었다)
+    ("doc_code_alpha", "doc_no", re.compile(r"(?<![A-Z0-9])[A-Z]{2,4}-[A-Z]{1,4}-\d{2,5}[A-Z]?(?![A-Z0-9])")),
     # 로트번호 꼴: L240918-07, LOT-20240918
     ("lot_code", "doc_no", re.compile(r"(?<![A-Z0-9])(?:LOT|Lot|L)[- ]?\d{4,8}(?:-\d{1,3})?(?![A-Z0-9])")),  # Lot 12345, Lot 8832-19 (10-30)
     # 단서어 뒤의 식별번호: 도면번호 ABC-123, 품번 BRK112003A, 개정 번호 2024-DR-887, 프로젝트 ID: HS-2024-087
@@ -88,8 +91,8 @@ RULES = [
         r"(?<![가-힣\d])[일이삼사오육칠팔구십백천]+(?:만|억)(?:\s*[일이삼사오육칠팔구십백천]+(?:만)?)?\s*원(?=$|[^가-힣]|[이가은는을를과와도만에으])")),
     # 사람: 단서어 + (조사 | 콜론 | 공백) + 2~4자 한글 이름 + (직함 | 괄호 | 쉼표 ...)
     ("person_cue", "person", re.compile(
-        r"(?:담당자|담당|작성자|작성|보고자|승인자|검토자|검사자|확인자|책임자|기안자)"
-        r"(?:\s*(?:은|는|이|가|께서)\s*|\s*[:：]\s*|\s+)([가-힣]{2,4})"
+        r"(?:담당자|담당|작성자|작성|보고자|승인권자|승인자|검토자|검사자|검수자|검증자|계측자|확인자|책임자|기안자|기록자|발행자|수신자|조작자|실행자)"
+        r"(?:(?:은|는|이|가|께서)\s*|\s*[:：]\s*|\s+)([가-힣]{3,4}|[가-힣]{2}(?=\s*(?:" + TITLES + r"|님|\()))"
         r"(?=\s*(?:" + TITLES + r"|님|의|입니다|이며|이고|이다|이라|에게|께서|한테|\(|,|\.|$|\s))")),
     # 3자 이름 + 직함: 최은영 과장 (직함 뒤에 '점·급·직·실·회·증'이 붙으면 대리점·과장급 같은 일반명사라 제외)
     ("name_title", "person", re.compile(r"(?<![가-힣])([가-힣]{3})\s" + TITLES + r"(?![점급직실회증])")),
@@ -97,6 +100,10 @@ RULES = [
     ("surname_title", "person", re.compile(r"(?<![가-힣])([가-힣]\s" + TITLES + r")(?![점급직실회증])")),
 ]
 PARTICLES = "은는이가을를의도로과와께"
+NAME_ONLY = re.compile(r"[가-힣]{2,4}")
+# 이름 꼴 검사에 쓰는 성씨: NER 층 목록 + 그 목록에 없는 성. 규칙은 단서어·직함 문맥이 있어 NER 보다 넓게 받는다
+# (NER 목록 자체를 넓히면 모델이 낸 일반 낱말이 통과한다. 11-11 K-50 재검사에서 '가림'이 그렇게 나왔다)
+NAME_SURNAMES = SURNAMES | set("나라해가경계목복태형")
 
 # 사람 규칙 오탐 방지: 조직명·일반명사 꼴은 버린다.
 PERSON_STOP_SUFFIX = ("팀", "부", "실", "과", "처", "본부", "센터", "회사", "업체", "부서", "사")
@@ -142,6 +149,13 @@ DICTS = [
 def _person_ok(frag: str) -> bool:
     if frag in PERSON_STOP_WORDS or frag.endswith(PERSON_STOP_SUFFIX) or frag.endswith(VERB_ENDINGS):
         return False
+    name = frag[:-1] if frag.endswith("님") else frag
+    if NAME_ONLY.fullmatch(name):
+        # 한글 2~4자뿐이면 이름 꼴이어야 한다: 성씨로 시작하는 2~3자, 복성이면 3~4자 (NER 층 plausible_person 과 같은 기준).
+        # 단서어 뒤의 일반 낱말('변경사항', '대조하여', '항목은')을 이름으로 내던 것을 거른다 (11-11 K-51~53)
+        if name[:2] in SURNAMES2:
+            return 3 <= len(name) <= 4
+        return len(name) <= 3 and name[0] in NAME_SURNAMES
     return True
 
 
@@ -167,7 +181,7 @@ def detect_rules(text: str):
             if name == "doc_cue":
                 if len(frag) < 5 or STD_PREFIX.match(frag) or not re.search(r"[A-Z-]", frag):
                     continue  # 너무 짧거나, 공개 규격이거나, 순수 숫자(날짜·수량)
-            if name in ("doc_code", "doc_code1", "part_code") and STD_PREFIX.match(frag):
+            if name in ("doc_code", "doc_code1", "part_code", "doc_code_alpha") and STD_PREFIX.match(frag):
                 continue
             spans.append(Span(s, e, text[s:e], label, [f"rule:{name}"]))
     for fname, label, terms in DICTS:
