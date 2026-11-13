@@ -27,7 +27,7 @@
   | **Prepared by** | Manager Jiyoung Kim, Quality Team (010-4821-7736, jy.kim@daesung-precision.co.kr) |
 ```
 
-회사명·사업명·식별번호·금액·연락처는 등급 1이라 항상 가린다. 사람 이름은 등급 2라 기본은 두고, 승인 카드에서 켜면 가린다. 외부 LLM 은 자리표만 보고 번역했고 답변의 자리표는 서버에서 원문으로 되돌렸다. 이 요청은 외부 경로이면서 가릴 구간이 있어서 사람의 승인을 거친 뒤에 나간다.
+회사명·사업명·식별번호·금액·연락처는 등급 1이라 항상 가린다. 사람 이름은 등급 2다. 모델 서비스의 기본값은 이름을 두는 것이고 위 예시는 그 기본값으로 돌렸다. 백엔드는 이름까지 항상 가리도록 부르므로 실제 화면에서는 `김지영`도 `[[PERSON_1]]` 로 나간다. 외부 LLM 은 자리표만 보고 번역했고 답변의 자리표는 모델 서비스에서 원문으로 되돌렸다. 이 요청은 외부 경로이면서 가릴 구간이 있어서 사람의 승인을 거친 뒤에 나간다.
 
 ## 직접 만든 것과 가져다 쓴 것
 
@@ -37,7 +37,7 @@
 |---|---|---|
 | `qwen3:30b-a3b-instruct-2507-q4_K_M` (Ollama, 30B MoE 4비트) | 규칙이 놓친 회사명·사업명·이름 추출, 사내 답변 | `detect_llm.py`, `server.py` |
 | `tev1-cpu` (Together AI 가 공개한 실험적 판정 모델 `tev1:0.8b`, Ollama `/v1/systemone`) | 사내·외부·차단 확률 | `route.py` |
-| `bge-m3-cpu` (Ollama 라이브러리의 `bge-m3`, 임베딩 1,024차원) | 유사 기록 조회용 벡터 | `server.py` `/embed` |
+| `bge-m3-cpu` (Ollama 라이브러리의 `bge-m3`, 임베딩 1,024차원) | 유사 기록 조회용 벡터. 백엔드와는 아직 연결하지 않았다 | `server.py` `/embed` |
 | `atonlee/koelectra-ko-pii-ner` (Hugging Face 공개 NER) | 사람 이름 | `ner_detect.py` |
 | Anthropic API `claude-sonnet-5-5` | 번역·요약 같은 실제 작업. 가림 본문만 받는다 | `answer_external.py` |
 
@@ -64,28 +64,28 @@
 - 번역·요약의 품질은 숫자로 판정하지 않는다. 복원된 답변을 사람이 읽어 확인한다.
 - 긴 문서는 느리다. 3,600자를 넘으면 조각마다 30B 를 차례로 부른다. GPU 가 하나라 30B 호출은 한 번에 하나만 돈다.
 - 스캔본·이미지 PDF 는 처리하지 못한다(OCR 없음). PDF 는 50쪽, 글은 60,000자까지 받는다.
-- 유사 사례 검색(RAG)은 실험만 했다. `/embed` 가 벡터를 돌려줄 뿐이고, 찾은 사례를 30B 예시로 넣는 연결은 없다.
+- 서비스에 경로만 있고 백엔드와 연결하지 않은 것이 셋 있다. 접수 직후 규칙 결과를 먼저 보여 주는 즉시 탐지(`/detect/instant`), 승인 기록으로 사전을 늘리는 되먹임(`/dict/reload`), 유사 사례 검색(`/embed`, RAG)이다. 백엔드는 `/analyze`, `/answer_local`, `/answer_external` 만 부른다. 그래서 위 흐름도에도 넣지 않았다.
 - 경로 판정은 글의 앞 6,000자만 본다. 사내 답변은 문맥이 4,096토큰이라 약 6,000자를 넘으면 앞부분이 잘릴 수 있다.
 - 경로 판정 모델 tev1 은 제작사가 실험 모델로 내놓은 것이고, 영어 외 언어는 충분히 시험하지 않았다고 밝혔다. 한국어 요청문에서의 정확도는 최종 평가에서 직접 잰다.
 - 30B 는 같은 글에도 구간이 하나쯤 달라질 때가 있다.
-- 30B·tev1·임베딩이 연구실 PC 한 대에 있다. 이 PC 가 꺼지면 정밀 탐지·경로 판정·사내 답변이 멈춘다.
+- 탐지·결정·가림·복원과 외부 호출이 모두 연구실 PC 한 대의 모델 서비스에서 돈다. 이 PC 가 꺼지면 외부 경로를 포함해 요청 처리가 전부 멈춘다.
+- 시연 구성에서는 게이트웨이와 로그 DB 가 GCP 에 있고 원문과 자리표 대응표가 거기 저장된다. 실제로 쓰려면 게이트웨이와 DB 를 회사 안에 두어야 한다. 회사 밖으로 나가는 것은 Anthropic 으로 가는 가림 본문뿐이다.
 
 ## 코드와 전체 흐름도 대응
 
 | 흐름도 | 코드 | 실행 위치 |
 |---|---|---|
-| ① 접수 · 글자 추출 | `extract.py` (백엔드가 PyMuPDF 로 직접 뽑아도 같은 규칙) | 클라우드 |
-| ② 탐지 · 즉시 경로 | `detect_rules.py`, `ner_detect.py` | 클라우드에서도 동작(CPU) |
+| ① 접수 · 글자 추출 | `extract.py` (백엔드가 PyMuPDF 로 직접 뽑아도 같은 규칙) | 클라우드 서버 |
+| ② 탐지 · 즉시 경로 | `detect_rules.py`, `ner_detect.py` | 연구실 PC (CPU) |
 | 2-1 30B 구간 추출 | `detect_llm.py`, 병합은 `detect.py` | 연구실 PC Ollama |
 | 3.1 tev1 라우팅 → ③ | `route.py` | 연구실 PC Ollama |
-| ④ 결정 | `decide.py` (승인 큐·승인 API 는 백엔드) | 서버 |
-| ⑤ 마스킹 · 복원 | `mask.py` | 서버 |
+| ④ 결정 규칙 | `decide.py` | 연구실 PC |
+| ⑤ 마스킹 · 복원 | `mask.py` | 연구실 PC |
 | 4.1 30B 사내 답변 | `server.py` `/answer_local` | 연구실 PC Ollama |
 | 4.2 외부 LLM | `answer_external.py`, `server.py` `/answer_external` | 연구실 PC → Anthropic |
-| 연구실 PC 상자(터널 + API 키) | `server.py` | 연구실 PC |
-| ⑧ 사전 재적재, ⑨ 임베딩 | `server.py` `/dict/reload`, `/embed` (pgvector 검색·배치 로직은 백엔드) | 연구실 PC |
+| 연구실 PC 모델 서비스 상자 | `server.py` | 연구실 PC |
 
-⑥ 로그 DB, ⑦ 집계·대시보드, ① 접수 API·상태 폴링, ④ 승인 큐는 BE·FE 저장소 범위다.
+②③④⑤는 `/analyze` 한 번에 묶여 돈다. ⑥ 로그 DB, ⑦ 집계·대시보드, ① 접수 API·상태 폴링, ④ 승인 큐는 BE·FE 저장소 범위다. 서비스에는 `/detect/instant`, `/mask`, `/restore`, `/dict/reload`, `/embed` 도 있지만 백엔드가 부르지 않아 흐름도에 없다.
 
 ## 실행
 
@@ -135,7 +135,7 @@ $env:ANTHROPIC_API_KEY = "<외부 LLM 키>"             # /answer_external 용. 
 .venv\Scripts\python.exe src\eval.py --no-llm                     # 규칙만 평가 (Ollama 없이)
 ```
 
-백엔드가 부르는 경로와 응답 형식은 `docs/모델 서비스 API v1 (2026-11-03).md` 에 있다. 요청 하나의 순서는 접수 때 `/detect/instant`(1차 카드) → 배경에서 `/analyze`(결정·가림 미리보기) → 승인 뒤 `/answer_external` 또는 `/answer_local` 이다.
+백엔드가 부르는 경로와 응답 형식은 `docs/모델 서비스 API v1 (2026-11-03).md` 에 있다. 백엔드는 접수 뒤 `/analyze`(탐지·결정·가림 미리보기)를 부르고, 사내 경로면 `/answer_local`, 외부 경로면 사람이 승인한 뒤 `/answer_external` 을 부른다.
 
 ### 상시 가동 (연구실 PC 운영)
 
