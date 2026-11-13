@@ -4,7 +4,8 @@
 
 요청문 하나가 들어오면 ① 글자 추출 → ② 즉시 탐지(규칙·사전·이름 인식) + 정밀 탐지(30B) → ③ 경로 판정(tev1) → ④ 결정 규칙(차단·사내·외부, 승인 카드) → ⑤ 가림(자리표 `[[ORG_1]]`) → 외부 LLM → 복원 순서로 처리한다. 번호는 아래 흐름도의 번호다.
 
-![전체 흐름도](assets/flowchart.png)
+<img width="1920" height="885" alt="flowchart" src="https://github.com/user-attachments/assets/408d7150-3c39-4bef-a90f-a04984155de8" />
+
 
 ## 처리 예시
 
