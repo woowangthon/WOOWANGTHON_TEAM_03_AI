@@ -24,9 +24,9 @@ src/
 │  ├─ demo/demo_docs_v1.jsonl    시연 문서 6건 D1~D6 (경로별 기대 결정, 등급별 정답 구간)
 │  ├─ accept/                    실제 형태 수락 검사 TEST-01: 입력 PDF(츄러스공업, 가상 데이터), 정답표 TEST-01.json, 추출 글자 TEST-01.txt
 │  └─ dict/                      companies.txt, projects.txt 사전. 한 줄에 하나, 세로줄(|)로 별칭
-├─ results/                      평가·점검 결과 md/json. eval_*, decide_check_*, route_check_*, demo_run_*, night*/report.md,
-│                                gold_review_*, accept_*, server_check_*, external_check_*. 종류별 최신 실행분과
-│                                문서·코드가 인용한 실행분만 두고 그 전 실행분은 archive/
+├─ results/                      평가·점검 스크립트가 결과 md/json 을 쓰는 곳 (eval_*, decide_check_*, route_check_*, demo_run_*,
+│                                night*/, gold_review_*, accept_*, server_check_*, external_check_*). 지금은 비어 있다.
+│                                이전 결과는 모델을 고치기 전 것이라 지웠고, 최종 모델로 다시 평가한 뒤 채운다
 └─ tools/
    ├─ server_check.py            서비스 점검 17항목: 인증, 즉시 탐지 일치, 결정, 복원, 동시 호출, TEST-01, 사내 답변, 임베딩, 사전 재적재 (--external 이면 외부 호출까지 18항목)
    ├─ external_check.py          외부 경로 점검: smoke 1회 + D3·D4·D6·TEST-01 을 가림 → Anthropic → 복원, 자리표 유지·유출·비용
