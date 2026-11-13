@@ -14,8 +14,8 @@
   POST /answer_local    {text | instruction+body} → 30B가 원문으로 답변 (사내 처리 4.1, 외부 미전송)
   POST /answer_external {masked, mapping} 또는 {text, spans, policy} → 가림 본문을 Anthropic API로 보내고 답변의 자리표를 복원 (4.2 외부)
                         키는 환경변수 ANTHROPIC_API_KEY. 없으면 503. 보내기 직전 원문 값이 가림 본문에 남아 있으면 409로 막는다
-  POST /embed           {texts} → bge-m3 벡터 1024차원 (유사 기록 조회 ⑨)
-  POST /dict/reload     {companies?, projects?} → 사전 파일 갱신·재적재 (학습 배치 ⑧)
+  POST /embed           {texts} → bge-m3 벡터 1024차원 (유사 기록 조회)
+  POST /dict/reload     {companies?, projects?} → 사전 파일 갱신·재적재 (학습 배치)
 원칙: 원문·대응표는 응답에만 담고 서버 로그에는 글자 수·결정·시간만 남긴다 (MT-3 보안 고문 조언). Ollama는 127.0.0.1로만 부른다.
 GPU가 하나라 30B 호출(탐지·사내 답변)은 LLM_LOCK으로 한 번에 하나만 돈다. tev1·NER·임베딩은 CPU라 동시에 돈다.
 """

@@ -16,7 +16,7 @@ src/
 ├─ decide.py                     결정 규칙: 개인정보 묶음·통째 유출 차단, 내부 전용 사내 강제, 애매 판정, 승인 카드 필요 여부. 흐름도 ④
 ├─ mask.py                       자리표 가림, 등급 정책(1 항상·2 이름 토글·3 비가림), 복원, 외부 안내문. 흐름도 ⑤
 ├─ answer_external.py            Anthropic API(claude-sonnet-5-5) 호출: 전송 직전 유출 검사, 답변 자리표 복원, 거부·비용 추정. 흐름도 4.2
-├─ server.py                     FastAPI 모델 서비스(8010): /detect/instant /analyze /mask /restore /answer_local /answer_external /embed /dict/reload. 흐름도의 연구실 PC 상자 전체
+├─ server.py                     FastAPI 모델 서비스(8010): /detect/instant /analyze /mask /restore /answer_local /answer_external /embed /dict/reload. 흐름도의 연구실 PC 모델 서비스 상자 전체
 ├─ eval.py                       평가 세트 재현율·오탐·민감 판정 정확도·지연 표
 ├─ data/
 │  ├─ samples.jsonl              기본 평가 세트 10건 (text, 정답 spans, 정답 route)
