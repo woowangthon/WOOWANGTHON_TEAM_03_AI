@@ -36,8 +36,8 @@
 | 가져다 쓴 것 | 역할 | 부르는 코드 |
 |---|---|---|
 | `qwen3:30b-a3b-instruct-2507-q4_K_M` (Ollama, 30B MoE 4비트) | 규칙이 놓친 회사명·사업명·이름 추출, 사내 답변 | `detect_llm.py`, `server.py` |
-| `tev1-cpu` (0.8B급 판정 모델, Ollama `/v1/systemone`) | 사내·외부·차단 확률 | `route.py` |
-| `bge-m3-cpu` (임베딩 1,024차원, Ollama) | 유사 기록 조회용 벡터 | `server.py` `/embed` |
+| `tev1-cpu` (Together AI 가 공개한 실험적 판정 모델 `tev1:0.8b`, Ollama `/v1/systemone`) | 사내·외부·차단 확률 | `route.py` |
+| `bge-m3-cpu` (Ollama 라이브러리의 `bge-m3`, 임베딩 1,024차원) | 유사 기록 조회용 벡터 | `server.py` `/embed` |
 | `atonlee/koelectra-ko-pii-ner` (Hugging Face 공개 NER) | 사람 이름 | `ner_detect.py` |
 | Anthropic API `claude-sonnet-5-5` | 번역·요약 같은 실제 작업. 가림 본문만 받는다 | `answer_external.py` |
 
@@ -66,6 +66,7 @@
 - 스캔본·이미지 PDF 는 처리하지 못한다(OCR 없음). PDF 는 50쪽, 글은 60,000자까지 받는다.
 - 유사 사례 검색(RAG)은 실험만 했다. `/embed` 가 벡터를 돌려줄 뿐이고, 찾은 사례를 30B 예시로 넣는 연결은 없다.
 - 경로 판정은 글의 앞 6,000자만 본다. 사내 답변은 문맥이 4,096토큰이라 약 6,000자를 넘으면 앞부분이 잘릴 수 있다.
+- 경로 판정 모델 tev1 은 제작사가 실험 모델로 내놓은 것이고, 영어 외 언어는 충분히 시험하지 않았다고 밝혔다. 한국어 요청문에서의 정확도는 최종 평가에서 직접 잰다.
 - 30B 는 같은 글에도 구간이 하나쯤 달라질 때가 있다.
 - 30B·tev1·임베딩이 연구실 PC 한 대에 있다. 이 PC 가 꺼지면 정밀 탐지·경로 판정·사내 답변이 멈춘다.
 
@@ -93,8 +94,23 @@
 연구실 PC(Windows, RTX 5060 Ti 8GB)의 Ollama 에 세 모델이 있어야 한다.
 
 - `qwen3:30b-a3b-instruct-2507-q4_K_M`. 19.2GB 중 6.2GB 가 GPU 에 올라가고 나머지는 CPU 메모리에서 돈다.
-- `tev1-cpu`(1.3GB), `bge-m3-cpu`(1.2GB). GPU 를 30B 에 비워 두려고 CPU 에서만 돌린다. 둘 다 연구실 PC 의 Ollama 에 등록해 둔 이름이다.
+- `tev1-cpu`, `bge-m3-cpu`. Ollama 라이브러리의 `tev1:0.8b`(833MB), `bge-m3`(1.2GB)에 `num_gpu 0` 한 줄만 더해 등록한 이름이고 가중치는 원본과 같다. GPU 를 30B 에 비워 두려고 CPU 에서만 돌린다. 메모리에는 각각 1.3GB, 1.2GB 가 올라간다.
 - 이름 인식 모델 `atonlee/koelectra-ko-pii-ner` 는 Ollama 가 아니라 transformers 로 돌고, 처음 실행할 때 Hugging Face 에서 내려받는다.
+
+```powershell
+ollama pull qwen3:30b-a3b-instruct-2507-q4_K_M
+ollama pull tev1:0.8b
+ollama pull bge-m3
+
+# GPU 에 올리지 않는 이름 두 개를 등록한다 (원본 + num_gpu 0)
+Set-Content tev1-cpu.Modelfile "FROM tev1:0.8b`nPARAMETER num_gpu 0" -Encoding ascii
+Set-Content bge-m3-cpu.Modelfile "FROM bge-m3`nPARAMETER num_gpu 0" -Encoding ascii
+ollama create tev1-cpu -f tev1-cpu.Modelfile
+ollama create bge-m3-cpu -f bge-m3-cpu.Modelfile
+ollama show tev1-cpu --modelfile     # PARAMETER num_gpu 0 이 보이면 된다
+```
+
+tev1 은 Together AI 가 공개한 실험적 판정 모델이고 `tev1:0.8b` 는 Qwen3.5-0.8B 를 미세조정한 것이다([Ollama 라이브러리](https://ollama.com/library/tev1), [저장소](https://github.com/togethercomputer/tev1)). 글을 쓰지 않고 질문마다 선택지별 확률을 돌려준다. Ollama 0.40.4 이상이 필요하다.
 
 Ollama 환경변수는 `OLLAMA_MAX_LOADED_MODELS=3`, `OLLAMA_KEEP_ALIVE=-1`(없으면 30B가 매번 14~17초 재로드). 호출 주소는 `127.0.0.1`(localhost 는 IPv6 대기로 호출마다 2초).
 
