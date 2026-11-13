@@ -1,4 +1,4 @@
-﻿# 집 PC 상시 가동 설치. 관리자 PowerShell 에서 한 번 실행한다. 다시 실행해도 같은 결과(덮어쓴다).
+﻿# 연구실 PC 상시 가동 설치. 관리자 PowerShell 에서 한 번 실행한다. 다시 실행해도 같은 결과(덮어쓴다).
 #   powershell -ExecutionPolicy Bypass -File ops\install_always_on.ps1
 # 하는 일
 #   1) 설정 폴더(%LOCALAPPDATA%\woowang)와 service.env 생성 — 없으면 예시에서 만들고 API 키를 새로 만든다
@@ -165,8 +165,8 @@ $trigWatchRepeat = New-ScheduledTaskTrigger -Once -At (Get-Date).Date -Repetitio
 foreach ($name in @($script:OpsTaskOllama, $script:OpsTaskService, $script:OpsTaskWatchdog)) {
     if (Get-OpsTask $name) { Stop-ScheduledTask -TaskPath $script:OpsTaskPath -TaskName $name -ErrorAction SilentlyContinue; Unregister-ScheduledTask -TaskPath $script:OpsTaskPath -TaskName $name -Confirm:$false }
 }
-Register-ScheduledTask -TaskPath $script:OpsTaskPath -TaskName $script:OpsTaskOllama -Action (New-OpsAction 'run_ollama.ps1') -Trigger $trigOllama -Principal $principalLimited -Settings $settingsServer -Description '집 PC Ollama 서버(11434). 부팅 시 로그인 없이 시작, 죽으면 1분 뒤 재시작' | Out-Null
-Register-ScheduledTask -TaskPath $script:OpsTaskPath -TaskName $script:OpsTaskService -Action (New-OpsAction 'run_model_service.ps1') -Trigger $trigService -Principal $principalLimited -Settings $settingsServer -Description '집 PC 모델 서비스(FastAPI 8010). 부팅 시 로그인 없이 시작, 죽으면 1분 뒤 재시작' | Out-Null
+Register-ScheduledTask -TaskPath $script:OpsTaskPath -TaskName $script:OpsTaskOllama -Action (New-OpsAction 'run_ollama.ps1') -Trigger $trigOllama -Principal $principalLimited -Settings $settingsServer -Description '연구실 PC Ollama 서버(11434). 부팅 시 로그인 없이 시작, 죽으면 1분 뒤 재시작' | Out-Null
+Register-ScheduledTask -TaskPath $script:OpsTaskPath -TaskName $script:OpsTaskService -Action (New-OpsAction 'run_model_service.ps1') -Trigger $trigService -Principal $principalLimited -Settings $settingsServer -Description '연구실 PC 모델 서비스(FastAPI 8010). 부팅 시 로그인 없이 시작, 죽으면 1분 뒤 재시작' | Out-Null
 Register-ScheduledTask -TaskPath $script:OpsTaskPath -TaskName $script:OpsTaskWatchdog -Action (New-OpsAction 'watchdog.ps1') -Trigger @($trigWatchBoot, $trigWatchRepeat) -Principal $principalHighest -Settings $settingsWatch -Description '5분마다 Ollama·모델 서비스 확인, heartbeat 기록, 죽으면 재시작, 모델 예열' | Out-Null
 foreach ($name in @($script:OpsTaskOllama, $script:OpsTaskService, $script:OpsTaskWatchdog)) {
     $t = Get-OpsTask $name

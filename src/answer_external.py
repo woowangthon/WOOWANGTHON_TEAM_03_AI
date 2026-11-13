@@ -5,7 +5,7 @@ run_external(text, spans, policy=None, **kw) -> dict   # mask → leak_check →
 leak_check(masked, mapping) -> [str]                     # 전송 직전 안전장치: 원문 값이 가림 본문에 남아 있으면 그 값들. 0건이어야 보낸다
 
 키:   환경변수 ANTHROPIC_API_KEY (SDK가 읽는다). 코드·로그·git·Notion에 적지 않는다.
-모델: 기본 claude-sonnet-5-5 (팀 요구사항 분석서의 선택, $2/$10 per MTok). 환경변수 EXTERNAL_MODEL 로 바꾼다.
+모델: 기본 claude-sonnet-5-5 ($2/$10 per MTok). 환경변수 EXTERNAL_MODEL 로 바꾼다.
 생각: 5.5 계열은 적응형 생각이 기본으로 켜져 있고 깊이는 output_config.effort 로 조절한다. 번역·요약이라 기본 medium.
 거부: stop_reason == "refusal" 이면 answer 는 빈 문자열이고 refusal 에 category·explanation 이 담긴다. fallback=True 면 서버 쪽
       대체 모델(fallbacks="default", 베타)이 같은 호출 안에서 이어받는다. 대체 모델도 Anthropic 모델이라 가림 본문만 받는 점은 같다.
@@ -43,7 +43,7 @@ def client() -> anthropic.Anthropic:
 
 
 def leak_check(masked: str, mapping: dict) -> list[str]:
-    """가림 본문에 원문 값이 글자 그대로 남아 있으면 돌려준다 (분석서 ⑤ 완료 조건: 전송 직전 본문에 정답 구간 문자열 0건)."""
+    """가림 본문에 원문 값이 글자 그대로 남아 있으면 돌려준다 (⑤ 완료 조건: 전송 직전 본문에 정답 구간 문자열 0건)."""
     return [v for v in mapping.values() if v and v in masked]
 
 
