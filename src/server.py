@@ -317,7 +317,7 @@ async def lifespan(app: FastAPI):
     yield
 
 
-app = FastAPI(title="AI 교환기 모델 서비스", version=VERSION, lifespan=lifespan)
+app = FastAPI(title="Mask Assistant 모델 서비스", version=VERSION, lifespan=lifespan)
 protected = APIRouter(dependencies=[Depends(require_key)])
 
 
@@ -508,7 +508,7 @@ app.include_router(protected)
 
 if __name__ == "__main__":
     utf8_stdout()
-    ap = argparse.ArgumentParser(description="AI 교환기 모델 서비스")
+    ap = argparse.ArgumentParser(description="Mask Assistant 모델 서비스")
     ap.add_argument("--host", default="127.0.0.1", help="Tailscale 로 열 때는 0.0.0.0 또는 테일스케일 IP")
     ap.add_argument("--port", type=int, default=8010)
     ap.add_argument("--log-level", default="info")
