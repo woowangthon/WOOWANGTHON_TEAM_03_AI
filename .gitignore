@@ -5,15 +5,8 @@ __pycache__/
 *.tmp
 *.bak
 
-# 개인 자료 (저장소 밖)
-이전/
-/*.txt
-/*.pdf
-/*.docx
-/*.pptx
-/*.html
-/*.md
-!/README.md
+# 문서의 PDF 판은 공유용으로만 만들고 저장소에는 두지 않는다
+docs/*.pdf
 
 # 비밀 (ops/service.env 의 실제 파일은 %LOCALAPPDATA%\woowang 에 둔다)
 .env
@@ -24,8 +17,3 @@ __pycache__/
 # Office 임시 파일
 ~$*
 Thumbs.db
-
-# requirements.txt 는 /*.txt 예외
-!/requirements.txt
-!/requirements-dev.txt
-docs/*.pdf

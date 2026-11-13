@@ -1,4 +1,4 @@
-"""결정 규칙 (decide.py): 모델 설명서 5단계 표의 규칙 여덟 개를 하나씩 확인한다."""
+"""결정 규칙 (decide.py): 규칙 여덟 개를 하나씩 확인한다."""
 from decide import decide
 
 

@@ -1,4 +1,4 @@
-"""모델 서비스: 집 PC에서 탐지·라우팅·결정·가림·복원을 HTTP로 내준다. (흐름도 ②③④⑤의 모델 부분 = 분석서 '집 PC 모델 서비스')
+"""모델 서비스: 연구실 PC에서 탐지·라우팅·결정·가림·복원을 HTTP로 내준다. (흐름도 ②③④⑤의 모델 부분)
 
 실행:  .venv\\Scripts\\python.exe src\\server.py [--host 127.0.0.1] [--port 8010]
        또는 src 폴더에서  uvicorn server:app --host 0.0.0.0 --port 8010

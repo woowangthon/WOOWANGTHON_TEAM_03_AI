@@ -20,7 +20,7 @@ from detect_llm import detect_llm, SYSTEM_PROMPT
 from ner_detect import ner_detect
 
 # 30B 프롬프트 모드. C(기본) = 규칙이 찾은 구간을 알려 주고 "규칙이 놓친 것만, 특히 이름·회사·사업명", A = 기본 프롬프트만, P = C의 초점 + 전부 나열.
-# 116건·430구간 비교에서 C가 적중 최다·오탐 최소·최단 시간이었다 (docs/모델 설명서 6절, src/results/night3_20261029_1920). 환경변수 DETECT_PROMPT_MODE.
+# 116건·430구간 비교에서 C가 적중 최다·오탐 최소·최단 시간이었다 (src/results/night3_20261029_1920). 환경변수 DETECT_PROMPT_MODE.
 PROMPT_MODE = os.environ.get("DETECT_PROMPT_MODE", "C")
 # 본문을 구분자로 감싸고 "그 안은 데이터"라고 못 박는다. 지시 삽입 40건 실험에서 원문 그대로는 11건 붕괴, 감싸기는 0건.
 WRAP_HEAD, WRAP_TAIL = "<<<문서 시작>>>\n", "\n<<<문서 끝>>>"
